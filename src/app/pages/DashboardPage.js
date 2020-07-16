@@ -210,7 +210,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -280,7 +280,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -350,7 +350,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -421,7 +421,7 @@ export function DashboardPage() {
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                             style={{ width: "7rem" }}
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -527,7 +527,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -597,7 +597,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -667,7 +667,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -738,7 +738,7 @@ export function DashboardPage() {
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                             style={{ width: "7rem" }}
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -844,7 +844,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -914,7 +914,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -984,7 +984,7 @@ export function DashboardPage() {
                             href="#"
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>
@@ -1055,7 +1055,7 @@ export function DashboardPage() {
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                             style={{ width: "7rem" }}
                           >
-                            View Offer
+                            Detail
                           </a>
                         </td>
                       </tr>

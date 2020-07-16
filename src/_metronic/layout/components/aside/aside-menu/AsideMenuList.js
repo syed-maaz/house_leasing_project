@@ -33,7 +33,7 @@ export function AsideMenuList({ layoutProps }) {
           className={`menu-item`}
           aria-haspopup="true"
         >
-          <NavLink className="menu-link" to="">
+          <NavLink className="menu-link" to="/payments">
             <span className="svg-icon menu-icon">
               <SVG src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")} />
             </span>
