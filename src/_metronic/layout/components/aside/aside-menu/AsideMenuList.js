@@ -30,7 +30,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item`}
+          className={`menu-item ${getMenuItemActive("/payments")}`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
