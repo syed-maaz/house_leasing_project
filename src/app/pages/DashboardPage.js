@@ -37,81 +37,105 @@ export function DashboardPage() {
     <>
       <div className={`row ${classes.rowTopMargin}`}>
         <div className="col-lg-6 col-xxl-4">
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Total Rent
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                $200
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className="col bg-light-success px-6 py-8 rounded-xl">
+            <a
+              href="#"
+              className="text-success font-weight-bold font-size-h6 mt-2"
+            >
+              TOTAL RENT
+            </a>
+            <div className="d-flex align-items-center mt-2">
+              <div className="flex-grow-1 text-success font-weight-bold font-size-h4 mt-2">$21,324</div>
+              <span className="svg-icon svg-icon-3x svg-icon-success d-block">
+                <SVG src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")} />
+              </span>
+            </div>
+          </div>
         </div>
         <div className="col-lg-6 col-xxl-4">
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Total LIABILITIES
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                $200
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
+            <a
+              href="#"
+              className="text-primary font-weight-bold font-size-h6 mt-2"
+            >
+              TOTAL LIABILITIES
+            </a>
+            <div className="d-flex align-items-center mt-2">
+              <div className="flex-grow-1 text-primary font-weight-bold font-size-h4 mt-2">$19,200</div>
+              <span className="svg-icon svg-icon-3x svg-icon-primary d-block">
+                <SVG src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")} />
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="col-lg-6 col-xxl-4">
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Total TENANATS
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                2
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className="col bg-light-danger px-6 py-8 rounded-xl mr-7">
+            <a
+              href="#"
+              className="text-danger font-weight-bold font-size-h6 mt-2"
+            >
+              TOTAL TENANTS
+            </a>
+            <div className="d-flex align-items-center mt-2">
+              <div className="flex-grow-1 text-danger font-weight-bold font-size-h4 mt-2">5</div>
+              <span className="svg-icon svg-icon-3x svg-icon-danger d-block">
+                <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Group.svg")} />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className={`row ${classes.rowTopMargin}`}>
         <div className="col-lg-6 col-xxl-4">
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Total COMPLAINS
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                2
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className="col bg-light-success px-6 py-8 rounded-xl">
+            <a
+              href="#"
+              className="text-success font-weight-bold font-size-h6 mt-2"
+            >
+              TOTAL COMPLAINTS
+            </a>
+            <div className="d-flex align-items-center mt-2">
+              <div className="flex-grow-1 text-success font-weight-bold font-size-h4 mt-2">7</div>
+              <span className="svg-icon svg-icon-3x svg-icon-success d-block">
+                <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Urgent-mail.svg")} />
+              </span>
+            </div>
+          </div>
         </div>
         <div className="col-lg-6 col-xxl-4">
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Total MAINTAINANCE
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                2
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
+            <a
+              href="#"
+              className="text-primary font-weight-bold font-size-h6 mt-2"
+            >
+              TOTAL MAINTENANCE
+            </a>
+            <div className="d-flex align-items-center mt-2">
+              <div className="flex-grow-1 text-primary font-weight-bold font-size-h4 mt-2">19,200</div>
+              <span className="svg-icon svg-icon-3x svg-icon-primary d-block">
+                <SVG src={toAbsoluteUrl("/media/svg/icons/Tools/Tools.svg")} />
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="col-lg-6 col-xxl-4">
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Total VACANCIES
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                2
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className="col bg-light-danger px-6 py-8 rounded-xl mr-7">
+            <a
+              href="#"
+              className="text-danger font-weight-bold font-size-h6 mt-2"
+            >
+              TOTAL VACANCIES
+            </a>
+            <div className="d-flex align-items-center mt-2">
+              <div className="flex-grow-1 text-danger font-weight-bold font-size-h4 mt-2">0</div>
+              <span className="svg-icon svg-icon-3x svg-icon-danger d-block">
+                <SVG src={toAbsoluteUrl("/media/svg/icons/Home/Home.svg")} />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
