@@ -23,7 +23,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="/dashboard">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Home/Home.svg")} />
             </span>
             <span className="menu-text">DASHBOARD</span>
           </NavLink>
@@ -35,7 +35,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")} />
             </span>
             <span className="menu-text">PAYMENTS</span>
           </NavLink>
@@ -47,7 +47,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Tools/Tools.svg")} />
             </span>
             <span className="menu-text">MAINTENANCE</span>
           </NavLink>
@@ -59,7 +59,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Mail-opened.svg")} />
             </span>
             <span className="menu-text">INVOICE</span>
           </NavLink>
@@ -71,7 +71,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/General/Clipboard.svg")} />
             </span>
             <span className="menu-text">APPLICANTS</span>
           </NavLink>
@@ -83,7 +83,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Group.svg")} />
             </span>
             <span className="menu-text">TENATS</span>
           </NavLink>
@@ -95,7 +95,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Sending mail.svg")} />
             </span>
             <span className="menu-text">COMPLAINTS</span>
           </NavLink>
@@ -107,7 +107,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Devices/Speaker.svg")} />
             </span>
             <span className="menu-text">ANNOUNCEMENTS</span>
           </NavLink>
@@ -119,9 +119,9 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Home/Building.svg")} />
             </span>
-            <span className="menu-text">PROERTIES</span>
+            <span className="menu-text">PROPERTIES</span>
           </NavLink>
         </li>
 
@@ -131,7 +131,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Tools/Hummer.svg")} />
             </span>
             <span className="menu-text">SETUP</span>
           </NavLink>
