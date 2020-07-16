@@ -45,9 +45,13 @@ export function DashboardPage() {
               TOTAL RENT
             </a>
             <div className="d-flex align-items-center mt-2">
-              <div className="flex-grow-1 text-success font-weight-bold font-size-h4 mt-2">$21,324</div>
+              <div className="flex-grow-1 text-success font-weight-bold font-size-h4 mt-2">
+                $21,324
+              </div>
               <span className="svg-icon svg-icon-3x svg-icon-success d-block">
-                <SVG src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")} />
+                <SVG
+                  src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")}
+                />
               </span>
             </div>
           </div>
@@ -61,9 +65,13 @@ export function DashboardPage() {
               TOTAL LIABILITIES
             </a>
             <div className="d-flex align-items-center mt-2">
-              <div className="flex-grow-1 text-primary font-weight-bold font-size-h4 mt-2">$19,200</div>
+              <div className="flex-grow-1 text-primary font-weight-bold font-size-h4 mt-2">
+                $19,200
+              </div>
               <span className="svg-icon svg-icon-3x svg-icon-primary d-block">
-                <SVG src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")} />
+                <SVG
+                  src={toAbsoluteUrl("/media/svg/icons/Shopping/Dollar.svg")}
+                />
               </span>
             </div>
           </div>
@@ -78,9 +86,15 @@ export function DashboardPage() {
               TOTAL TENANTS
             </a>
             <div className="d-flex align-items-center mt-2">
-              <div className="flex-grow-1 text-danger font-weight-bold font-size-h4 mt-2">5</div>
+              <div className="flex-grow-1 text-danger font-weight-bold font-size-h4 mt-2">
+                5
+              </div>
               <span className="svg-icon svg-icon-3x svg-icon-danger d-block">
-                <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Group.svg")} />
+                <SVG
+                  src={toAbsoluteUrl(
+                    "/media/svg/icons/Communication/Group.svg"
+                  )}
+                />
               </span>
             </div>
           </div>
@@ -97,9 +111,15 @@ export function DashboardPage() {
               TOTAL COMPLAINTS
             </a>
             <div className="d-flex align-items-center mt-2">
-              <div className="flex-grow-1 text-success font-weight-bold font-size-h4 mt-2">7</div>
+              <div className="flex-grow-1 text-success font-weight-bold font-size-h4 mt-2">
+                7
+              </div>
               <span className="svg-icon svg-icon-3x svg-icon-success d-block">
-                <SVG src={toAbsoluteUrl("/media/svg/icons/Communication/Urgent-mail.svg")} />
+                <SVG
+                  src={toAbsoluteUrl(
+                    "/media/svg/icons/Communication/Urgent-mail.svg"
+                  )}
+                />
               </span>
             </div>
           </div>
@@ -113,7 +133,9 @@ export function DashboardPage() {
               TOTAL MAINTENANCE
             </a>
             <div className="d-flex align-items-center mt-2">
-              <div className="flex-grow-1 text-primary font-weight-bold font-size-h4 mt-2">19,200</div>
+              <div className="flex-grow-1 text-primary font-weight-bold font-size-h4 mt-2">
+                19,200
+              </div>
               <span className="svg-icon svg-icon-3x svg-icon-primary d-block">
                 <SVG src={toAbsoluteUrl("/media/svg/icons/Tools/Tools.svg")} />
               </span>
@@ -130,7 +152,9 @@ export function DashboardPage() {
               TOTAL VACANCIES
             </a>
             <div className="d-flex align-items-center mt-2">
-              <div className="flex-grow-1 text-danger font-weight-bold font-size-h4 mt-2">0</div>
+              <div className="flex-grow-1 text-danger font-weight-bold font-size-h4 mt-2">
+                0
+              </div>
               <span className="svg-icon svg-icon-3x svg-icon-danger d-block">
                 <SVG src={toAbsoluteUrl("/media/svg/icons/Home/Home.svg")} />
               </span>
@@ -189,9 +213,6 @@ export function DashboardPage() {
                               >
                                 Brad Simmons
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                HTML, JS, ReactJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -259,9 +280,6 @@ export function DashboardPage() {
                               >
                                 Jessie Clarcson
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                C#, ASP.NET, MS SQL
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -329,9 +347,6 @@ export function DashboardPage() {
                               >
                                 Lebron Wayde
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                PHP, Laravel, VueJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -399,9 +414,6 @@ export function DashboardPage() {
                               >
                                 Natali Trump
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                Python, PostgreSQL, ReactJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -506,9 +518,6 @@ export function DashboardPage() {
                               >
                                 Brad Simmons
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                HTML, JS, ReactJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -576,9 +585,6 @@ export function DashboardPage() {
                               >
                                 Jessie Clarcson
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                C#, ASP.NET, MS SQL
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -646,9 +652,6 @@ export function DashboardPage() {
                               >
                                 Lebron Wayde
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                PHP, Laravel, VueJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -716,9 +719,6 @@ export function DashboardPage() {
                               >
                                 Natali Trump
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                Python, PostgreSQL, ReactJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -823,9 +823,6 @@ export function DashboardPage() {
                               >
                                 Brad Simmons
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                HTML, JS, ReactJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -893,9 +890,6 @@ export function DashboardPage() {
                               >
                                 Jessie Clarcson
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                C#, ASP.NET, MS SQL
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -963,9 +957,6 @@ export function DashboardPage() {
                               >
                                 Lebron Wayde
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                PHP, Laravel, VueJS
-                              </span>
                             </div>
                           </div>
                         </td>
@@ -1033,9 +1024,6 @@ export function DashboardPage() {
                               >
                                 Natali Trump
                               </a>
-                              <span className="text-muted font-weight-bold d-block">
-                                Python, PostgreSQL, ReactJS
-                              </span>
                             </div>
                           </div>
                         </td>

@@ -57,9 +57,7 @@ export const PaymentsList = () => {
                           >
                             Brad Simmons
                           </a>
-                          <span className="text-muted font-weight-bold d-block">
-                            HTML, JS, ReactJS
-                          </span>
+                         
                         </div>
                       </div>
                     </td>
@@ -125,9 +123,7 @@ export const PaymentsList = () => {
                           >
                             Jessie Clarcson
                           </a>
-                          <span className="text-muted font-weight-bold d-block">
-                            C#, ASP.NET, MS SQL
-                          </span>
+                        
                         </div>
                       </div>
                     </td>
@@ -195,9 +191,7 @@ export const PaymentsList = () => {
                           >
                             Lebron Wayde
                           </a>
-                          <span className="text-muted font-weight-bold d-block">
-                            PHP, Laravel, VueJS
-                          </span>
+                         
                         </div>
                       </div>
                     </td>
@@ -259,9 +253,7 @@ export const PaymentsList = () => {
                           >
                             Natali Trump
                           </a>
-                          <span className="text-muted font-weight-bold d-block">
-                            Python, PostgreSQL, ReactJS
-                          </span>
+                          
                         </div>
                       </div>
                     </td>
