@@ -30,7 +30,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -42,7 +42,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -54,7 +54,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -66,7 +66,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -78,7 +78,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -90,7 +90,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -102,7 +102,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -114,7 +114,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
@@ -126,7 +126,7 @@ export function AsideMenuList({ layoutProps }) {
         </li>
 
         <li
-          className={`menu-item ${getMenuItemActive("/dashboard")}`}
+          className={`menu-item`}
           aria-haspopup="true"
         >
           <NavLink className="menu-link" to="">
