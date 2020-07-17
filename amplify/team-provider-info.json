@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-leaseninjafrontend-dev-221403-authRole",
+            "UnauthRoleArn": "arn:aws:iam::226077435712:role/amplify-leaseninjafrontend-dev-221403-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::226077435712:role/amplify-leaseninjafrontend-dev-221403-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-leaseninjafrontend-dev-221403-deployment",
+            "UnauthRoleName": "amplify-leaseninjafrontend-dev-221403-unauthRole",
+            "StackName": "amplify-leaseninjafrontend-dev-221403",
+            "StackId": "arn:aws:cloudformation:us-east-1:226077435712:stack/amplify-leaseninjafrontend-dev-221403/c0a044e0-c84c-11ea-a544-12e727a79a85",
+            "AmplifyAppId": "d27lkrs3hbiyxl"
+        }
+    }
+}
