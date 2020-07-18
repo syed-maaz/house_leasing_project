@@ -2,6 +2,7 @@ import React from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import SVG from "react-inlinesvg";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
+import { NavLink } from "react-router-dom";
 
 export const PaymentsList = () => {
   const suhbeader = useSubheader();
@@ -57,7 +58,7 @@ export const PaymentsList = () => {
                           >
                             Brad Simmons
                           </a>
-                         
+
                         </div>
                       </div>
                     </td>
@@ -94,12 +95,9 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <a
-                        href="#"
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
-                      </a>
+                      </NavLink>
                     </td>
                   </tr>
                   <tr>
@@ -123,7 +121,7 @@ export const PaymentsList = () => {
                           >
                             Jessie Clarcson
                           </a>
-                        
+
                         </div>
                       </div>
                     </td>
@@ -162,12 +160,9 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <a
-                        href="#"
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
-                      </a>
+                      </NavLink>
                     </td>
                   </tr>
                   <tr>
@@ -191,7 +186,7 @@ export const PaymentsList = () => {
                           >
                             Lebron Wayde
                           </a>
-                         
+
                         </div>
                       </div>
                     </td>
@@ -224,12 +219,9 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <a
-                        href="#"
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
-                      </a>
+                      </NavLink>
                     </td>
                   </tr>
                   <tr>
@@ -253,7 +245,7 @@ export const PaymentsList = () => {
                           >
                             Natali Trump
                           </a>
-                          
+
                         </div>
                       </div>
                     </td>
@@ -290,12 +282,9 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <a
-                        href="#"
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
-                      </a>
+                      </NavLink>
                     </td>
                   </tr>
                 </tbody>
