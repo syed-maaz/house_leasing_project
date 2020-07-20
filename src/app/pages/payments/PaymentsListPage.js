@@ -53,7 +53,7 @@ export const PaymentsList = () => {
                         </div>
                         <div>
                           <a
-                            href="#"
+                            href={() => false}
                             className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                           >
                             Brad Simmons
@@ -87,7 +87,7 @@ export const PaymentsList = () => {
                     <td>
                       <img
                         src={toAbsoluteUrl("/media/logos/stars.png")}
-                        alt="image"
+                        alt="payment list page"
                         style={{ width: "5.5rem" }}
                       />
                       <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -116,7 +116,7 @@ export const PaymentsList = () => {
                         </div>
                         <div>
                           <a
-                            href="#"
+                            href={() => false}
                             className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                           >
                             Jessie Clarcson
@@ -152,7 +152,7 @@ export const PaymentsList = () => {
                     <td>
                       <img
                         src={toAbsoluteUrl("/media/logos/stars.png")}
-                        alt="image"
+                        alt="payment list page"
                         style={{ width: "5.5rem" }}
                       />
                       <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -181,7 +181,7 @@ export const PaymentsList = () => {
                         </div>
                         <div>
                           <a
-                            href="#"
+                            href={() => false}
                             className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                           >
                             Lebron Wayde
@@ -211,7 +211,7 @@ export const PaymentsList = () => {
                     <td>
                       <img
                         src={toAbsoluteUrl("/media/logos/stars.png")}
-                        alt="image"
+                        alt="payment list page"
                         style={{ width: "5.5rem" }}
                       />
                       <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -240,7 +240,7 @@ export const PaymentsList = () => {
                         </div>
                         <div>
                           <a
-                            href="#"
+                            href={() => false}
                             className="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg"
                           >
                             Natali Trump
@@ -274,7 +274,7 @@ export const PaymentsList = () => {
                     <td>
                       <img
                         src={toAbsoluteUrl("/media/logos/stars.png")}
-                        alt="image"
+                        alt="payment list page"
                         style={{ width: "5.5rem" }}
                       />
                       <span className="text-muted font-weight-bold d-block font-size-sm">

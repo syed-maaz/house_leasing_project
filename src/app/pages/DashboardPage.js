@@ -1,10 +1,4 @@
 import React from "react";
-import { Dashboard } from "../../_metronic/_partials";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import SVG from "react-inlinesvg";
 import { toAbsoluteUrl } from "../../_metronic/_helpers";
@@ -31,7 +25,6 @@ const cardStyles = makeStyles({
 
 export function DashboardPage() {
   const classes = cardStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <>
@@ -39,7 +32,7 @@ export function DashboardPage() {
         <div className="col-lg-6 col-xxl-4">
           <div className="col bg-light-success px-6 py-8 rounded-xl">
             <a
-              href="#"
+              href={() => false}
               className="text-success font-weight-bold font-size-h6 mt-2"
             >
               TOTAL RENT
@@ -59,7 +52,7 @@ export function DashboardPage() {
         <div className="col-lg-6 col-xxl-4">
           <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
             <a
-              href="#"
+              href={() => false}
               className="text-primary font-weight-bold font-size-h6 mt-2"
             >
               TOTAL LIABILITIES
@@ -80,7 +73,7 @@ export function DashboardPage() {
         <div className="col-lg-6 col-xxl-4">
           <div className="col bg-light-danger px-6 py-8 rounded-xl mr-7">
             <a
-              href="#"
+              href={() => false}
               className="text-danger font-weight-bold font-size-h6 mt-2"
             >
               TOTAL TENANTS
@@ -105,7 +98,7 @@ export function DashboardPage() {
         <div className="col-lg-6 col-xxl-4">
           <div className="col bg-light-success px-6 py-8 rounded-xl">
             <a
-              href="#"
+              href={() => false}
               className="text-success font-weight-bold font-size-h6 mt-2"
             >
               TOTAL COMPLAINTS
@@ -127,7 +120,7 @@ export function DashboardPage() {
         <div className="col-lg-6 col-xxl-4">
           <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
             <a
-              href="#"
+              href={() => false}
               className="text-primary font-weight-bold font-size-h6 mt-2"
             >
               TOTAL MAINTENANCE
@@ -146,7 +139,7 @@ export function DashboardPage() {
         <div className="col-lg-6 col-xxl-4">
           <div className="col bg-light-danger px-6 py-8 rounded-xl mr-7">
             <a
-              href="#"
+              href={() => false}
               className="text-danger font-weight-bold font-size-h6 mt-2"
             >
               TOTAL VACANCIES
@@ -208,7 +201,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Brad Simmons
@@ -243,7 +236,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -252,7 +245,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -275,7 +268,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Jessie Clarcson
@@ -310,7 +303,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -319,7 +312,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -342,7 +335,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Lebron Wayde
@@ -377,7 +370,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -386,7 +379,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -409,7 +402,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Natali Trump
@@ -444,7 +437,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -453,7 +446,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                             style={{ width: "7rem" }}
                           >
@@ -513,7 +506,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Brad Simmons
@@ -548,7 +541,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -557,7 +550,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -580,7 +573,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Jessie Clarcson
@@ -615,7 +608,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -624,7 +617,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -647,7 +640,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Lebron Wayde
@@ -682,7 +675,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -691,7 +684,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -714,7 +707,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Natali Trump
@@ -749,7 +742,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -758,7 +751,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                             style={{ width: "7rem" }}
                           >
@@ -818,7 +811,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Brad Simmons
@@ -853,7 +846,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -862,7 +855,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -885,7 +878,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Jessie Clarcson
@@ -920,7 +913,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -929,7 +922,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -952,7 +945,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Lebron Wayde
@@ -987,7 +980,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -996,7 +989,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                           >
                             Detail
@@ -1019,7 +1012,7 @@ export function DashboardPage() {
                             </div>
                             <div>
                               <a
-                                href="#"
+                                href={() => false}
                                 className="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg"
                               >
                                 Natali Trump
@@ -1054,7 +1047,7 @@ export function DashboardPage() {
                         <td>
                           <img
                             src={toAbsoluteUrl("/media/logos/stars.png")}
-                            alt="image"
+                            alt="dashboard"
                             style={{ width: "5.5rem" }}
                           />
                           <span className="text-muted font-weight-bold d-block font-size-sm">
@@ -1063,7 +1056,7 @@ export function DashboardPage() {
                         </td>
                         <td className="pr-0 text-right">
                           <a
-                            href="#"
+                            href={() => false}
                             className="btn btn-light-success font-weight-bolder font-size-sm"
                             style={{ width: "7rem" }}
                           >
