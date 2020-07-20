@@ -1,6 +1,7 @@
 import React from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import { Tabs, Tab } from 'react-bootstrap';
+import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 
 export const PaymentTransactionsPage = () => {
   const suhbeader = useSubheader();
@@ -25,7 +26,7 @@ export const PaymentTransactionsPage = () => {
                 <Tabs defaultActiveKey="transcations">
                   <Tab eventKey="transcations" title="Transcations">
                     <div className="tab-content mt-5">
-                      <div className="tab-pane fade show active" id="transcations" role="tabpanel" aria-labelledby="transcations-tab">
+                      <div className="tab-pane fade show active">
                         <div className="border pt-6 pr-6 pl-6 pb-4">
                           <div className="d-flex justify-content-between mb-5">
                             <div className="d-flex flex-column flex-root">
@@ -131,13 +132,158 @@ export const PaymentTransactionsPage = () => {
                     </div>
                   </Tab>
                   <Tab eventKey="tenants" title="Tenants">
-                    Tenants
+                    <div className="tab-content mt-5">
+                      <div className="tab-pane fade show active">
+                        <div className="d-flex justify-content-between mt-10 mb-5">
+                          <div className="d-flex flex-column flex-root">
+                            <h4 className="font-size-h6 d-block d-block font-weight-normal mt-3 text-dark-50 text-uppercase">2 current tenant</h4>
+                          </div>
+                          <div className="d-flex flex-column flex-root align-items-md-end">
+                            <button type="button" className="btn btn-light-primary font-weight-bold">Edit Tenants</button>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div className="border pt-6 pr-6 pl-6 pb-4">
+                              <div className="d-flex justify-content-between">
+                                <div className="d-flex flex-column flex-root">
+                                  <span className="font-weight-bold mt-4 mb-2 font-size-h6 text-dark-50">Jerry Mattedi</span>
+                                  <span className="opacity-70 font-size-sm font-weight-light">Jerry.Matte@gmail.com</span>
+                                </div>
+                                <div className="d-flex flex-column align-items-md-end flex-root">
+                                  <div className="flex-shrink-0 mr-4 mt-lg-0 mt-3">
+                                    <div className="symbol symbol-circle symbol-lg-75 d-none">
+                                      <img src={toAbsoluteUrl( "/media/users/300_10.jpg" )} alt="payment transaction page" />
+                                    </div>
+                                    <div className="symbol symbol-lg-75 symbol-circle symbol-primary">
+                                      <span className="symbol-label font-size-h3 font-weight-boldest">AK</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="border pt-6 pr-6 pl-6 pb-4">
+                              <div className="d-flex justify-content-between">
+                                <div className="d-flex flex-column flex-root">
+                                  <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">Not Ready To Pay</span>
+                                  <span className="opacity-70 font-size-sm font-weight-light">No payment account added</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div className="border pt-6 pr-6 pl-6 pb-4">
+                              <div className="d-flex justify-content-between">
+                                <div className="d-flex flex-column flex-root">
+                                  <span className="font-weight-bold mt-4 mb-2 font-size-h6 text-dark-50">Jerry Mattedi</span>
+                                  <span className="opacity-70 font-size-sm font-weight-light">Jerry.Matte@gmail.com</span>
+                                </div>
+                                <div className="d-flex flex-column align-items-md-end flex-root">
+                                  <div className="flex-shrink-0 mr-4 mt-lg-0 mt-3">
+                                    <div className="symbol symbol-circle symbol-lg-75 d-none">
+                                      <img src={toAbsoluteUrl( "/media/users/300_10.jpg" )} alt="payment transaction page" />
+                                    </div>
+                                    <div className="symbol symbol-lg-75 symbol-circle symbol-primary">
+                                      <span className="symbol-label font-size-h3 font-weight-boldest">AK</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="border pt-6 pr-6 pl-6 pb-4">
+                              <div className="d-flex justify-content-between">
+                                <div className="d-flex flex-column flex-root">
+                                  <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">Not Ready To Pay</span>
+                                  <span className="opacity-70 font-size-sm font-weight-light">No payment account added</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Tab>
                   <Tab eventKey="rentalDetails" title="Rental Details">
-                    Rental Details
+                    <div className="tab-content mt-5">
+                      <div className="tab-pane fade show active">
+                        <div className="border pt-6 pr-6 pl-6 pb-4 mb-5">
+                          <div className="d-flex justify-content-between mb-5">
+                            <div className="d-flex flex-column flex-root">
+                              <span className="font-weight-bold font-size-h6 text-dark-50">Lease Dates</span>
+                              <span className="opacity-70 font-size-sm font-weight-light mb-3">Jul 18, 2020 - No End Date</span>
+                              <span className="font-weight-bold font-size-h6 text-dark-50">$500</span>
+                              <span className="opacity-70 font-size-sm font-weight-light mb-3">Due monthly on the 1st</span>
+                              <span className="font-weight-bold font-size-h6 text-dark-50">$50</span>
+                              <span className="opacity-70 font-size-sm font-weight-light">Security Deposit due on Jul 26, 2020</span>
+                            </div>
+                            <div className="d-flex flex-column align-items-md-end flex-root">
+                              <button type="button" className="btn btn-light-primary font-weight-bold">Edit</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="border pt-6 pr-6 pl-6 pb-4 mb-5">
+                          <div className="d-flex justify-content-between mb-5">
+                            <div className="d-flex flex-column flex-root">
+                              <span className="font-weight-bold font-size-h6 text-dark-50">Lease Dates</span>
+                              <span className="opacity-70 font-size-sm font-weight-light mb-3">Jul 18, 2020 - No End Date</span>
+                              <span className="font-weight-bold font-size-h6 text-dark-50">$500</span>
+                              <span className="opacity-70 font-size-sm font-weight-light mb-3">Due monthly on the 1st</span>
+                              <span className="font-weight-bold font-size-h6 text-dark-50">$50</span>
+                              <span className="opacity-70 font-size-sm font-weight-light">Security Deposit due on Jul 26, 2020</span>
+                            </div>
+                            <div className="d-flex flex-column align-items-md-end flex-root">
+                              <button type="button" className="btn btn-light-primary font-weight-bold">Edit</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="border pt-6 pr-6 pl-6 pb-4 mb-5">
+                          <div className="d-flex justify-content-between mb-5">
+                            <div className="d-flex flex-column flex-root">
+                              <span className="font-weight-bold font-size-h6 text-dark-50">Lease Dates</span>
+                              <span className="opacity-70 font-size-sm font-weight-light mb-3">Jul 18, 2020 - No End Date</span>
+                              <span className="font-weight-bold font-size-h6 text-dark-50">$500</span>
+                              <span className="opacity-70 font-size-sm font-weight-light mb-3">Due monthly on the 1st</span>
+                              <span className="font-weight-bold font-size-h6 text-dark-50">$50</span>
+                              <span className="opacity-70 font-size-sm font-weight-light">Security Deposit due on Jul 26, 2020</span>
+                            </div>
+                            <div className="d-flex flex-column align-items-md-end flex-root">
+                              <button type="button" className="btn btn-light-primary font-weight-bold">Edit</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Tab>
                   <Tab eventKey="history" title="History">
-                    History
+                    <div className="tab-content mt-5">
+                      <div className="tab-pane fade show active">
+                        <div className="border pt-6 pr-6 pl-6 pb-4 mb-5">
+                          <div className="timeline timeline-5">
+                            <div className="timeline-item align-items-start">
+                              <div className="timeline-label">Jul 18, 2020</div>
+                              <div className="timeline-badge">
+                                <i className="fa fa-genderless text-danger"></i>
+                              </div>
+                              <div className="timeline-content">Ralph Dotson (ralphdotson@gmail.com) was added as a tenant.</div>
+                            </div>
+                            <div className="timeline-item align-items-start">
+                              <div className="timeline-label">Jul 22, 2020</div>
+                              <div className="timeline-badge">
+                                <i className="fa fa-genderless text-success"></i>
+                              </div>
+                              <div className="timeline-content">A new $50.00 bill for Pet Deposit was added.</div>
+                            </div>
+                            <div className="timeline-item align-items-start">
+                              <div className="timeline-label align-center">Jul 30, 2020</div>
+                              <div className="timeline-badge">
+                                <i className="fa fa-genderless text-warning"></i>
+                              </div>
+                              <div className="timeline-content">Payments were requested.</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </Tab>
                 </Tabs>
               </div>
