@@ -5,6 +5,11 @@ import { BuilderPage } from "./pages/BuilderPage";
 import { PaymentsList } from "./pages/payments/PaymentsListPage";
 import { PaymentDetailPage } from "./pages/payments/PaymentDetailPage";
 import { PaymentTransactionsPage } from "./pages/payments/PaymentTransactionsPage";
+import { MaintenanceList } from "./pages/maintenance/MaintenanceListPage";
+import { NewMaintenance } from "./pages/maintenance/NewMaintaenancePage";
+import { MaintenanceDetail } from "./pages/maintenance/MaintenanceDetailPage";
+import { ApplicantListPages } from "./pages/applicants/ApplicatantListPage";
+import { PropertyDetailPage } from "./pages/properties/propertyDetailPage";
 import { MyPage } from "./pages/MyPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
@@ -34,7 +39,21 @@ export default function BasePage() {
         <ContentRoute path="/dashboard" component={DashboardPage} />
         <ContentRoute path="/payments" component={PaymentsList} />
         <ContentRoute path="/payment/detail" component={PaymentDetailPage} />
-        <ContentRoute path="/payment/transactions" component={PaymentTransactionsPage} />
+        <ContentRoute
+          path="/payment/transactions"
+          component={PaymentTransactionsPage}
+        />
+
+        <ContentRoute path="/maintenance/new" component={NewMaintenance} />
+        <ContentRoute
+          path="/maintenance/detail"
+          component={MaintenanceDetail}
+        />
+        <ContentRoute path="/maintenance" component={MaintenanceList} />
+
+        <ContentRoute path="/applicants" component={ApplicantListPages} />
+
+        <ContentRoute path="/property/detail" component={PropertyDetailPage} />
 
         <ContentRoute path="/builder" component={BuilderPage} />
         <ContentRoute path="/my-page" component={MyPage} />
