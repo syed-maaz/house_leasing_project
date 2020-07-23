@@ -10,6 +10,8 @@ import { NewMaintenance } from "./pages/maintenance/NewMaintaenancePage";
 import { MaintenanceDetail } from "./pages/maintenance/MaintenanceDetailPage";
 import { ApplicantListPages } from "./pages/applicants/ApplicatantListPage";
 import { PropertyDetailPage } from "./pages/properties/propertyDetailPage";
+import { PropertyListPage } from "./pages/properties/propertyListPage";
+import { PropertyCreatePage } from "./pages/properties/propertyCreatePage";
 import { MyPage } from "./pages/MyPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
@@ -53,7 +55,9 @@ export default function BasePage() {
 
         <ContentRoute path="/applicants" component={ApplicantListPages} />
 
+        <ContentRoute path="/property/new" component={PropertyCreatePage} />
         <ContentRoute path="/property/detail" component={PropertyDetailPage} />
+        <ContentRoute path="/properties" component={PropertyListPage} />
 
         <ContentRoute path="/builder" component={BuilderPage} />
         <ContentRoute path="/my-page" component={MyPage} />
