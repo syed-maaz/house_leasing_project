@@ -10,6 +10,7 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
+  File
 } from "react-bootstrap";
 
 export const MaintenanceDetail = () => {
@@ -21,31 +22,28 @@ export const MaintenanceDetail = () => {
       <div className="col-lg-12">
         <div className={`card card-custom card-stretch gutter-b`}>
           {/* Head */}
-          {/* <div className="card-header py-5">
+          <div className="card-header py-5">
             <h3 className="card-title align-items-start flex-column">
               <span className="card-label font-weight-bolder text-dark">
                 Maintenance Request
               </span>
             </h3>
-          </div> */}
+          </div>
           {/* Body */}
           <div className="card-body">
             <div className="row justify-content-center">
               <div className="col-md-12 d-flex justify-content-between">
-                <span className="d-flex flex-column flex-root font-weight-bolder text-dark font-size-h3">
-                  Maintenance Request
-                </span>
-                <span className="d-flex flex-column flex-root font-size-h6 text-right">
-                  <p className="font-weight-bolder">Jerry Mattedi</p>
-                  <p>Tenant</p>
-                  <p></p>
-                  <p>302 Villa De</p>
-                  <p>Unit 2</p>
+                <span className="d-flex flex-column flex-root font-weight-bolder text-dark font-size-h3"></span>
+                <span className="d-flex flex-column flex-root text-right">
+                  <p className="font-weight-bolder m-0 font-size-h5">Jerry Mattedi</p>
+                  <p className="mb-6">Tenant</p>
+                  <p className="m-0">302 Villa De</p>
+                  <p className="mb-6">Unit 2</p>
                 </span>
               </div>
               <div className="col-md-12 d-flex justify-content-end ">
                 <NavLink
-                  className="d-flex btn btn-light-primary font-weight-bold flex-end "
+                  className="d-flex btn btn-light-primary font-weight-bold flex-end"
                   to="/maintenance/new"
                 >
                   Send To Vendor
@@ -142,30 +140,34 @@ export const MaintenanceDetail = () => {
                   </tbody>
                 </table>
               </div>
-              <div className="row col-md-12 justify-content-center mt-10">
+              <div className="row col-md-12 justify-content-center mt-10 p-0">
                 <Form className="col-md-12">
                   <Form.Group controlId="formGroupEmail">
                     <Form.Label>Add Comment</Form.Label>
                     <Form.Control as="textarea" />
                   </Form.Group>
-                  <div className="row d-flex col-md-12  mt-5">
+                  <div className="d-flex mt-5">
                     <span className="d-flex flex-root flex-column font-weight-bold">
-                      Add Photos, Videos or File
+                      <Form.Group>
+                        <Form.File id="exampleFormControlFile1" label="Add photos, video, or files" />
+                      </Form.Group>
                     </span>
                     <span className="d-flex flex-root flex-column justify-content-end">
-                      <div className="col-md-12 d-flex justify-content-end ">
-                        <NavLink
-                          className="d-flex btn btn-light-primary font-weight-bold flex-end ml-2"
-                          to=""
-                        >
-                          Send
-                        </NavLink>
-                        <NavLink
-                          className="d-flex btn btn-light-primary font-weight-bold flex-end ml-2"
-                          to=""
-                        >
-                          Close Ticket
-                        </NavLink>
+                      <div className="col-md-12 d-flex justify-content-end pr-0">
+                        <div className="float-right">
+                          <NavLink
+                            className="btn btn-light-danger font-weight-bold2"
+                            to=""
+                          >
+                            Close Ticket
+                          </NavLink>
+                          <NavLink
+                            className="btn btn-light-primary font-weight-bold flex-end ml-3"
+                            to=""
+                          >
+                            Add Comment
+                          </NavLink>
+                        </div>
                       </div>
                     </span>
                   </div>

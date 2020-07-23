@@ -9,6 +9,7 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
+  File
 } from "react-bootstrap";
 
 export const NewMaintenance = () => {
@@ -50,18 +51,22 @@ export const NewMaintenance = () => {
                   </Form.Group>
 
                   <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Title" />
-                  </Form.Group>
-
-                  <Form.Group controlId="formBasicPassword">
                     <Form.Label>Message</Form.Label>
                     <Form.Control as="textarea" />
                   </Form.Group>
 
-                  <Button variant="primary" type="submit">
-                    Submit
-                  </Button>
+                  <Form.Group>
+                    <Form.File id="exampleFormControlFile1" label="Add photos, video, or files" />
+                  </Form.Group>
+
+                  <div className="float-right">
+                    <Button variant="primary" type="submit">
+                      Create Request
+                    </Button>
+                    <Button variant="danger" type="submit" className="ml-3">
+                      Cancel
+                    </Button>
+                  </div>
                 </Form>
               </div>
             </div>

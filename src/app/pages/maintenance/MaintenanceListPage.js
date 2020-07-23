@@ -24,7 +24,7 @@ export const MaintenanceList = () => {
           <div className="card-body">
             <div className="row justify-content-center">
               <div className="col-md-12">
-                <div className="d-flex justify-content-between pb-15">
+                <div className="d-flex justify-content-between pb-5">
                   <div className="d-flex flex-column flex-root p-3">
                     <div class="d-inline-flex p-3">
                       <span className="d-flex flex-column  mt-3 p-2 text-uppercase">
@@ -47,15 +47,19 @@ export const MaintenanceList = () => {
                     </div>
                   </div>
                 </div>
-                <div className="border p-6 mb-2">
+                <div className="border p-6 mb-5">
                   <div className="d-flex justify-content-between mb-0">
                     <div className="d-flex flex-column flex-root">
-                      <h4 className="font-size-h1 d-block d-block font-weight-normal mb-7 text-dark-50">
+                      <h4 className="font-weight-bold mb-2 font-size-h5 text-dark-50">
                         Broken Dishwasher
                       </h4>
                     </div>
-
-                    <div className="d-flex flex-column flex-root align-items-md-end mt-4">
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        55 Cannary Ln
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
                       <span className="opacity-70 font-size-sm font-weight-light">
                         <NavLink
                           className="btn btn-light-primary font-weight-bold"
@@ -72,23 +76,27 @@ export const MaintenanceList = () => {
                         Created On 11 June 2019 By Mika
                       </span>
                     </div>
-                    <div className="d-flex flex-column flex-root">
+                    <div className="d-flex flex-column flex-root align-items-md-end">
                       <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
-                        55 Cannary Ln
+                        Unit 1
                       </span>
-                      <span className="opacity-70 font-size-h6">Unit 1</span>
                     </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end"></div>
                   </div>
                 </div>
-                <div className="border p-6 mb-2">
+                <div className="border p-6 mb-5">
                   <div className="d-flex justify-content-between mb-0">
                     <div className="d-flex flex-column flex-root">
-                      <h4 className="font-size-h1 d-block d-block font-weight-normal mb-7 text-dark-50">
+                      <h4 className="font-weight-bold mb-2 font-size-h5 text-dark-50">
                         Broken Dishwasher
                       </h4>
                     </div>
-
-                    <div className="d-flex flex-column flex-root align-items-md-end mt-4">
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        55 Cannary Ln
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
                       <span className="opacity-70 font-size-sm font-weight-light">
                         <NavLink
                           className="btn btn-light-primary font-weight-bold"
@@ -105,12 +113,12 @@ export const MaintenanceList = () => {
                         Created On 11 June 2019 By Mika
                       </span>
                     </div>
-                    <div className="d-flex flex-column flex-root">
+                    <div className="d-flex flex-column flex-root align-items-md-end">
                       <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
-                        55 Cannary Ln
+                        Unit 1
                       </span>
-                      <span className="opacity-70 font-size-h6">Unit 1</span>
                     </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end"></div>
                   </div>
                 </div>
               </div>
