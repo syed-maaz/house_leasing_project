@@ -86,85 +86,83 @@ export const PropertyEditPage = () => {
                           <div className="col-md-6">
                             <div className="form-group row">
                               <div className="col-md-6">
+                                <label className="col-form-label col-sm-12 p-0 font-size-h4">
+                                  Property Address
+                                </label>
                                 <button
-                                  className="btn btn-secondary btn-block p-10"
+                                  className="btn btn-secondary"
                                   type="submit"
                                 >
-                                  Single Unit
-                                </button>
-                              </div>
-                              <div className="col-md-6">
-                                <button
-                                  className="btn btn-secondary btn-block p-10"
-                                  type="submit"
-                                >
-                                  Multiple Unit
+                                  Edit Address
                                 </button>
                               </div>
                             </div>
                             <div className="form-group row">
-                              <label className="col-form-label col-sm-12">
+                              <label className="col-form-label col-sm-12 font-size-h4">
                                 Property Type
                               </label>
                               <div className="col-md-12 col-sm-12">
-                                <select
-                                  className="form-control selectpicker"
-                                  title="Select"
-                                >
-                                  <option>Property Type 1</option>
-                                  <option>Property Type 2</option>
-                                  <option>Property Type 3</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div className="form-group row">
-                              <div className="col-md-6">
-                                <label>Street Address</label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Input Street Address"
-                                />
-                              </div>
-                              <div className="col-md-6">
-                                <label>Address 2</label>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  placeholder="Input Street Address 2"
-                                />
-                              </div>
-                            </div>
-                            <div className="form-group row">
-                              <div className="col-md-5">
-                                <label>City</label>
-                                <input type="text" className="form-control" />
-                              </div>
-                              <div className="col-md-4">
-                                <label>State</label>
-                                <select
-                                  className="form-control selectpicker"
-                                  title="Select"
-                                >
-                                  <option>State 1</option>
-                                  <option>State 2</option>
-                                  <option>State 3</option>
-                                </select>
-                              </div>
-                              <div className="col-md-3">
-                                <label>Zip</label>
-                                <input type="text" className="form-control" />
-                              </div>
-                            </div>
-                            <div className="form-group row">
-                              <div className="col-md-12">
                                 <button
-                                  type="reset"
-                                  className="btn btn-primary btn-block"
+                                  className="btn btn-secondary"
+                                  type="submit"
                                 >
-                                  Submit
+                                  Edit Type
                                 </button>
                               </div>
+                            </div>
+                            <div className="form-group row">
+                              <div className="col-md-6">
+                                <div class="form-group">
+                                  <label className="font-size-h4">
+                                    Single Unit
+                                  </label>
+                                  <div class="col-sm-10 p-0">
+                                    <div class="form-check">
+                                      <input
+                                        name="formHorizontalRadios"
+                                        type="radio"
+                                        id="formHorizontalRadios1"
+                                        class="form-check-input"
+                                      />
+                                      <label
+                                        title=""
+                                        for="formHorizontalRadios1"
+                                        class="form-check-label"
+                                      >
+                                        Upcoming Rent
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input
+                                        name="formHorizontalRadios"
+                                        type="radio"
+                                        id="formHorizontalRadios2"
+                                        class="form-check-input"
+                                      />
+                                      <label
+                                        title=""
+                                        for="formHorizontalRadios2"
+                                        class="form-check-label"
+                                      >
+                                        Active Listing
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6 text-right">
+                                <p> Add Unit | Move Unit </p>
+                                <p> View Payment </p>
+                                <p> View Listing </p>
+                              </div>
+                            </div>
+                            <div className="form-group row justify-content-end">
+                              <button
+                                type="button"
+                                class="btn btn-light-primary font-weight-bold"
+                              >
+                                Delete Property
+                              </button>
                             </div>
                           </div>
                         </div>
