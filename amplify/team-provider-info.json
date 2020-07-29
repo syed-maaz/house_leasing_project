@@ -10,6 +10,21 @@
             "StackName": "amplify-leaseninjafrontend-dev-221403",
             "StackId": "arn:aws:cloudformation:us-east-1:226077435712:stack/amplify-leaseninjafrontend-dev-221403/c0a044e0-c84c-11ea-a544-12e727a79a85",
             "AmplifyAppId": "d27lkrs3hbiyxl"
+        },
+        "categories": {
+            "function": {
+                "leaseninjafrontendbc1d01ccbc1d01ccCustomMessage": {
+                    "REDIRECTURL": "/",
+                    "EMAILSUBJECT": "Your account has been verified",
+                    "EMAILMESSAGE": "Please click the below link to verify your email:"
+                },
+                "leaseninjafrontendbc1d01ccbc1d01ccPostConfirmation": {
+                    "GROUP": "Landlords"
+                }
+            },
+            "auth": {
+                "leaseninjafrontendbc1d01ccbc1d01cc": {}
+            }
         }
     }
 }

@@ -9,6 +9,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Routes } from "../app/Routes";
 import { I18nProvider } from "../_metronic/i18n";
 import { LayoutSplashScreen, MaterialThemeProvider } from "../_metronic/layout";
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
 
 export default function App({ store, persistor, basename }) {
   return (

@@ -1,0 +1,24 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link"
+  ],
+  "parentResource": "leaseninjafrontendbc1d01ccbc1d01cc",
+  "functionName": "leaseninjafrontendbc1d01ccbc1d01ccCustomMessage",
+  "resourceName": "leaseninjafrontendbc1d01ccbc1d01ccCustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": [
+    {
+      "key": "RESOURCENAME",
+      "value": "resourceName"
+    }
+  ],
+  "triggerDir": "C:\\Users\\Rupam Kundu\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\utils/../triggers/CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "roleName": "leaseninjafrontendbc1d01ccbc1d01ccCustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "/",
+  "EMAILSUBJECT": "Your account has been verified",
+  "EMAILMESSAGE": "Please click the below link to verify your email:",
+  "RESOURCENAME": "resourceName"
+}
