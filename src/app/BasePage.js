@@ -15,6 +15,7 @@ import { PropertyCreatePage } from "./pages/properties/propertyCreatePage";
 import { PropertyEditPage } from "./pages/properties/propertyEditPage";
 import { PropertyViewPage } from "./pages/properties/propertyViewPage";
 import { NewUserDetailPage } from "./pages/users/newUserDetailPage";
+import { RenterProfilePage } from "./pages/users/renterProfilePage";
 import { MyPage } from "./pages/MyPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
@@ -65,6 +66,7 @@ export default function BasePage() {
         <ContentRoute path="/properties" component={PropertyListPage} />
 
         <ContentRoute path="/user/new" component={NewUserDetailPage} />
+        <ContentRoute path="/user/renter-profile" component={RenterProfilePage} />
 
         <ContentRoute path="/builder" component={BuilderPage} />
         <ContentRoute path="/my-page" component={MyPage} />
