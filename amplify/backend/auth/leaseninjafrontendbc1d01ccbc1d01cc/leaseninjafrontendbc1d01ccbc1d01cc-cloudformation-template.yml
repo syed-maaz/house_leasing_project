@@ -11,16 +11,6 @@ Parameters:
   
   
   
-  functionleaseninjafrontendbc1d01ccbc1d01ccCustomMessageArn: 
-    Type: String
-    Default: functionleaseninjafrontendbc1d01ccbc1d01ccCustomMessageArn
-  
-  functionleaseninjafrontendbc1d01ccbc1d01ccCustomMessageName: 
-    Type: String
-    Default: functionleaseninjafrontendbc1d01ccbc1d01ccCustomMessageName
-  
-  
-  
   functionleaseninjafrontendbc1d01ccbc1d01ccPostConfirmationArn: 
     Type: String
     Default: functionleaseninjafrontendbc1d01ccbc1d01ccPostConfirmationArn
@@ -125,7 +115,7 @@ Parameters:
                     
   userPoolGroupList:
     Type: CommaDelimitedList
-                  
+      
   verificationBucketName:
     Type: String
                                             
@@ -137,7 +127,7 @@ Parameters:
               
   dependsOn:
     Type: CommaDelimitedList
-    
+                
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
 
@@ -215,8 +205,6 @@ Resources:
       LambdaConfig:
         
         
-          CustomMessage: !Ref functionleaseninjafrontendbc1d01ccbc1d01ccCustomMessageArn
-        
         
         
         
@@ -254,15 +242,6 @@ Resources:
     
   
     
-  
-  UserPoolCustomMessageLambdaInvokePermission: 
-    Type: "AWS::Lambda::Permission"
-    DependsOn: UserPool
-    Properties: 
-      Action: "lambda:invokeFunction"
-      Principal: "cognito-idp.amazonaws.com"
-      FunctionName: !Ref functionleaseninjafrontendbc1d01ccbc1d01ccCustomMessageName
-      SourceArn: !GetAtt UserPool.Arn
     
   
     

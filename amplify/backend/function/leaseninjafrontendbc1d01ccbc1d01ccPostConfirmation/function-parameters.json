@@ -7,10 +7,11 @@
   "functionName": "leaseninjafrontendbc1d01ccbc1d01ccPostConfirmation",
   "resourceName": "leaseninjafrontendbc1d01ccbc1d01ccPostConfirmation",
   "parentStack": "auth",
-  "triggerEnvs": [],
+  "triggerEnvs": "[]",
   "triggerDir": "C:\\Users\\Rupam Kundu\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\utils/../triggers/PostConfirmation",
   "triggerTemplate": "PostConfirmation.json.ejs",
   "roleName": "leaseninjafrontendbc1d01ccbc1d01ccPostConfirmation",
   "skipEdit": true,
-  "GROUP": "Landlords"
+  "GROUP": "Landlords",
+  "triggerEventPath": "PostConfirmation.event.json"
 }
