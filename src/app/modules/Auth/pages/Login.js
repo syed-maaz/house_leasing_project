@@ -114,7 +114,7 @@ function Login(props) {
           </div>
         ) : (
           <div className="mb-10 alert alert-custom alert-light-info alert-dismissible">
-            <div className="alert-text ">
+            <div className="alert-text">
               Use account <strong>admin@demo.com</strong> and password{" "}
               <strong>demo</strong> to continue.
             </div>
