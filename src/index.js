@@ -31,7 +31,7 @@ import { MetronicI18nProvider } from "./_metronic/i18n";
  *
  * @see https://facebook.github.io/create-react-app/docs/using-the-public-folder
  */
-const { PUBLIC_URL } = process.env;
+const { PUBLIC_URL } = process.env; //_redux.mockAxios(axios);
 
 /**
  * Creates `axios-mock-adapter` instance for provided `axios` instance, add
@@ -39,9 +39,7 @@ const { PUBLIC_URL } = process.env;
  *
  * @see https://github.com/ctimmerm/axios-mock-adapter
  */
-/* const mock = */ _redux.mockAxios(axios);
-
-/**
+/* const mock = */ /**
  * Inject metronic interceptors for axios.
  *
  * @see https://github.com/axios/axios#interceptors

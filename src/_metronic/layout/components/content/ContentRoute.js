@@ -1,11 +1,15 @@
 import React from "react";
-import {Route} from "react-router-dom";
-import {Content} from "./Content";
+import { Route } from "react-router-dom";
+import { Content } from "./Content";
 
-export function ContentRoute({ children, component, render, ...props }) {
+export function ContentRoute(arqs) {
+  console.log(arqs);
+  const { children, component, render, ...props } = arqs;
+  console.log(children);
   return (
     <Route {...props}>
-      {routeProps => {
+      {(routeProps) => {
+        console.log(routeProps);
         if (typeof children === "function") {
           return <Content>{children(routeProps)}</Content>;
         }

@@ -2,20 +2,20 @@ import React, { Suspense, lazy } from "react";
 import { Redirect, Switch, Route } from "react-router-dom";
 import { LayoutSplashScreen, ContentRoute } from "../_metronic/layout";
 import { BuilderPage } from "./pages/BuilderPage";
-import { PaymentsList } from "./pages/payments/PaymentsListPage";
-import { PaymentDetailPage } from "./pages/payments/PaymentDetailPage";
-import { PaymentTransactionsPage } from "./pages/payments/PaymentTransactionsPage";
-import { MaintenanceList } from "./pages/maintenance/MaintenanceListPage";
-import { NewMaintenance } from "./pages/maintenance/NewMaintaenancePage";
-import { MaintenanceDetail } from "./pages/maintenance/MaintenanceDetailPage";
-import { ApplicantListPages } from "./pages/applicants/ApplicatantListPage";
-import { PropertyDetailPage } from "./pages/properties/propertyDetailPage";
-import { PropertyListPage } from "./pages/properties/propertyListPage";
-import { PropertyCreatePage } from "./pages/properties/propertyCreatePage";
-import { PropertyEditPage } from "./pages/properties/propertyEditPage";
-import { PropertyViewPage } from "./pages/properties/propertyViewPage";
-import { NewUserDetailPage } from "./pages/users/newUserDetailPage";
-import { RenterProfilePage } from "./pages/users/renterProfilePage";
+import { PaymentsList } from "./modules/payments/PaymentsListPage";
+import { PaymentDetailPage } from "./modules/payments/PaymentDetailPage";
+import { PaymentTransactionsPage } from "./modules/payments/PaymentTransactionsPage";
+import { MaintenanceList } from "./modules/maintenance/MaintenanceListPage";
+import { NewMaintenance } from "./modules/maintenance/NewMaintaenancePage";
+import { MaintenanceDetail } from "./modules/maintenance/MaintenanceDetailPage";
+import { ApplicantListPages } from "./modules/applicants/ApplicatantListPage";
+import { PropertyDetailPage } from "./modules/Properties/propertyDetailPage";
+import { PropertyListPage } from "./modules/Properties/propertyListPage";
+import { PropertyCreatePage } from "./modules/Properties/propertyCreatePage";
+import { PropertyEditPage } from "./modules/Properties/propertyEditPage";
+import { PropertyViewPage } from "./modules/Properties/propertyViewPage";
+import { NewUserDetailPage } from "./modules/users/newUserDetailPage";
+import { RenterProfilePage } from "./modules/users/renterProfilePage";
 import { MyPage } from "./pages/MyPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
@@ -66,7 +66,10 @@ export default function BasePage() {
         <ContentRoute path="/properties" component={PropertyListPage} />
 
         <ContentRoute path="/user/new" component={NewUserDetailPage} />
-        <ContentRoute path="/user/renter-profile" component={RenterProfilePage} />
+        <ContentRoute
+          path="/user/renter-profile"
+          component={RenterProfilePage}
+        />
 
         <ContentRoute path="/builder" component={BuilderPage} />
         <ContentRoute path="/my-page" component={MyPage} />

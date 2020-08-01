@@ -53,28 +53,50 @@ export const PropertyDetailPage = () => {
                       <div className="tab-pane fade show active">
                         <div className="mt-10">
                           <div className="mb-5 border">
-                            <h1 className="p-5 font-weight-bold font-size-h5 table-secondary">Listing Details</h1>
+                            <h1 className="p-5 font-weight-bold font-size-h5 table-secondary">
+                              Listing Details
+                            </h1>
                             <div class="d-flex mt-8 ml-5 mr-5">
-                              <h4 className="text-dark-75 text-hover-primary font-weight-bold mr-3">Great house for family</h4>
+                              <h4 className="text-dark-75 text-hover-primary font-weight-bold mr-3">
+                                Great house for family
+                              </h4>
                             </div>
                             <div className="d-flex m-5">
                               <div className="flex-shrink-0 mr-7 mt-lg-0 mt-3">
                                 <div className="symbol symbol-50 symbol-lg-120">
-                                  <img src={toAbsoluteUrl("/media/users/300_1.jpg")} alt="user image" />
+                                  <img
+                                    src={toAbsoluteUrl(
+                                      "/media/users/300_1.jpg"
+                                    )}
+                                    alt="user image"
+                                  />
                                 </div>
                                 <div className="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
-                                  <span className="font-size-h3 symbol-label font-weight-boldest">JM</span>
+                                  <span className="font-size-h3 symbol-label font-weight-boldest">
+                                    JM
+                                  </span>
                                 </div>
                               </div>
                               <div className="flex-grow-1">
                                 <div className="d-flex justify-content-between flex-wrap">
                                   <div className="mr-3">
-                                    <p className="m-0 mb-2 font-size-h5 ">$800/month</p>
-                                    <p className="m-0 mb-2 font-size-h5 ">3 Bed 4 Full, 5 Half Bath</p>
-                                    <p className="m-0 mb-2 font-size-h5 ">500 sq ft</p>
+                                    <p className="m-0 mb-2 font-size-h5 ">
+                                      $800/month
+                                    </p>
+                                    <p className="m-0 mb-2 font-size-h5 ">
+                                      3 Bed 4 Full, 5 Half Bath
+                                    </p>
+                                    <p className="m-0 mb-2 font-size-h5 ">
+                                      500 sq ft
+                                    </p>
                                   </div>
                                   <div className="my-lg-0 my-3">
-                                    <a href="#" className="btn btn-sm btn-light-primary font-weight-bolder text-uppercase">Edit</a>
+                                    <a
+                                      href="#"
+                                      className="btn btn-sm btn-light-primary font-weight-bolder text-uppercase"
+                                    >
+                                      Edit
+                                    </a>
                                   </div>
                                 </div>
                               </div>

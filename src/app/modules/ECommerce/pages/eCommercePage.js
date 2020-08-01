@@ -5,7 +5,8 @@ import { ProductsPage } from "./products/ProductsPage";
 import { ProductEdit } from "./products/product-edit/ProductEdit";
 import { LayoutSplashScreen, ContentRoute } from "../../../../_metronic/layout";
 
-export default function eCommercePage() {
+export default function eCommercePage(props) {
+  console.log(props);
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>

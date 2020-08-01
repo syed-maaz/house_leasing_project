@@ -72,11 +72,12 @@ function Login(props) {
       enableLoading();
       setTimeout(() => {
         login(values.email, values.password)
-          .then(({ data: { accessToken } }) => {
+          .then(([, user]) => {
+            // const user_id = id;
             disableLoading();
-            props.login(accessToken);
+            props.login(user);
           })
-          .catch(() => {
+          .catch((e) => {
             disableLoading();
             setSubmitting(false);
             setStatus(
