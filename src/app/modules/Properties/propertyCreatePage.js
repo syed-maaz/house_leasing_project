@@ -1,12 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import { useSubheader } from "../../../_metronic/layout";
 import { Tabs, Tab } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
+import { createProperty } from "./propertyCrud";
+import {
+  getDropdownValues,
+  GET_PROPERTY_TYPE,
+  GET_STATES,
+} from "../../common/crud/dropdownCrud";
 
 export const PropertyCreatePage = () => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Property Detail");
+
+  const [unitType, setUnitType] = useState("s");
+  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [stateList, setStateList] = useState([]);
+
+  useEffect(() => {
+    // code to run on component mount
+    (async () => {
+      const {
+        data: { output },
+      } = await getDropdownValues(GET_PROPERTY_TYPE);
+      setPropertyTypes(...propertyTypes, output);
+    })();
+
+    (async () => {
+      const {
+        data: { output },
+      } = await getDropdownValues(GET_STATES);
+      setStateList(...stateList, output);
+    })();
+  }, []);
+
+  const { user } = useSelector(
+    ({ auth }) => ({
+      user: auth.user,
+    }),
+    shallowEqual
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    let requestBody = {};
+    for (let entry of formData.entries()) {
+      requestBody[entry[0]] = entry[1];
+    }
+    requestBody.unit_type = unitType;
+    requestBody.user_id = user.id;
+    createProperty(requestBody);
+  };
 
   return (
     <>
@@ -26,16 +75,16 @@ export const PropertyCreatePage = () => {
                       </h1>
                     </div>
                     <div className="d-flex flex-column flex-root align-items-md-end">
-                      <button
-                        type="button"
+                      <NavLink
                         className="btn btn-light-primary font-weight-bold"
+                        to="/properties"
                       >
                         Cancel
-                      </button>
+                      </NavLink>
                     </div>
                   </div>
 
-                  <form className="form">
+                  <form className="form" onSubmit={handleSubmit}>
                     <div className="form-group row">
                       <div className="col-md-6">
                         <div className="form-group row">
@@ -62,12 +111,12 @@ export const PropertyCreatePage = () => {
                                 <i className="fa fa-pen icon-sm text-muted"></i>
                                 <input
                                   type="file"
-                                  name="profile_avatar"
+                                  // name="profile_avatar"
                                   accept=".png, .jpg, .jpeg"
                                 />
                                 <input
                                   type="hidden"
-                                  name="profile_avatar_remove"
+                                  // name="profile_avatar_remove"
                                 />
                               </label>
                               <span
@@ -97,16 +146,26 @@ export const PropertyCreatePage = () => {
                         <div className="form-group row">
                           <div className="col-md-6">
                             <button
-                              className="btn btn-secondary btn-block p-10"
-                              type="submit"
+                              className={`btn btn-block p-10 ${
+                                unitType === "s"
+                                  ? "btn-success"
+                                  : "btn-secondary"
+                              }`}
+                              type="button"
+                              onClick={(e) => setUnitType("s")}
                             >
                               Single Unit
                             </button>
                           </div>
                           <div className="col-md-6">
                             <button
-                              className="btn btn-secondary btn-block p-10"
-                              type="submit"
+                              className={`btn btn-block p-10 ${
+                                unitType === "m"
+                                  ? "btn-success"
+                                  : "btn-secondary"
+                              }`}
+                              type="button"
+                              onClick={(e) => setUnitType("m")}
                             >
                               Multiple Unit
                             </button>
@@ -118,12 +177,15 @@ export const PropertyCreatePage = () => {
                           </label>
                           <div className="col-md-12 col-sm-12">
                             <select
+                              name="property_type_id"
                               className="form-control selectpicker"
                               title="Select"
                             >
-                              <option>Property Type 1</option>
-                              <option>Property Type 2</option>
-                              <option>Property Type 3</option>
+                              {propertyTypes.map((item, index) => (
+                                <option key={index} value={item.type_id}>
+                                  {item.property_type}
+                                </option>
+                              ))}
                             </select>
                           </div>
                         </div>
@@ -132,6 +194,7 @@ export const PropertyCreatePage = () => {
                             <label>Street Address</label>
                             <input
                               type="text"
+                              name="street_address"
                               className="form-control"
                               placeholder="Input Street Address"
                             />
@@ -140,6 +203,7 @@ export const PropertyCreatePage = () => {
                             <label>Address 2</label>
                             <input
                               type="text"
+                              name="address2"
                               className="form-control"
                               placeholder="Input Street Address 2"
                             />
@@ -148,28 +212,39 @@ export const PropertyCreatePage = () => {
                         <div className="form-group row">
                           <div className="col-md-5">
                             <label>City</label>
-                            <input type="text" className="form-control" />
+                            <input
+                              name="city"
+                              type="text"
+                              className="form-control"
+                            />
                           </div>
                           <div className="col-md-4">
                             <label>State</label>
                             <select
+                              name="state_id"
                               className="form-control selectpicker"
                               title="Select"
                             >
-                              <option>State 1</option>
-                              <option>State 2</option>
-                              <option>State 3</option>
+                              {stateList.map((item, i) => (
+                                <option key={i} value={item.state_id}>
+                                  {item.state_name}
+                                </option>
+                              ))}
                             </select>
                           </div>
                           <div className="col-md-3">
                             <label>Zip</label>
-                            <input type="text" className="form-control" />
+                            <input
+                              name="zip"
+                              type="text"
+                              className="form-control"
+                            />
                           </div>
                         </div>
                         <div className="form-group row">
                           <div className="col-md-12">
                             <button
-                              type="reset"
+                              type="submit"
                               className="btn btn-primary btn-block"
                             >
                               Submit

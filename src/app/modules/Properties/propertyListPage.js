@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import { useSubheader } from "../../../_metronic/layout";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
@@ -15,16 +16,23 @@ export const PropertyListPage = () => {
 
   const [properties, setProperties] = useState([]);
 
+  const { user } = useSelector(
+    ({ auth }) => ({
+      user: auth.user,
+    }),
+    shallowEqual
+  );
+
   useEffect(() => {
     // code to run on component mount
     (async () => {
       const {
         data: { output },
-      } = await getAllPropertiesByUserId(1);
+      } = await getAllPropertiesByUserId(user.id);
 
       setProperties(...properties, output);
     })();
-  }, []);
+  }, [user]);
 
   const renderPropertyMenuDropdown = (id) => {
     return (
@@ -164,7 +172,6 @@ export const PropertyListPage = () => {
             </div>
           </div>
         </div>
-        {/* <!--end::Container--> */}
       </div>
     </>
   );
