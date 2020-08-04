@@ -114,12 +114,12 @@ export const PropertyEditPage = (props) => {
                           <div className="col-md-6">
                             <div className="form-group row">
                               <div className="col-md-6">
-                                <label className="col-form-label col-sm-12 p-0 font-size-h4">
+                                <label className="col-form-label col-sm-12 p-0 font-size-h3">
                                   Property Address
                                 </label>
                                 <p>
                                   {propertyDet.street_address},{" "}
-                                  {propertyDet.street_address}{" "}
+                                  {propertyDet.city}
                                 </p>
                                 <button
                                   className="btn btn-secondary"
@@ -130,24 +130,27 @@ export const PropertyEditPage = (props) => {
                               </div>
                             </div>
                             <div className="form-group row">
-                              <label className="col-form-label col-sm-12 font-size-h4">
-                                Property Type
-                              </label>
-                              <p>{propertyDet.property_type}</p>
-                              <div className="col-md-12 col-sm-12">
-                                <button
-                                  className="btn btn-secondary"
-                                  type="submit"
-                                >
-                                  Edit Type
-                                </button>
+                              <div className="col-md-6">
+                                <label className="col-form-label col-sm-12 font-size-h3 p-0">
+                                  Property Type
+                                </label>
+                                <p>{propertyDet.property_type}</p>
+                                <div className="col-md-12 col-sm-12 p-0">
+                                  <button
+                                    className="btn btn-secondary"
+                                    type="submit"
+                                  >
+                                    Edit Type
+                                  </button>
+                                </div>
                               </div>
                             </div>
                             <div className="form-group row">
                               <div className="col-md-6">
                                 <div class="form-group">
-                                  <label className="font-size-h4">
-                                    {propertyDet.unit === "s"
+                                  <label className="font-size-h3">
+                                    {!!propertyDet.unit &&
+                                    propertyDet.unit.toLowerCase() === "s"
                                       ? "Single Unit"
                                       : "Multi Unit"}
                                   </label>
