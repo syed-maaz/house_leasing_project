@@ -5,6 +5,8 @@ import { Tabs, Tab } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
 import { createProperty } from "./propertyCrud";
+import { useHistory } from "react-router-dom";
+
 import {
   getDropdownValues,
   GET_PROPERTY_TYPE,
@@ -12,6 +14,7 @@ import {
 } from "../../common/crud/dropdownCrud";
 
 export const PropertyCreatePage = () => {
+  let history = useHistory();
   const suhbeader = useSubheader();
   suhbeader.setTitle("Property Detail");
 
@@ -43,7 +46,7 @@ export const PropertyCreatePage = () => {
     shallowEqual
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -54,7 +57,11 @@ export const PropertyCreatePage = () => {
     }
     requestBody.unit_type = unitType;
     requestBody.user_id = user.id;
-    createProperty(requestBody);
+    const {
+      data: { output },
+    } = await createProperty(requestBody);
+    console.log(output);
+    history.push("/property/detail/" + output[0].id);
   };
 
   return (

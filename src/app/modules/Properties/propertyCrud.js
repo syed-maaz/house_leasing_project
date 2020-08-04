@@ -9,6 +9,10 @@ export function getAllPropertiesByUserId(userId) {
   return axios.get(API_URL + "?user_id=" + userId);
 }
 
+export function getPropertyById(propId, userId) {
+  return axios.get(API_URL + "?user_id=" + userId + "&property_id=" + propId);
+}
+
 export function createProperty(requestBody) {
   requestBody = {
     createdata: requestBody,
@@ -20,6 +24,6 @@ export function createProperty(requestBody) {
     },
     data: {},
   };
-  debugger;
+
   return axios.post(API_URL, requestBody, config);
 }

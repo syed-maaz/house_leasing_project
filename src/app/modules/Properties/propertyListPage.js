@@ -49,7 +49,9 @@ export const PropertyListPage = () => {
           <Dropdown.Item eventKey="1">Payment</Dropdown.Item>
           <Dropdown.Item eventKey="2">Listings</Dropdown.Item>
           <Dropdown.Item eventKey="3">Applications</Dropdown.Item>
-          <Dropdown.Item eventKey="4">Edit Property</Dropdown.Item>
+          <Dropdown.Item tag="a" href={`/property/edit/${id}`}>
+            Edit Property
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );

@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSubheader } from "../../../_metronic/layout";
-import { Tabs, Tab } from "react-bootstrap";
-import { toAbsoluteUrl } from "../../../_metronic/_helpers";
-import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router";
+import { getPropertyById } from "./propertyCrud";
+import { shallowEqual, useSelector } from "react-redux";
 
-export const PropertyEditPage = () => {
+export const PropertyEditPage = (props) => {
   const suhbeader = useSubheader();
-  suhbeader.setTitle("Property Detail");
+  suhbeader.setTitle("Property Edit");
+  let history = useHistory();
+
+  const propertyId = props.match.params.id;
+
+  if (!propertyId) {
+    history.push("/properties");
+  }
+
+  const [propertyDet, setPropertyDet] = useState([]);
+
+  const { user } = useSelector(
+    ({ auth }) => ({
+      user: auth.user,
+    }),
+    shallowEqual
+  );
+
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { output },
+      } = await getPropertyById(propertyId, user.id);
+      console.log(output);
+      setPropertyDet(...propertyDet, output[0]);
+    })();
+  }, []);
 
   return (
     <>
@@ -27,13 +52,16 @@ export const PropertyEditPage = () => {
                           Edit property
                         </span>
                         <span className="mt-2 font-weight-light font-size-h3 text-uppercase">
-                          3302 Villa Dr
+                          {propertyDet.street_address}
                         </span>
                       </div>
                       <div className="d-flex flex-column flex-root align-items-md-end">
                         <button
                           type="button"
                           className="btn btn-light-primary font-weight-bold"
+                          onClick={(e) =>
+                            history.push("/property/view/" + propertyId)
+                          }
                         >
                           Done
                         </button>
@@ -89,6 +117,10 @@ export const PropertyEditPage = () => {
                                 <label className="col-form-label col-sm-12 p-0 font-size-h4">
                                   Property Address
                                 </label>
+                                <p>
+                                  {propertyDet.street_address},{" "}
+                                  {propertyDet.street_address}{" "}
+                                </p>
                                 <button
                                   className="btn btn-secondary"
                                   type="submit"
@@ -101,6 +133,7 @@ export const PropertyEditPage = () => {
                               <label className="col-form-label col-sm-12 font-size-h4">
                                 Property Type
                               </label>
+                              <p>{propertyDet.property_type}</p>
                               <div className="col-md-12 col-sm-12">
                                 <button
                                   className="btn btn-secondary"
@@ -114,7 +147,9 @@ export const PropertyEditPage = () => {
                               <div className="col-md-6">
                                 <div class="form-group">
                                   <label className="font-size-h4">
-                                    Single Unit
+                                    {propertyDet.unit === "s"
+                                      ? "Single Unit"
+                                      : "Multi Unit"}
                                   </label>
                                   <div class="col-sm-10 p-0">
                                     <div class="form-check">
