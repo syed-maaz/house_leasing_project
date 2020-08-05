@@ -75,7 +75,7 @@ export default function BasePage() {
         <ContentRoute path="/my-page" component={MyPage} />
         <Route path="/google-material" component={GoogleMaterialPage} />
         <Route path="/react-bootstrap" component={ReactBootstrapPage} />
-        <Route path="/e-commerce" component={ECommercePage} />
+        <Route path="/e-commerce" exact={true} component={ECommercePage} />
         <Redirect to="error/error-v1" />
       </Switch>
     </Suspense>
