@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { useSubheader } from "../../../_metronic/layout";
-import { Tabs, Tab } from "react-bootstrap";
-import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
 import { createProperty } from "./propertyCrud";
 import { useHistory } from "react-router-dom";
@@ -21,6 +19,7 @@ export const PropertyCreatePage = () => {
   const [unitType, setUnitType] = useState("s");
   const [propertyTypes, setPropertyTypes] = useState([]);
   const [stateList, setStateList] = useState([]);
+  const [unitArray, setUnitArray] = useState([0]);
 
   useEffect(() => {
     // code to run on component mount
@@ -50,6 +49,7 @@ export const PropertyCreatePage = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+    let unitList = [];
 
     let requestBody = {};
     for (let entry of formData.entries()) {
@@ -57,11 +57,32 @@ export const PropertyCreatePage = () => {
     }
     requestBody.unit_type = unitType;
     requestBody.user_id = user.id;
+    if (unitType.toLowerCase() === "m") {
+      unitList = unitArray;
+    }
     const {
       data: { output },
-    } = await createProperty(requestBody);
+    } = await createProperty(requestBody, unitList);
     console.log(output);
     history.push("/property/detail/" + output[0].id);
+  };
+
+  const setUnitValue = (value, index) => {
+    const temp = [...unitArray];
+    temp[index] = value;
+    setUnitArray(temp);
+  };
+
+  const deleteUnitByIndex = (index) => {
+    const temp = [...unitArray];
+    temp.splice(index, 1);
+    setUnitArray(temp);
+  };
+
+  const addNewUnit = () => {
+    const temp = [...unitArray];
+    temp.push("");
+    setUnitArray(temp);
   };
 
   return (
@@ -94,8 +115,7 @@ export const PropertyCreatePage = () => {
                         className="w-100 image-input image-input-empty image-input-outline"
                         id="kt_image_5"
                         style={{
-                          backgroundImage:
-                            "url(assets/media/users/blank.png)",
+                          backgroundImage: "url(assets/media/users/blank.png)",
                         }}
                       >
                         <div
@@ -149,9 +169,7 @@ export const PropertyCreatePage = () => {
                       <div className="col-md-6">
                         <button
                           className={`btn btn-block p-10 ${
-                            unitType === "s"
-                              ? "btn-success"
-                              : "btn-secondary"
+                            unitType === "s" ? "btn-success" : "btn-secondary"
                           }`}
                           type="button"
                           onClick={(e) => setUnitType("s")}
@@ -162,9 +180,7 @@ export const PropertyCreatePage = () => {
                       <div className="col-md-6">
                         <button
                           className={`btn btn-block p-10 ${
-                            unitType === "m"
-                              ? "btn-success"
-                              : "btn-secondary"
+                            unitType === "m" ? "btn-success" : "btn-secondary"
                           }`}
                           type="button"
                           onClick={(e) => setUnitType("m")}
@@ -199,6 +215,7 @@ export const PropertyCreatePage = () => {
                           name="street_address"
                           className="form-control"
                           placeholder="Input Street Address"
+                          required
                         />
                       </div>
                       <div className="col-md-6">
@@ -208,6 +225,7 @@ export const PropertyCreatePage = () => {
                           name="address2"
                           className="form-control"
                           placeholder="Input Street Address 2"
+                          required
                         />
                       </div>
                     </div>
@@ -218,6 +236,7 @@ export const PropertyCreatePage = () => {
                           name="city"
                           type="text"
                           className="form-control"
+                          required
                         />
                       </div>
                       <div className="col-md-4">
@@ -226,6 +245,7 @@ export const PropertyCreatePage = () => {
                           name="state_id"
                           className="form-control selectpicker"
                           title="Select"
+                          required
                         >
                           {stateList.map((item, i) => (
                             <option key={i} value={item.state_id}>
@@ -240,35 +260,67 @@ export const PropertyCreatePage = () => {
                           name="zip"
                           type="text"
                           className="form-control"
+                          required
                         />
                       </div>
                     </div>
-                    <div className="form-group row mb-3">
-                      <div className="col-md-12">
-                        <h4>Add units you’ll be managing in Lease Ninja</h4>
-                        <p className="m-0">At least one unit is required. You can add more units later.</p>
-                      </div>
-                    </div>
-                    <div className="form-group row mb-3">
-                      <label className="col-form-label col-sm-12">
-                        Unit Name
-                      </label>
-                      <div className="col-md-12 col-sm-12">
-                        <input
-                          type="text"
-                          name="unit_name"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group row mb-3">
-                      <button
-                        type="submit"
-                        className="btn btn-link btn-block text-left"
-                      >
-                        Add another unit
-                      </button>
-                    </div>
+                    {/* Multiple unit entry */}
+                    {unitType && unitType.toLowerCase() === "m" ? (
+                      <>
+                        <div className="form-group row mb-3">
+                          <div className="col-md-12">
+                            <h4>Add units you’ll be managing in Lease Ninja</h4>
+                            <p className="m-0">
+                              At least one unit is required. You can add more
+                              units later.
+                            </p>
+                          </div>
+                        </div>
+
+                        {unitArray.map((x, i) => (
+                          <div key={i} className="form-group row mb-3">
+                            <label className="col-form-label col-sm-12">
+                              Unit Name
+                            </label>
+                            <div
+                              className={`${i > 0 ? "col-sm-11" : "col-sm-12"}`}
+                            >
+                              <input
+                                type="text"
+                                className="form-control"
+                                required
+                                onChange={(e) =>
+                                  setUnitValue(e.target.value, i)
+                                }
+                              />
+                            </div>
+                            {i > 0 ? (
+                              <div className="col-sm-1">
+                                <a
+                                  className="btn btn-primary btn-link btn-block text-left"
+                                  onClick={() => deleteUnitByIndex(i)}
+                                >
+                                  X
+                                </a>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        ))}
+                        <div className="form-group row mb-3">
+                          <a
+                            className="btn btn-link btn-block text-left"
+                            onClick={() => addNewUnit()}
+                          >
+                            Add another unit
+                          </a>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                    {/* End Multiple unit entry */}
                     <div className="form-group row">
                       <div className="col-md-12">
                         <button

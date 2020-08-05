@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import { useHistory } from "react-router";
-import { getPropertyById } from "./propertyCrud";
+import {
+  getPropertyById,
+  updateProperty,
+  deleteProperty,
+} from "./propertyCrud";
 import { shallowEqual, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Modal, Header, Title, Body, Footer, Button } from 'react-bootstrap';
+import { Modal, Header, Title, Body, Footer, Button } from "react-bootstrap";
+
+import {
+  getDropdownValues,
+  GET_PROPERTY_TYPE,
+  GET_STATES,
+} from "../../common/crud/dropdownCrud";
 
 export const PropertyEditPage = (props) => {
   const suhbeader = useSubheader();
@@ -18,6 +28,11 @@ export const PropertyEditPage = (props) => {
   }
 
   const [propertyDet, setPropertyDet] = useState([]);
+  const [copyPropertyDet, setCopyPropertyDet] = useState([]);
+  const [showEditAddressPanel, setShowEditAddressPanel] = useState(false);
+  const [showPropertyTypePanel, setShowPropertyTypePanel] = useState(false);
+  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [stateList, setStateList] = useState([]);
 
   const { user } = useSelector(
     ({ auth }) => ({
@@ -31,8 +46,22 @@ export const PropertyEditPage = (props) => {
       const {
         data: { output },
       } = await getPropertyById(propertyId, user.id);
-      console.log(output);
       setPropertyDet(...propertyDet, output[0]);
+      setCopyPropertyDet(...copyPropertyDet, output[0]);
+    })();
+
+    (async () => {
+      const {
+        data: { output },
+      } = await getDropdownValues(GET_PROPERTY_TYPE);
+      setPropertyTypes(...propertyTypes, output);
+    })();
+
+    (async () => {
+      const {
+        data: { output },
+      } = await getDropdownValues(GET_STATES);
+      setStateList(...stateList, output);
     })();
   }, []);
 
@@ -40,6 +69,31 @@ export const PropertyEditPage = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handlePropertySubmit = async (e) => {
+    e.preventDefault();
+
+    const requestObject = { ...copyPropertyDet };
+    requestObject.unit_type = requestObject.unit;
+
+    delete requestObject.state_name;
+    delete requestObject.property_type;
+    delete requestObject.unit;
+
+    const response = await updateProperty(requestObject, propertyId, user.id);
+
+    if (response.state === 200) {
+      setShowEditAddressPanel(!showEditAddressPanel);
+    }
+  };
+
+  const handleDeleteProperty = async () => {
+    const response = await deleteProperty(propertyId, user.id);
+
+    if (response.state === 200) {
+      history.push("/properties");
+    }
+  };
 
   return (
     <>
@@ -62,7 +116,7 @@ export const PropertyEditPage = (props) => {
             </div>
           </div>
           <div className="card-body">
-            <form className="form">
+            <div className="form">
               <div className="form-group row">
                 <div className="col-md-5">
                   <div className="form-group row">
@@ -71,8 +125,7 @@ export const PropertyEditPage = (props) => {
                         className="w-100 image-input image-input-empty image-input-outline"
                         id="kt_image_5"
                         style={{
-                          backgroundImage:
-                            "url(assets/media/users/blank.png)",
+                          backgroundImage: "url(assets/media/users/blank.png)",
                         }}
                       >
                         <div
@@ -112,81 +165,141 @@ export const PropertyEditPage = (props) => {
                           Property Address
                         </label>
                         <p>
-                          {propertyDet.street_address},{" "}
-                          {propertyDet.city}
+                          {propertyDet.street_address}, {propertyDet.city}
                         </p>
-                        <button
+                        <a
                           className="btn btn-secondary"
-                          type="submit"
+                          onClick={(e) =>
+                            setShowEditAddressPanel(!showEditAddressPanel)
+                          }
                         >
                           Edit Address
-                        </button>
+                        </a>
                       </div>
                     </div>
-                    <div className="form-group row">
-                      <div className="col-md-6">
-                        <label>Street Address</label>
-                        <input
-                          type="text"
-                          name="street_address"
-                          className="form-control"
-                          placeholder="Input Street Address"
-                        />
+                    {showEditAddressPanel ? (
+                      <div className="col-sm-12">
+                        <form onSubmit={handlePropertySubmit}>
+                          <div className="form-group row">
+                            <div className="col-md-6">
+                              <label>Street Address</label>
+                              <input
+                                type="text"
+                                value={copyPropertyDet.street_address}
+                                name="street_address"
+                                className="form-control"
+                                placeholder="Input Street Address"
+                                required
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setCopyPropertyDet((prev) => {
+                                    return {
+                                      ...prev,
+                                      street_address: val,
+                                    };
+                                  });
+                                }}
+                              />
+                            </div>
+                            <div className="col-md-6">
+                              <label>Address 2</label>
+                              <input
+                                type="text"
+                                name="address2"
+                                value={copyPropertyDet.address2}
+                                className="form-control"
+                                placeholder="Input Street Address 2"
+                                required
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setCopyPropertyDet((prev) => {
+                                    return {
+                                      ...prev,
+                                      address2: val,
+                                    };
+                                  });
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div className="form-group row">
+                            <div className="col-md-5">
+                              <label>City</label>
+                              <input
+                                name="city"
+                                type="text"
+                                value={copyPropertyDet.city}
+                                className="form-control"
+                                required
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setCopyPropertyDet((prev) => {
+                                    return {
+                                      ...prev,
+                                      city: val,
+                                    };
+                                  });
+                                }}
+                              />
+                            </div>
+                            <div className="col-md-4">
+                              <label>State</label>
+                              <select
+                                name="state_id"
+                                className="form-control selectpicker"
+                                title="Select"
+                              >
+                                {stateList.map((item, i) => (
+                                  <option key={i} value={item.state_id}>
+                                    {item.state_name}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                            <div className="col-md-3">
+                              <label>Zip</label>
+                              <input
+                                name="zip"
+                                type="text"
+                                value={copyPropertyDet.zip}
+                                className="form-control"
+                                required
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setCopyPropertyDet((prev) => {
+                                    return {
+                                      ...prev,
+                                      zip: val,
+                                    };
+                                  });
+                                }}
+                              />
+                            </div>
+                          </div>
+                          <div className="form-group row justify-content-end">
+                            <div className="col-md-12">
+                              <button
+                                type="submit"
+                                class="btn btn-light-primary font-weight-bold"
+                              >
+                                Save Address
+                              </button>
+                              <a
+                                class="btn btn-light-danger font-weight-bold ml-3"
+                                onClick={(e) =>
+                                  setShowEditAddressPanel(!showEditAddressPanel)
+                                }
+                              >
+                                Cancel
+                              </a>
+                            </div>
+                          </div>
+                        </form>
                       </div>
-                      <div className="col-md-6">
-                        <label>Address 2</label>
-                        <input
-                          type="text"
-                          name="address2"
-                          className="form-control"
-                          placeholder="Input Street Address 2"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group row">
-                      <div className="col-md-5">
-                        <label>City</label>
-                        <input
-                          name="city"
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                      <div className="col-md-4">
-                        <label>State</label>
-                        <select
-                          name="state_id"
-                          className="form-control selectpicker"
-                          title="Select"
-                        >
-                          <option>UK</option>
-                        </select>
-                      </div>
-                      <div className="col-md-3">
-                        <label>Zip</label>
-                        <input
-                          name="zip"
-                          type="text"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group row justify-content-end">
-                      <div className="col-md-12">
-                        <button
-                          type="button"
-                          class="btn btn-light-primary font-weight-bold"
-                        >
-                          Save Address
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-light-danger font-weight-bold ml-3"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
+                    ) : (
+                      ""
+                    )}
+
                     <div className="form-group row mb-3">
                       <div className="col-md-6">
                         <label className="col-form-label col-sm-12 font-size-h3 p-0">
@@ -194,45 +307,65 @@ export const PropertyEditPage = (props) => {
                         </label>
                         <p>{propertyDet.property_type}</p>
                         <div className="col-md-12 col-sm-12 p-0">
-                          <button
+                          <a
                             className="btn btn-secondary"
-                            type="submit"
+                            onClick={(e) =>
+                              setShowPropertyTypePanel(!showPropertyTypePanel)
+                            }
                           >
                             Edit Type
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </div>
-                    <div className="form-group row">
-                      <label className="col-form-label col-sm-12">
-                        Property Type
-                      </label>
-                      <div className="col-md-12 col-sm-12">
-                        <select
-                          name="property_type_id"
-                          className="form-control selectpicker"
-                          title="Select"
-                        >
-                          <option>Flat</option>
-                        </select>
+
+                    {showPropertyTypePanel ? (
+                      <div className="col-sm-12">
+                        <form>
+                          <div className="form-group row">
+                            <label className="col-form-label col-sm-12">
+                              Property Type
+                            </label>
+                            <div className="col-md-12 col-sm-12">
+                              <select
+                                name="property_type_id"
+                                className="form-control selectpicker"
+                                title="Select"
+                              >
+                                {propertyTypes.map((item, index) => (
+                                  <option key={index} value={item.type_id}>
+                                    {item.property_type}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                          </div>
+                          <div className="form-group row justify-content-end">
+                            <div className="col-md-12">
+                              <button
+                                type="button"
+                                class="btn btn-light-primary font-weight-bold"
+                              >
+                                Save Type
+                              </button>
+                              <a
+                                class="btn btn-light-danger font-weight-bold ml-3"
+                                onClick={(e) =>
+                                  setShowPropertyTypePanel(
+                                    !showPropertyTypePanel
+                                  )
+                                }
+                              >
+                                Cancel
+                              </a>
+                            </div>
+                          </div>
+                        </form>
                       </div>
-                    </div>
-                    <div className="form-group row justify-content-end">
-                      <div className="col-md-12">
-                        <button
-                          type="button"
-                          class="btn btn-light-primary font-weight-bold"
-                        >
-                          Save Type
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-light-danger font-weight-bold ml-3"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
+                    ) : (
+                      ""
+                    )}
+
                     <div className="form-group row">
                       <div className="col-md-6">
                         <div class="form-group">
@@ -277,15 +410,32 @@ export const PropertyEditPage = (props) => {
                         </div>
                       </div>
                       <div className="col-md-6 text-right pr-0">
-                        <button type="button" className="btn btn-link p-0 pb-2 pt-1" onClick={handleShow}>Add Unit</button> | <button className="btn btn-link p-0 pb-2 pt-1">Move Unit</button><br />
-                        <button className="btn btn-link p-0 pb-2">View Payment</button><br />
-                        <button className="btn btn-link p-0 pb-2">View Listing</button>
+                        <button
+                          type="button"
+                          className="btn btn-link p-0 pb-2 pt-1"
+                          onClick={handleShow}
+                        >
+                          Add Unit
+                        </button>{" "}
+                        |{" "}
+                        <button className="btn btn-link p-0 pb-2 pt-1">
+                          Move Unit
+                        </button>
+                        <br />
+                        <button className="btn btn-link p-0 pb-2">
+                          View Payment
+                        </button>
+                        <br />
+                        <button className="btn btn-link p-0 pb-2">
+                          View Listing
+                        </button>
                       </div>
                     </div>
                     <div className="form-group row justify-content-end">
                       <button
                         type="button"
                         class="btn btn-light-primary font-weight-bold"
+                        onClick={handleDeleteProperty}
                       >
                         Delete Property
                       </button>
@@ -293,7 +443,7 @@ export const PropertyEditPage = (props) => {
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
