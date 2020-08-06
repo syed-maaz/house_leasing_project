@@ -98,6 +98,23 @@ export const PropertyEditPage = (props) => {
     }
   };
 
+  const handleImageUpdate = async (e) => {
+    e.preventDefault();
+
+    const requestObject = { ...copyPropertyDet };
+    requestObject.unit_type = requestObject.unit;
+
+    delete requestObject.state_name;
+    delete requestObject.property_type;
+    delete requestObject.unit;
+
+    const response = await updateProperty(requestObject, propertyId, user.id);
+
+    if (response.state === 200) {
+      history.push("/properties");
+    }
+  };
+
   return (
     <>
       <div className="col-lg-12">
@@ -110,12 +127,11 @@ export const PropertyEditPage = (props) => {
               </span>
             </h3>
             <div className="d-flex flex-column flex-root align-items-md-end">
-              <NavLink
-                className="btn btn-light-primary font-weight-bold"
-                to="/properties"
-              >
-                Done
-              </NavLink>
+              <form onSubmit={handleImageUpdate}>
+                <button className="btn btn-light-primary font-weight-bold">
+                  Done
+                </button>
+              </form>
             </div>
           </div>
           <div className="card-body">
