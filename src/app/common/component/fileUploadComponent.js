@@ -21,7 +21,7 @@ export const FileUploadComponent = (props) => {
       console.log(fileDet);
 
       const data = await uploadImage(img, fileDet.url);
-      // console.log(url);
+      console.log(data);
     }
   };
 
