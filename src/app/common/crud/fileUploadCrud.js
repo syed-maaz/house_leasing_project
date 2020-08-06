@@ -17,13 +17,14 @@ export function uploadImage(fileData, uploadUrl) {
   const config = {
     headers: {
       "Content-Type": "image/jpeg",
-      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "OPTIONS",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
     },
     data: fileData,
   };
 
-  return axios.options(uploadUrl, config);
+  return axios.put(uploadUrl, fileData, config);
 }
