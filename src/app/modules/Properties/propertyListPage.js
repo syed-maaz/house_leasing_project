@@ -32,16 +32,6 @@ export const PropertyListPage = () => {
     })();
   }, [user]);
 
-  const propertyCard = (items) => {
-    return (
-      <>
-        {items.map((item, i) => (
-          <PropertyCardComponent item={item} key={i} />
-        ))}
-      </>
-    );
-  };
-
   return (
     <>
       <div className="d-flex flex-column-fluid">
@@ -66,7 +56,11 @@ export const PropertyListPage = () => {
                     </div>
                   </div>
 
-                  <div className="row">{propertyCard(properties)}</div>
+                  <div className="row">
+                    {properties.map((item, i) => (
+                      <PropertyCardComponent item={item} key={i} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

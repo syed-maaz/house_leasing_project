@@ -60,7 +60,7 @@ export const PropertyCardComponent = (props) => {
                       <span className="radio">
                         <input
                           type="radio"
-                          name={`m_option_1_${item.id}`}
+                          name={`m_option_1_${item.property_id}`}
                           value="1"
                           checked="checked"
                           readOnly
@@ -81,7 +81,12 @@ export const PropertyCardComponent = (props) => {
                   <label className="option option option-plain mb-0">
                     <span className="option-control">
                       <span className="radio">
-                        <input type="radio" name="m_option_1" value="1" />
+                        <input
+                          type="radio"
+                          name={`m_option_1_${item.property_id}`}
+                          value="1"
+                          readOnly
+                        />
                         <span></span>
                       </span>
                     </span>
