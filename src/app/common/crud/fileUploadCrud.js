@@ -17,6 +17,7 @@ export function uploadImage(fileData, uploadUrl) {
   const config = {
     headers: {
       "Content-Type": "image/jpeg",
+      "Access-Control-Allow-Origin": "*",
     },
     data: fileData,
   };
