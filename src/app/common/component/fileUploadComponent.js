@@ -4,6 +4,21 @@ import { getFileUrl, uploadImage } from "../../common/crud/fileUploadCrud";
 export const FileUploadComponent = (props) => {
   const [uploadedPicture, setUploadedPicture] = useState("");
 
+  const { fileName, uploadedFileName } = props;
+
+  useEffect(() => {
+    if (fileName !== "") {
+      (async () => {
+        const {
+          data: {
+            output: [file],
+          },
+        } = await getFileUrl(fileName);
+        setUploadedPicture(file.url);
+      })();
+    }
+  }, [fileName]);
+
   const onImageChange = async (e) => {
     console.log(e.target.files);
 
@@ -21,7 +36,9 @@ export const FileUploadComponent = (props) => {
       console.log(fileDet);
 
       const data = await uploadImage(img, fileDet.url);
-      console.log(data);
+      if (data.status === 200) {
+        uploadedFileName(fileDet.filename);
+      }
     }
   };
 

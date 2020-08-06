@@ -35,6 +35,7 @@ export const PropertyEditPage = (props) => {
   const [showPropertyTypePanel, setShowPropertyTypePanel] = useState(false);
   const [propertyTypes, setPropertyTypes] = useState([]);
   const [stateList, setStateList] = useState([]);
+  const [fileName, setFileName] = useState("");
 
   const { user } = useSelector(
     ({ auth }) => ({
@@ -121,7 +122,18 @@ export const PropertyEditPage = (props) => {
             <div className="form">
               <div className="form-group row">
                 <div className="col-md-5">
-                  <FileUploadComponent />
+                  <FileUploadComponent
+                    fileName={propertyDet.image_url}
+                    uploadedFileName={(v) => {
+                      const val = v;
+                      setCopyPropertyDet((prev) => {
+                        return {
+                          ...prev,
+                          image_url: val,
+                        };
+                      });
+                    }}
+                  />
                 </div>
                 <div className="col-md-7">
                   <div className="pl-3">

@@ -6,9 +6,9 @@ const END_POINT = "files";
 const API_URL = API_BASE_URL + END_POINT;
 
 export function getFileUrl(fileName = "") {
-  const req = "";
+  let req = "";
   if (fileName != "") {
-    req = "?filename=" + fileName;
+    req += "?filename=" + fileName;
   }
   return axios.get(API_URL + req);
 }

@@ -60,6 +60,7 @@ export const PropertyCreatePage = () => {
     }
     requestBody.unit_type = unitType;
     requestBody.user_id = user.id;
+    requestBody.image_url = fileName;
     if (unitType.toLowerCase() === "m") {
       unitList = unitArray;
     }
@@ -112,7 +113,11 @@ export const PropertyCreatePage = () => {
             <form className="form" onSubmit={handleSubmit}>
               <div className="form-group row">
                 <div className="col-md-5">
-                  <FileUploadComponent updateFileName={setFileName} />
+                  {fileName}
+                  <FileUploadComponent
+                    fileName={fileName}
+                    uploadedFileName={setFileName}
+                  />
                 </div>
                 <div className="col-md-7">
                   <div className="pl-3">
