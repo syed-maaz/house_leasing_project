@@ -14,16 +14,11 @@ export function getFileUrl(fileName = "") {
 }
 
 export function uploadImage(fileData, uploadUrl) {
+  console.log(fileData);
   const config = {
     headers: {
-      "Content-Type": "image/jpeg",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization",
+      "Content-Type": fileData.type,
     },
-    data: fileData,
   };
 
   return axios.put(uploadUrl, fileData, config);
