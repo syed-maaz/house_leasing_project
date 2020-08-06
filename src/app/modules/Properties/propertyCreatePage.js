@@ -4,12 +4,13 @@ import { useSubheader } from "../../../_metronic/layout";
 import { NavLink } from "react-router-dom";
 import { createProperty } from "./propertyCrud";
 import { useHistory } from "react-router-dom";
-
 import {
   getDropdownValues,
   GET_PROPERTY_TYPE,
   GET_STATES,
 } from "../../common/crud/dropdownCrud";
+
+import { getFileUrl, uploadImage } from "../../common/crud/fileUploadCrud";
 
 export const PropertyCreatePage = () => {
   let history = useHistory();
@@ -20,6 +21,7 @@ export const PropertyCreatePage = () => {
   const [propertyTypes, setPropertyTypes] = useState([]);
   const [stateList, setStateList] = useState([]);
   const [unitArray, setUnitArray] = useState([0]);
+  const [uploadedPicture, setUploadedPicture] = useState([0]);
 
   useEffect(() => {
     // code to run on component mount
@@ -85,6 +87,27 @@ export const PropertyCreatePage = () => {
     setUnitArray(temp);
   };
 
+  const onImageChange = async (e) => {
+    console.log(e.target.files);
+
+    if (e.target.files && e.target.files[0]) {
+      let img = e.target.files[0];
+
+      setUploadedPicture(URL.createObjectURL(img));
+
+      const {
+        data: {
+          output: [fileDet],
+        },
+      } = await getFileUrl();
+
+      console.log(fileDet);
+
+      const data = await uploadImage(img, fileDet.url);
+      // console.log(url);
+    }
+  };
+
   return (
     <>
       <div className="col-lg-12">
@@ -115,51 +138,28 @@ export const PropertyCreatePage = () => {
                         className="w-100 image-input image-input-empty image-input-outline"
                         id="kt_image_5"
                         style={{
-                          backgroundImage: "url(assets/media/users/blank.png)",
+                          backgroundImage: `url(${uploadedPicture})`,
+                          "background-size": "contain",
                         }}
                       >
                         <div
                           className="image-input-wrapper w-100"
                           style={{ height: "300px" }}
                         ></div>
-                        <label
-                          className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                          data-action="change"
-                          data-toggle="tooltip"
-                          title=""
-                          data-original-title="Change avatar"
-                        >
-                          <i className="fa fa-pen icon-sm text-muted"></i>
-                          <input
-                            type="file"
-                            // name="profile_avatar"
-                            accept=".png, .jpg, .jpeg"
-                          />
-                          <input
-                            type="hidden"
-                            // name="profile_avatar_remove"
-                          />
-                        </label>
-                        <span
-                          className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                          data-action="cancel"
-                          data-toggle="tooltip"
-                          title="Cancel avatar"
-                        >
-                          <i className="ki ki-bold-close icon-xs text-muted"></i>
-                        </span>
-                        <span
-                          className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                          data-action="remove"
-                          data-toggle="tooltip"
-                          title="Remove avatar"
-                        >
-                          <i className="ki ki-bold-close icon-xs text-muted"></i>
-                        </span>
                       </div>
-                      <label className="col-md-12 col-form-label">
-                        Cover Picture
+                      <label
+                        for="upload-pic"
+                        className="col-md-12 col-form-label btn btn-default"
+                      >
+                        Upload Cover Picture
                       </label>
+                      <input
+                        id="upload-pic"
+                        type="file"
+                        className="btn btn-default invisible"
+                        accept=".png, .jpg, .jpeg"
+                        onChange={onImageChange}
+                      />
                     </div>
                   </div>
                 </div>
