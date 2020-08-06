@@ -10,6 +10,8 @@ import { shallowEqual, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Modal, Header, Title, Body, Footer, Button } from "react-bootstrap";
 
+import { FileUploadComponent } from "../../common/component/fileUploadComponent";
+
 import {
   getDropdownValues,
   GET_PROPERTY_TYPE,
@@ -119,43 +121,7 @@ export const PropertyEditPage = (props) => {
             <div className="form">
               <div className="form-group row">
                 <div className="col-md-5">
-                  <div className="form-group row">
-                    <div className="col-md-12 text-center">
-                      <div
-                        className="w-100 image-input image-input-empty image-input-outline"
-                        id="kt_image_5"
-                        style={{
-                          backgroundImage: "url(assets/media/users/blank.png)",
-                        }}
-                      >
-                        <div
-                          className="image-input-wrapper w-100"
-                          style={{ height: "300px" }}
-                        ></div>
-                        <span
-                          className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                          data-action="cancel"
-                          data-toggle="tooltip"
-                          title="Cancel avatar"
-                        >
-                          <i className="ki ki-bold-close icon-xs text-muted"></i>
-                        </span>
-                        <span
-                          className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                          data-action="remove"
-                          data-toggle="tooltip"
-                          title="Remove avatar"
-                        >
-                          <i className="ki ki-bold-close icon-xs text-muted"></i>
-                        </span>
-                      </div>
-                      <label className="col-md-12 col-form-label">
-                        <button className="btn btn-default">
-                          Update a cover photo
-                        </button>
-                      </label>
-                    </div>
-                  </div>
+                  <FileUploadComponent />
                 </div>
                 <div className="col-md-7">
                   <div className="pl-3">
