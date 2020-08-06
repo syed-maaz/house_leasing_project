@@ -22,6 +22,8 @@ export const PropertyCreatePage = () => {
   const [stateList, setStateList] = useState([]);
   const [unitArray, setUnitArray] = useState([0]);
 
+  const [fileName, setFileName] = useState("");
+
   useEffect(() => {
     // code to run on component mount
     (async () => {
@@ -110,7 +112,7 @@ export const PropertyCreatePage = () => {
             <form className="form" onSubmit={handleSubmit}>
               <div className="form-group row">
                 <div className="col-md-5">
-                  <FileUploadComponent />
+                  <FileUploadComponent updateFileName={setFileName} />
                 </div>
                 <div className="col-md-7">
                   <div className="pl-3">

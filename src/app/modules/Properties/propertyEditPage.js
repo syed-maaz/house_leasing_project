@@ -92,7 +92,7 @@ export const PropertyEditPage = (props) => {
   const handleDeleteProperty = async () => {
     const response = await deleteProperty(propertyId, user.id);
 
-    if (response.state === 200) {
+    if (response.status === 200) {
       history.push("/properties");
     }
   };
