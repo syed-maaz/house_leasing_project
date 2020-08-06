@@ -18,6 +18,9 @@ export function uploadImage(fileData, uploadUrl) {
     headers: {
       "Content-Type": "image/jpeg",
       "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "OPTIONS",
     },
     data: fileData,
   };
