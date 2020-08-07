@@ -33,9 +33,20 @@ export const PropertyCardComponent = (props) => {
             </div>
 
             <div>
-              <div className="symbol-lg-100 text-center">
+              <div
+                className="symbol-lg-100 text-center"
+                style={{ height: "220px", verticalAlign: "middle" }}
+              >
                 <img
-                  style={isImgLoaded ? { height: '220px' } : { display: 'none' }}
+                  style={
+                    isImgLoaded ? { display: "none" } : { paddingTop: "80px" }
+                  }
+                  src="/media/spinner.gif"
+                />
+                <img
+                  style={
+                    isImgLoaded ? { height: "220px" } : { display: "none" }
+                  }
                   src={toAbsoluteUrl(
                     !!item.image_url ? imageUrl : "/media/property-blank.png"
                   )}
@@ -45,7 +56,10 @@ export const PropertyCardComponent = (props) => {
               </div>
             </div>
 
-            <div className="d-flex flex-column flex-root p-3" style={{height: '66px'}}>
+            <div
+              className="d-flex flex-column flex-root p-3"
+              style={{ height: "66px" }}
+            >
               <span className="font-weight-bold mb-1 font-size-h6 text-dark-50">
                 {`${item.street_address} ${item.state_name}`}, Unit {item.unit},{" "}
                 {item.property_type}
