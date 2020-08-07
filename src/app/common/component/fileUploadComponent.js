@@ -52,6 +52,7 @@ export const FileUploadComponent = (props) => {
             style={{
               backgroundImage: `url(${uploadedPicture})`,
               "background-size": "contain",
+              "background-position": "center"
             }}
           >
             <div
