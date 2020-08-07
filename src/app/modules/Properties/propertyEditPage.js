@@ -482,7 +482,7 @@ export const PropertyEditPage = (props) => {
                       <div className="form-group row justify-content-end">
                         <button
                           type="button"
-                          class="btn btn-light-primary font-weight-bold"
+                          class="btn btn-light-danger font-weight-bold"
                           onClick={handleDeleteProperty}
                         >
                           Delete Property
