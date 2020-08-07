@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-const MetronicSplashScreenContext = createContext();
+export const MetronicSplashScreenContext = createContext();
 
 export function MetronicSplashScreenProvider({ children }) {
   const [count, setCount] = useState(0);

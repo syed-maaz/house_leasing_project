@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { toAbsoluteUrl } from "../../../../_metronic/_helpers";
 
 import { PropertyMenuDropdown } from "./propertyMenuDropdown";
 import { getFileUrl } from "../../../common/crud/fileUploadCrud";
+import { ImageContainer } from "../../../common/component/imageContainerComponent";
 
 export const PropertyCardComponent = (props) => {
   const { item } = props;
@@ -37,7 +37,13 @@ export const PropertyCardComponent = (props) => {
                 className="symbol-lg-100 text-center"
                 style={{ height: "220px", verticalAlign: "middle" }}
               >
-                <img
+                <ImageContainer
+                  imageUrl={
+                    item.image_url ? imageUrl : "/media/property-blank.png"
+                  }
+                  height={"200px"}
+                />
+                {/* <img
                   style={
                     isImgLoaded ? { display: "none" } : { paddingTop: "80px" }
                   }
@@ -52,7 +58,7 @@ export const PropertyCardComponent = (props) => {
                   )}
                   alt="image"
                   onLoad={() => setImgLoaded(true)}
-                />
+                /> */}
               </div>
             </div>
 

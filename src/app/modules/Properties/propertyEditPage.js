@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import { useHistory } from "react-router";
 import {
@@ -9,8 +9,9 @@ import {
 import { shallowEqual, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Modal, Header, Title, Body, Footer, Button } from "react-bootstrap";
-import { Alert } from 'react-bootstrap';
+import { Alert } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
+import { MetronicSplashScreenContext } from "../../../_metronic/layout/_core/MetronicSplashScreen";
 
 import { FileUploadComponent } from "../../common/component/fileUploadComponent";
 
@@ -23,7 +24,8 @@ import {
 export const PropertyEditPage = (props) => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Property Edit");
-  let history = useHistory();
+  const history = useHistory();
+  const setSplashScreen = useContext(MetronicSplashScreenContext);
 
   const propertyId = props.match.params.id;
 
@@ -49,12 +51,15 @@ export const PropertyEditPage = (props) => {
   );
 
   useEffect(() => {
+    setSplashScreen(true);
+
     (async () => {
       const {
         data: { output },
       } = await getPropertyById(propertyId, user.id);
       setPropertyDet(...propertyDet, output[0]);
       setCopyPropertyDet(...copyPropertyDet, output[0]);
+      setSplashScreen(false);
     })();
 
     (async () => {
@@ -98,7 +103,7 @@ export const PropertyEditPage = (props) => {
   const handlePropertyTypeSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('dsdsd');
+    console.log("dsdsd");
     setShowSuccessBox(false);
     setShowSuccessBox(true);
   };
@@ -133,7 +138,14 @@ export const PropertyEditPage = (props) => {
   return (
     <>
       <div className="col-lg-12">
-        <Alert variant="success" onClose={() => setShowSuccessBox(false)} dismissible show={showSuccessBox}>Success</Alert>
+        <Alert
+          variant="success"
+          onClose={() => setShowSuccessBox(false)}
+          dismissible
+          show={showSuccessBox}
+        >
+          Success
+        </Alert>
         <div className={`card card-custom card-stretch gutter-b`}>
           {/* Head */}
           <div className="card-header py-5">
@@ -382,69 +394,89 @@ export const PropertyEditPage = (props) => {
                         ""
                       )}
 
-                      <div className="form-group row">
-                        <div className="col-md-6">
-                          <div class="form-group">
-                            <label className="font-size-h3">
-                              {!!propertyDet.unit &&
-                              propertyDet.unit.toLowerCase() === "s"
-                                ? "Single Unit"
-                                : "Multi Unit"}
-                            </label>
-                            <div class="col-sm-10 p-0">
+                      <div className="form-group row mt-15">
+                        <div className="col-md-12">
+                          <div className="row">
+                            <div className="col-md-6">
+                              <p className="font-size-h3">
+                                {!!propertyDet.unit &&
+                                propertyDet.unit.toLowerCase() === "s"
+                                  ? "Single Unit"
+                                  : "Multi Unit"}
+                              </p>
+                            </div>
+                            <div className="col-md-6 text-right pr-0">
+                              <button
+                                type="button"
+                                className="btn btn-link p-0 pb-2 pt-1"
+                                onClick={handleShow}
+                              >
+                                Add Unit
+                              </button>
+                              |
+                              <button className="btn btn-link p-0 pb-2 pt-1">
+                                Move Unit
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="row">
+                            <div className="col-md-6">
                               <div class="form-check">
                                 <input
                                   name="formHorizontalRadios"
                                   type="radio"
                                   id="formHorizontalRadios1"
-                                  class="form-check-input"
+                                  className="form-check-input"
                                 />
                                 <label
                                   title=""
-                                  for="formHorizontalRadios1"
-                                  class="form-check-label"
+                                  for="formfHorizontalRadios1"
+                                  className="form-check-label"
                                 >
-                                  Upcoming Rent
+                                  Rent
                                 </label>
                               </div>
-                              <div class="form-check pt-3">
+                            </div>
+                            <div className="col-md-6 text-right pr-0">
+                              <button
+                                type="button"
+                                className="btn btn-link p-0 pb-2 pt-1"
+                                onClick={handleShow}
+                              >
+                                View Payment
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="row">
+                            <div className="col-md-6">
+                              <div className="form-check pt-3">
                                 <input
                                   name="formHorizontalRadios"
                                   type="radio"
                                   id="formHorizontalRadios2"
-                                  class="form-check-input"
+                                  className="form-check-input"
                                 />
                                 <label
                                   title=""
                                   for="formHorizontalRadios2"
-                                  class="form-check-label"
+                                  className="form-check-label"
                                 >
-                                  Active Listing
+                                  Listing
                                 </label>
                               </div>
                             </div>
+                            <div className="col-md-6 text-right pr-0">
+                              <button
+                                type="button"
+                                className="btn btn-link p-0 pb-2 pt-1"
+                                onClick={handleShow}
+                              >
+                                View Listing
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                        <div className="col-md-6 text-right pr-0">
-                          <button
-                            type="button"
-                            className="btn btn-link p-0 pb-2 pt-1"
-                            onClick={handleShow}
-                          >
-                            Add Unit
-                          </button>{" "}
-                          |{" "}
-                          <button className="btn btn-link p-0 pb-2 pt-1">
-                            Move Unit
-                          </button>
-                          <br />
-                          <button className="btn btn-link p-0 pb-2">
-                            View Payment
-                          </button>
-                          <br />
-                          <button className="btn btn-link p-0 pb-2">
-                            View Listing
-                          </button>
                         </div>
                       </div>
                       <div className="form-group row justify-content-end">
