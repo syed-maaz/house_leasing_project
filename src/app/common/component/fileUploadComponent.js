@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
+
 import { getFileUrl, uploadImage } from "../../common/crud/fileUploadCrud";
+import { ImageContainer } from "./imageContainerComponent";
 
 export const FileUploadComponent = (props) => {
   const [uploadedPicture, setUploadedPicture] = useState("");
 
   const { fileName, uploadedFileName } = props;
 
-  useEffect(() => {
-    if (fileName !== "") {
-      (async () => {
-        const {
-          data: {
-            output: [file],
-          },
-        } = await getFileUrl(fileName);
-        setUploadedPicture(file.url);
-      })();
-    }
-  }, [fileName]);
+  //   useEffect(() => {
+  //     if (fileName !== "") {
+  //       (async () => {
+  //         const {
+  //           data: {
+  //             output: [file],
+  //           },
+  //         } = await getFileUrl(fileName);
+  //         setUploadedPicture(file.url);
+  //       })();
+  //     }
+  //   }, [fileName]);
 
   const onImageChange = async (e) => {
     console.log(e.target.files);
@@ -49,16 +51,13 @@ export const FileUploadComponent = (props) => {
           <div
             className="w-100 image-input image-input-empty image-input-outline"
             id="kt_image_5"
-            style={{
-              backgroundImage: `url(${uploadedPicture})`,
-              "background-size": "contain",
-              "background-position": "center"
-            }}
           >
             <div
               className="image-input-wrapper w-100"
               style={{ height: "300px" }}
-            ></div>
+            >
+              <ImageContainer imageName={fileName} height={"300px"} />
+            </div>
           </div>
           <label
             for="upload-pic"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { PropertyMenuDropdown } from "./propertyMenuDropdown";
-import { getFileUrl } from "../../../common/crud/fileUploadCrud";
+
 import { ImageContainer } from "../../../common/component/imageContainerComponent";
 
 export const PropertyCardComponent = (props) => {
@@ -10,18 +10,18 @@ export const PropertyCardComponent = (props) => {
   const [imageUrl, setImageUrl] = useState("");
   const [isImgLoaded, setImgLoaded] = useState(false);
 
-  useEffect(() => {
-    if (!!item.image_url && item.image_url !== "") {
-      (async () => {
-        const {
-          data: {
-            output: [file],
-          },
-        } = await getFileUrl(item.image_url);
-        setImageUrl(file.url);
-      })();
-    }
-  }, [item.image_url]);
+  //   useEffect(() => {
+  //     if (!!item.image_url && item.image_url !== "") {
+  //       (async () => {
+  //         const {
+  //           data: {
+  //             output: [file],
+  //           },
+  //         } = await getFileUrl(item.image_url);
+  //         setImageUrl(file.url);
+  //       })();
+  //     }
+  //   }, [item.image_url]);
 
   return (
     <>
@@ -37,28 +37,7 @@ export const PropertyCardComponent = (props) => {
                 className="symbol-lg-100 text-center"
                 style={{ height: "220px", verticalAlign: "middle" }}
               >
-                <ImageContainer
-                  imageUrl={
-                    item.image_url ? imageUrl : "/media/property-blank.png"
-                  }
-                  height={"200px"}
-                />
-                {/* <img
-                  style={
-                    isImgLoaded ? { display: "none" } : { paddingTop: "80px" }
-                  }
-                  src="/media/spinner.gif"
-                />
-                <img
-                  style={
-                    isImgLoaded ? { height: "220px" } : { display: "none" }
-                  }
-                  src={toAbsoluteUrl(
-                    !!item.image_url ? imageUrl : "/media/property-blank.png"
-                  )}
-                  alt="image"
-                  onLoad={() => setImgLoaded(true)}
-                /> */}
+                <ImageContainer imageName={item.image_url} height={"200px"} />
               </div>
             </div>
 
