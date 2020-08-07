@@ -63,7 +63,7 @@ export const PropertyListPage = () => {
           <div className="card-body">
             {isLoading ? (
               <div className="text-center pb-5">
-                <h4>
+                <h4 className="m-0">
                   <img
                     src={toAbsoluteUrl("/media/svg/icons/Code/Loading.svg")}
                   />{" "}

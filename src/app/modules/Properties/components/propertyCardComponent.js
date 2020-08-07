@@ -8,6 +8,7 @@ export const PropertyCardComponent = (props) => {
   const { item } = props;
 
   const [imageUrl, setImageUrl] = useState("");
+  const [isImgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     if (!!item.image_url && item.image_url !== "") {
@@ -17,7 +18,6 @@ export const PropertyCardComponent = (props) => {
             output: [file],
           },
         } = await getFileUrl(item.image_url);
-        console.log(file.url);
         setImageUrl(file.url);
       })();
     }
@@ -29,28 +29,27 @@ export const PropertyCardComponent = (props) => {
         <div className="card-custom gutter-b card-stretch border">
           <div className="card-body p-0 position-relative">
             <div className="position-absolute" style={{ top: "0", right: 0 }}>
-              {/* {renderPropertyMenuDropdown(item.property_id)} */}
               <PropertyMenuDropdown id={item.property_id} />
             </div>
 
             <div>
               <div className="symbol-lg-100 text-center">
                 <img
-                  style={{height: '220px'}}
+                  style={isImgLoaded ? { height: '220px' } : { display: 'none' }}
                   src={toAbsoluteUrl(
                     !!item.image_url ? imageUrl : "/media/property-blank.png"
                   )}
                   alt="image"
+                  onLoad={() => setImgLoaded(true)}
                 />
               </div>
             </div>
 
-            <div className="d-flex flex-column flex-root p-3">
+            <div className="d-flex flex-column flex-root p-3" style={{height: '66px'}}>
               <span className="font-weight-bold mb-1 font-size-h6 text-dark-50">
                 {`${item.street_address} ${item.state_name}`}, Unit {item.unit},{" "}
                 {item.property_type}
               </span>
-              {/* <span className="opacity-70 font-size-sm">Jerry Mattedi</span> */}
             </div>
             <div className="form-group pl-3 pr-3">
               <div className="row">
