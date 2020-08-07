@@ -14,6 +14,7 @@ export const PropertyListPage = () => {
   let history = useHistory();
 
   const [properties, setProperties] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { user } = useSelector(
     ({ auth }) => ({
@@ -32,6 +33,12 @@ export const PropertyListPage = () => {
       setProperties(...properties, output);
     })();
   }, [user]);
+
+  useEffect(() => {
+    if (properties.length) {
+      setIsLoading(false);
+    }
+  }, [properties]);
 
   return (
     <>
@@ -54,13 +61,23 @@ export const PropertyListPage = () => {
             </div>
           </div>
           <div className="card-body">
-            <div className="text-center pb-5">
-              <h4><img src={toAbsoluteUrl('/media/svg/icons/Code/Loading.svg')} /> Loading ...</h4>
-            </div>
+            {isLoading ? (
+              <div className="text-center pb-5">
+                <h4>
+                  <img
+                    src={toAbsoluteUrl("/media/svg/icons/Code/Loading.svg")}
+                  />{" "}
+                  Loading ...
+                </h4>
+              </div>
+            ) : (
+              ""
+            )}
             <div className="row">
-              {properties.map((item, i) => (
-                <PropertyCardComponent item={item} key={i} />
-              ))}
+              {!isLoading &&
+                properties.map((item, i) => (
+                  <PropertyCardComponent item={item} key={i} />
+                ))}
             </div>
           </div>
         </div>
