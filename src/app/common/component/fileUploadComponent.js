@@ -51,7 +51,8 @@ export const FileUploadComponent = (props) => {
             id="kt_image_5"
             style={{
               backgroundImage: `url(${uploadedPicture})`,
-              "background-size": "contain",
+              backgroundSize: "contain",
+              backgroundPosition: "center",
             }}
           >
             <div
