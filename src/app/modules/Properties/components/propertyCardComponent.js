@@ -34,9 +34,9 @@ export const PropertyCardComponent = (props) => {
             </div>
 
             <div>
-              <div className="symbol-lg-100">
+              <div className="symbol-lg-100 text-center">
                 <img
-                  className="w-100"
+                  style={{height: '220px'}}
                   src={toAbsoluteUrl(
                     !!item.image_url ? imageUrl : "/media/property-blank.png"
                   )}
