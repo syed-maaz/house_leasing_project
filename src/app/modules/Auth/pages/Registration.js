@@ -10,9 +10,10 @@ import { register } from "../_redux/authCrud";
 const initialValues = {
   fullname: "",
   email: "",
-  username: "",
+  phoneNumber: "",
   password: "",
   changepassword: "",
+  userGroup: "",
   acceptTerms: false,
 };
 
@@ -37,7 +38,7 @@ function Registration(props) {
           id: "AUTH.VALIDATION.REQUIRED_FIELD",
         })
       ),
-    username: Yup.string()
+    phoneNumber: Yup.string()
       .min(3, "Minimum 3 symbols")
       .max(50, "Maximum 50 symbols")
       .required(
@@ -66,6 +67,11 @@ function Registration(props) {
           "Password and Confirm Password didn't match"
         ),
       }),
+    userGroup: Yup.string().required(
+      intl.formatMessage({
+        id: "AUTH.VALIDATION.REQUIRED_FIELD",
+      })
+    ),
     acceptTerms: Yup.bool().required(
       "You must accept the terms and conditions"
     ),
@@ -96,7 +102,7 @@ function Registration(props) {
     validationSchema: RegistrationSchema,
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
-      register(values.email, values.fullname, values.username, values.password)
+      register(values.email, values.fullname, values.username, values.password, values.userGroup)
         .then(({ data: { accessToken } }) => {
           props.register(accessToken);
           disableLoading();
@@ -175,24 +181,24 @@ function Registration(props) {
         </div>
         {/* end: Email */}
 
-        {/* begin: Username */}
+        {/* begin: Phone number */}
         <div className="form-group fv-plugins-icon-container">
           <input
-            placeholder="User name"
+            placeholder="Phone number"
             type="text"
             className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-              "username"
+              "phoneNumber"
             )}`}
-            name="username"
-            {...formik.getFieldProps("username")}
+            name="phoneNumber"
+            {...formik.getFieldProps("phoneNumber")}
           />
-          {formik.touched.username && formik.errors.username ? (
+          {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
             <div className="fv-plugins-message-container">
-              <div className="fv-help-block">{formik.errors.username}</div>
+              <div className="fv-help-block">{formik.errors.phoneNumber}</div>
             </div>
           ) : null}
         </div>
-        {/* end: Username */}
+        {/* end: Phone number */}
 
         {/* begin: Password */}
         <div className="form-group fv-plugins-icon-container">
@@ -233,6 +239,28 @@ function Registration(props) {
           ) : null}
         </div>
         {/* end: Confirm Password */}
+        
+        {/* begin: User group */}
+        <div className="form-group fv-plugins-icon-container">
+        <select
+        name="userGroup"
+        className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+          "userGroup"
+        )}`}
+        {...formik.getFieldProps("userGroup")}
+        style={{ display: 'block' }}
+      >
+        <option value="" label="Select your user group" />
+        <option value="Landlord" label="Landlord" />
+        <option value="Tenant" label="Tenant" />
+      </select>
+      {formik.errors.color &&
+        formik.touched.color &&
+        <div className="input-feedback">
+          {formik.errors.color}
+        </div>}
+        </div>
+        {/* end: User group */}
 
         {/* begin: Terms and Conditions */}
         <div className="form-group">
@@ -242,7 +270,7 @@ function Registration(props) {
               name="acceptTerms"
               {...formik.getFieldProps("acceptTerms")}
             />
-            I agree the{" "}
+            I agree to the{" "}
             <Link to="/terms" target="_blank" rel="noopener noreferrer">
               Terms & Conditions
             </Link>
