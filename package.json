@@ -2,6 +2,7 @@
   "name": "demo1",
   "version": "7.0.3",
   "private": true,
+  
   "scripts": {
     "serve": "cp-cli build _site/react/preview/react/react-new/demo1 && serve",
     "start": "react-scripts start -o",

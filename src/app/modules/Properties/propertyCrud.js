@@ -60,8 +60,8 @@ export function deleteProperty(property_id, user_id) {
       accept: "application/json",
       "Content-Type": "application/json",
     },
-    data: {},
+    data: requestBody,
   };
 
-  return axios.delete(API_URL, requestBody, config);
+  return axios.delete(API_URL, config);
 }

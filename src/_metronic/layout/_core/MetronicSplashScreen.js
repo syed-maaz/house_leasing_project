@@ -1,6 +1,6 @@
-import React, {createContext, useContext, useState, useEffect} from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-const MetronicSplashScreenContext = createContext();
+export const MetronicSplashScreenContext = createContext();
 
 export function MetronicSplashScreenProvider({ children }) {
   const [count, setCount] = useState(0);
@@ -47,12 +47,12 @@ export function LayoutSplashScreen({ visible = true }) {
       return;
     }
 
-    setCount(prev => {
+    setCount((prev) => {
       return prev + 1;
     });
 
     return () => {
-      setCount(prev => {
+      setCount((prev) => {
         return prev - 1;
       });
     };

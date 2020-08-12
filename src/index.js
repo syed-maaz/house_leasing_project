@@ -39,7 +39,13 @@ const { PUBLIC_URL } = process.env; //_redux.mockAxios(axios);
  *
  * @see https://github.com/ctimmerm/axios-mock-adapter
  */
-/* const mock = */ /**
+/* const mock = */
+
+axios.defaults.baseURL =
+  "https://o37w129zxk.execute-api.us-east-1.amazonaws.com/dev/";
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
+/**
  * Inject metronic interceptors for axios.
  *
  * @see https://github.com/axios/axios#interceptors

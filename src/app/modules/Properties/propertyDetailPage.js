@@ -3,10 +3,19 @@ import { useSubheader } from "../../../_metronic/layout";
 import { Tabs, Tab } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router";
 
-export const PropertyDetailPage = () => {
+export const PropertyDetailPage = (props) => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Property Detail");
+
+  let history = useHistory();
+
+  const propertyId = props.match.params.id;
+
+  if (!propertyId) {
+    history.push("/properties");
+  }
 
   return (
     <>
@@ -26,7 +35,7 @@ export const PropertyDetailPage = () => {
                       3302 Villa Dr, 1 Unit
                       <NavLink
                         className="btn btn-light-primary font-weight-bold ml-10"
-                        to="/property/edit"
+                        to={`/property/edit/${propertyId}`}
                       >
                         Edit Property
                       </NavLink>
