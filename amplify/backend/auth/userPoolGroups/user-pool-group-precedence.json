@@ -1,10 +1,14 @@
 [
     {
-        "groupName": "Landlords",
+        "groupName": "Administrators",
         "precedence": 1
     },
     {
-        "groupName": "Tenants",
+        "groupName": "Landlords",
         "precedence": 2
+    },
+    {
+        "groupName": "Tenants",
+        "precedence": 3
     }
 ]
