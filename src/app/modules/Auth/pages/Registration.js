@@ -249,8 +249,9 @@ function Registration(props) {
         )}`}
         {...formik.getFieldProps("userGroup")}
         style={{ display: 'block' }}
-      >
+        >
         <option value="" label="Select your user group" />
+        <option value="Administrator" label="Administrator" />
         <option value="Landlord" label="Landlord" />
         <option value="Tenant" label="Tenant" />
       </select>

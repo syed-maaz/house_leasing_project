@@ -91,7 +91,7 @@ export function AuthPage() {
               <Redirect to="/auth/login" />
             </Switch>
           </div>
-          {/*end::Content body*/}
+          {/* end::Content body */}
 
           {/* begin::Mobile footer */}
           <div className="d-flex d-lg-none flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
