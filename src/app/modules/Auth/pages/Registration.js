@@ -120,6 +120,22 @@ function Registration(props) {
   });
 
   return (
+    <div>
+      {/*begin::Content header*/}
+      <div className="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
+        <span className="font-weight-bold text-dark-50">
+          Already have an account?
+        </span>
+        <Link
+          to="/auth/login"
+          className="font-weight-bold ml-2"
+          id="kt_login_signup"
+        >
+        Sign In
+        </Link>
+      </div>
+      {/*end::Content header*/}
+
     <div className="login-form login-signin" style={{ display: "block" }}>
       <div className="text-center mb-10 mb-lg-20">
         <h3 className="font-size-h1">
@@ -305,6 +321,7 @@ function Registration(props) {
           </Link>
         </div>
       </form>
+    </div>
     </div>
   );
 }
