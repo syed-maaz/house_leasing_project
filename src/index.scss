@@ -10,6 +10,7 @@
 @import "./_metronic/_assets/sass/themes/layout/header/menu/light.scss";
 @import "./_metronic/_assets/sass/themes/layout/brand/dark.scss";
 @import "./_metronic/_assets/sass/themes/layout/aside/dark.scss";
+@import "./_metronic/_assets/sass/pages/wizard/wizard-1.scss";
 
 // Header themes
 // Light
@@ -45,8 +46,8 @@
 .example-highlight > pre {
   background: none transparent !important;
   margin: 0 !important;
-  padding-top: 0.5rem; 
-  code { 
+  padding-top: 0.5rem;
+  code {
       overflow-y: auto;
       display: block;
 
@@ -78,12 +79,12 @@
 .react-bootstrap-table {
   th {
     outline: none;
-   
-    &.sortable {  
+
+    &.sortable {
       .svg-icon-sort {
         opacity: 0;
       }
-  
+
       &:hover {
         cursor: pointer;
 
@@ -91,7 +92,7 @@
           opacity: 1;
         }
       }
-    }    
+    }
   }
 
   .table.table-head-custom thead tr {
@@ -101,6 +102,6 @@
   }
 }
 
-// .nav-link:focus {  
-//     outline: none;  
+// .nav-link:focus {
+//     outline: none;
 // }

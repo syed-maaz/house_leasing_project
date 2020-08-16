@@ -28,7 +28,7 @@ export const ImageContainer = (props) => {
         src="/media/image_loader.gif"
       />
       <img
-        style={isImgLoaded ? { height: height } : { display: "none" }}
+        style={isImgLoaded ? { height: height, width: "100%" } : { display: "none" }}
         src={toAbsoluteUrl(
           !!imageName ? imageUrl : "/media/property-blank.png"
         )}

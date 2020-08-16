@@ -46,8 +46,8 @@ export const FileUploadComponent = (props) => {
 
   return (
     <>
-      <div className="form-group row">
-        <div className="col-md-12 text-center">
+      <div className="form-group row m-0">
+        <div className="col-md-12 text-center p-0">
           <div
             className="w-100 image-input image-input-empty image-input-outline"
             id="kt_image_5"
@@ -56,7 +56,7 @@ export const FileUploadComponent = (props) => {
               className="image-input-wrapper w-100"
               style={{ height: "300px" }}
             >
-              <ImageContainer imageName={fileName} height={"300px"} />
+              <ImageContainer imageName={fileName} height={"auto"} />
             </div>
           </div>
           <label
@@ -68,7 +68,7 @@ export const FileUploadComponent = (props) => {
           <input
             id="upload-pic"
             type="file"
-            className="btn btn-default invisible"
+            className="btn btn-default invisible pb-0 pt-0"
             accept=".png, .jpg, .jpeg"
             onChange={onImageChange}
           />
