@@ -41,11 +41,65 @@
     },
     "Resources": {
     
+        "AdministratorsGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "Administrators",
+              "Precedence" : 1,
+              
+              "RoleArn" : {
+                "Fn::GetAtt": [
+                    "AdministratorsGroupRole",
+                    "Arn"
+                ]
+              },
+              
+              "UserPoolId" : {
+                "Ref": "authleaseninjafrontendbc1d01ccbc1d01ccUserPoolId"
+              } 
+            }
+        },
+        
+        "AdministratorsGroupRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName":{
+                    "Fn::Join": [
+                        "",
+                        [
+                          {
+                            "Ref": "authleaseninjafrontendbc1d01ccbc1d01ccUserPoolId"
+                          },
+                          "-AdministratorsGroupRole"
+                        ]
+                    ]
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Federated": "cognito-identity.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRoleWithWebIdentity",
+                            "Condition": {
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authleaseninjafrontendbc1d01ccbc1d01ccIdentityPoolId"}},
+                              "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+     
+    
         "LandlordsGroup": {
           "Type" : "AWS::Cognito::UserPoolGroup",
           "Properties" : {
               "GroupName" : "Landlords",
-              "Precedence" : 1,
+              "Precedence" : 2,
               
               "RoleArn" : {
                 "Fn::GetAtt": [
@@ -99,7 +153,7 @@
           "Type" : "AWS::Cognito::UserPoolGroup",
           "Properties" : {
               "GroupName" : "Tenants",
-              "Precedence" : 2,
+              "Precedence" : 3,
               
               "RoleArn" : {
                 "Fn::GetAtt": [
@@ -348,6 +402,17 @@
     },
     
     "Outputs": {
+      
+        "AdministratorsGroupRole": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "AdministratorsGroupRole",
+                    "Arn"
+                ]
+            }
+         
+        },
+        
       
         "LandlordsGroupRole": {
             "Value": {
