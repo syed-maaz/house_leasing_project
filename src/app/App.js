@@ -10,13 +10,22 @@ import { Routes } from "../app/Routes";
 import { I18nProvider } from "../_metronic/i18n";
 import { LayoutSplashScreen, MaterialThemeProvider } from "../_metronic/layout";
 import Amplify, { Auth } from 'aws-amplify';
+import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import awsconfig from '../aws-exports';
 
 Amplify.configure(awsconfig);
 
 export default function App({ store, persistor, basename }) {
   return (
-    /* Provide Redux store */
+    <AmplifyAuthenticator usernameAlias="email" style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+      height: '100vh',
+      }}
+    >
+      {/* Provide Redux store */}
     <Provider store={store}>
       {/* Asynchronously persist redux stores and show `SplashScreen` while it's loading. */}
       <PersistGate persistor={persistor} loading={<LayoutSplashScreen />}>
@@ -36,5 +45,6 @@ export default function App({ store, persistor, basename }) {
         </React.Suspense>
       </PersistGate>
     </Provider>
+    </AmplifyAuthenticator>
   );
 }

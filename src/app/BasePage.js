@@ -38,11 +38,7 @@ export default function BasePage() {
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
-        {
-          /* Redirect from root URL to /dashboard. */
-          <Redirect exact from="/" to="/dashboard" />
-        }
-        <ContentRoute path="/dashboard" component={DashboardPage} />
+        <ContentRoute path="/" component={DashboardPage} />
         <ContentRoute path="/payments" component={PaymentsList} />
         <ContentRoute path="/payment/detail" component={PaymentDetailPage} />
         <ContentRoute
