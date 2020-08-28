@@ -70,7 +70,7 @@ export default function BasePage() {
         <ContentRoute path="/property/view" component={PropertyViewPage} />
         <ContentRoute path="/properties" component={PropertyListPage} />
 
-        <ContentRoute path="/unit/new" component={UnitCreatePage} />
+        <ContentRoute path="/unit/new/:propertyId" component={UnitCreatePage} />
         <ContentRoute path="/listing/new" component={ListingCreatePage} />
 
         <ContentRoute path="/user/new" component={NewUserDetailPage} />

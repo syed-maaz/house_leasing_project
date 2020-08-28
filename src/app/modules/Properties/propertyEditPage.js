@@ -6,9 +6,12 @@ import {
   updateProperty,
   deleteProperty,
 } from "./propertyCrud";
+
+import { createUnit } from "../unit/unitCrud";
+
 import { shallowEqual, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { Modal, Header, Title, Body, Footer, Button } from "react-bootstrap";
+
+import { Modal } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { MetronicSplashScreenContext } from "../../../_metronic/layout/_core/MetronicSplashScreen";
@@ -39,9 +42,11 @@ export const PropertyEditPage = (props) => {
   const [showPropertyTypePanel, setShowPropertyTypePanel] = useState(false);
   const [propertyTypes, setPropertyTypes] = useState([]);
   const [stateList, setStateList] = useState([]);
-  const [fileName, setFileName] = useState("");
+
   const [showSuccessBox, setShowSuccessBox] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [newUnitName, setNewUnitName] = useState("");
+  const [showUnitBox, setShowUnitBox] = useState(false);
 
   const { user } = useSelector(
     ({ auth }) => ({
@@ -77,10 +82,8 @@ export const PropertyEditPage = (props) => {
     })();
   }, []);
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShowUnitBox(false);
+  const handleShow = () => setShowUnitBox(true);
 
   const handlePropertySubmit = async (e) => {
     e.preventDefault();
@@ -103,7 +106,6 @@ export const PropertyEditPage = (props) => {
   const handlePropertyTypeSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("dsdsd");
     setShowSuccessBox(false);
     setShowSuccessBox(true);
   };
@@ -129,9 +131,24 @@ export const PropertyEditPage = (props) => {
     delete requestObject.unit;
 
     const response = await updateProperty(requestObject, propertyId, user.id);
-    console.log(response);
+
     if (response.status === 200) {
       history.push("/properties");
+    }
+  };
+
+  const handleUnitSave = async (e) => {
+    e.preventDefault();
+
+    const requestObject = {
+      unit_name: newUnitName,
+      property_id: propertyId,
+    };
+    const response = await createUnit(requestObject);
+
+    if (response.status === 200) {
+      console.log(response);
+      setShowUnitBox(false);
     }
   };
 
@@ -168,7 +185,7 @@ export const PropertyEditPage = (props) => {
                 <h4 className="m-0">
                   <img
                     src={toAbsoluteUrl("/media/svg/icons/Code/Loading.svg")}
-                  />{" "}
+                  />
                   Saving ...
                 </h4>
               </div>
@@ -311,12 +328,12 @@ export const PropertyEditPage = (props) => {
                             <div className="col-md-12">
                               <button
                                 type="submit"
-                                class="btn btn-light-primary font-weight-bold"
+                                className="btn btn-light-primary font-weight-bold"
                               >
                                 Save Address
                               </button>
                               <a
-                                class="btn btn-light-danger font-weight-bold ml-3"
+                                className="btn btn-light-danger font-weight-bold ml-3"
                                 onClick={(e) =>
                                   setShowEditAddressPanel(!showEditAddressPanel)
                                 }
@@ -373,12 +390,12 @@ export const PropertyEditPage = (props) => {
                             <div className="col-md-12">
                               <button
                                 type="submit"
-                                class="btn btn-light-primary font-weight-bold"
+                                className="btn btn-light-primary font-weight-bold"
                               >
                                 Save Type
                               </button>
                               <a
-                                class="btn btn-light-danger font-weight-bold ml-3"
+                                className="btn btn-light-danger font-weight-bold ml-3"
                                 onClick={(e) =>
                                   setShowPropertyTypePanel(
                                     !showPropertyTypePanel
@@ -413,16 +430,36 @@ export const PropertyEditPage = (props) => {
                               >
                                 Add Unit
                               </button>
-                              |
+                              {!!propertyDet.unit &&
+                              propertyDet.unit.toLowerCase() === "m" ? (
+                                <>
+                                  {" "}
+                                  |{" "}
+                                  <button
+                                    className="btn btn-link p-0 pb-2 pt-1"
+                                    onClick={(e) =>
+                                      history.push(
+                                        `/property/detail/${propertyId}#units`
+                                      )
+                                    }
+                                  >
+                                    View Unit
+                                  </button>
+                                </>
+                              ) : (
+                                ""
+                              )}
+
+                              {/* |
                               <button className="btn btn-link p-0 pb-2 pt-1">
                                 Move Unit
-                              </button>
+                              </button> */}
                             </div>
                           </div>
 
                           <div className="row">
                             <div className="col-md-6">
-                              <div class="form-check">
+                              <div className="form-check">
                                 <input
                                   name="formHorizontalRadios"
                                   type="radio"
@@ -431,7 +468,7 @@ export const PropertyEditPage = (props) => {
                                 />
                                 <label
                                   title=""
-                                  for="formfHorizontalRadios1"
+                                  htmlFor="formfHorizontalRadios1"
                                   className="form-check-label"
                                 >
                                   Rent
@@ -442,7 +479,6 @@ export const PropertyEditPage = (props) => {
                               <button
                                 type="button"
                                 className="btn btn-link p-0 pb-2 pt-1"
-                                onClick={handleShow}
                               >
                                 View Payment
                               </button>
@@ -460,7 +496,7 @@ export const PropertyEditPage = (props) => {
                                 />
                                 <label
                                   title=""
-                                  for="formHorizontalRadios2"
+                                  htmlFor="formHorizontalRadios2"
                                   className="form-check-label"
                                 >
                                   Listing
@@ -471,7 +507,6 @@ export const PropertyEditPage = (props) => {
                               <button
                                 type="button"
                                 className="btn btn-link p-0 pb-2 pt-1"
-                                onClick={handleShow}
                               >
                                 View Listing
                               </button>
@@ -482,7 +517,7 @@ export const PropertyEditPage = (props) => {
                       <div className="form-group row justify-content-end">
                         <button
                           type="button"
-                          class="btn btn-light-danger font-weight-bold"
+                          className="btn btn-light-danger font-weight-bold"
                           onClick={handleDeleteProperty}
                         >
                           Delete Property
@@ -496,39 +531,46 @@ export const PropertyEditPage = (props) => {
           </div>
         </div>
       </div>
-      <Modal show={show} onHide={handleClose}>
+
+      <Modal show={showUnitBox} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a new unit to NY-27</Modal.Title>
+          <Modal.Title>
+            Add a new unit to {copyPropertyDet.street_address}
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <div className="form-group row mb-0">
-            <div className="col-md-12">
-              <label>Unit Name</label>
-              <input
-                name="city"
-                type="text"
-                className="form-control"
-                placeholder="Apt, Suite, etc."
-              />
+        <form onSubmit={handleUnitSave}>
+          <Modal.Body>
+            <div className="form-group row mb-0">
+              <div className="col-md-12">
+                <label>Unit Name</label>
+                <input
+                  name="unit"
+                  type="text"
+                  className="form-control"
+                  placeholder="Apt, Suite, etc."
+                  onChange={(e) => {
+                    setNewUnitName(e.target.value);
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <button
-            type="button"
-            class="btn btn-light-primary font-weight-bold"
-            onClick={handleClose}
-          >
-            Save Changes
-          </button>
-          <button
-            type="button"
-            class="btn btn-light-danger font-weight-bold ml-3"
-            onClick={handleClose}
-          >
-            Close
-          </button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <button
+              type="submit"
+              className="btn btn-light-primary font-weight-bold"
+            >
+              Save Changes
+            </button>
+            <button
+              type="button"
+              className="btn btn-light-danger font-weight-bold ml-3"
+              onClick={handleClose}
+            >
+              Close
+            </button>
+          </Modal.Footer>
+        </form>
       </Modal>
     </>
   );

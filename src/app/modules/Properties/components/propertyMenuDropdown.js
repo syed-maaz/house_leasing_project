@@ -15,9 +15,15 @@ export const PropertyMenuDropdown = (props) => {
         <i className="ki ki-bold-more-hor" />
       </Dropdown.Toggle>
       <Dropdown.Menu className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-        <Dropdown.Item eventKey="1">Payment</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Listings</Dropdown.Item>
-        <Dropdown.Item eventKey="3">Applications</Dropdown.Item>
+        <Dropdown.Item tag="a" href={`/property/detail/${id}#payments`}>
+          Payment
+        </Dropdown.Item>
+        <Dropdown.Item tag="a" href={`/property/detail/${id}#listings`}>
+          Listings
+        </Dropdown.Item>
+        <Dropdown.Item tag="a" href={`/property/detail/${id}#applications`}>
+          Applications
+        </Dropdown.Item>
         <Dropdown.Item tag="a" href={`/property/edit/${id}`}>
           Edit Property
         </Dropdown.Item>

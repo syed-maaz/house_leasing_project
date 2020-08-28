@@ -10,19 +10,6 @@ export const PropertyCardComponent = (props) => {
   const [imageUrl, setImageUrl] = useState("");
   const [isImgLoaded, setImgLoaded] = useState(false);
 
-  //   useEffect(() => {
-  //     if (!!item.image_url && item.image_url !== "") {
-  //       (async () => {
-  //         const {
-  //           data: {
-  //             output: [file],
-  //           },
-  //         } = await getFileUrl(item.image_url);
-  //         setImageUrl(file.url);
-  //       })();
-  //     }
-  //   }, [item.image_url]);
-
   return (
     <>
       <div className="col-md-4" style={{ cursor: "pointer" }}>

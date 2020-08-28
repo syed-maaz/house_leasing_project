@@ -8,19 +8,6 @@ export const FileUploadComponent = (props) => {
 
   const { fileName, uploadedFileName } = props;
 
-  //   useEffect(() => {
-  //     if (fileName !== "") {
-  //       (async () => {
-  //         const {
-  //           data: {
-  //             output: [file],
-  //           },
-  //         } = await getFileUrl(fileName);
-  //         setUploadedPicture(file.url);
-  //       })();
-  //     }
-  //   }, [fileName]);
-
   const onImageChange = async (e) => {
     console.log(e.target.files);
 
@@ -60,7 +47,7 @@ export const FileUploadComponent = (props) => {
             </div>
           </div>
           <label
-            for="upload-pic"
+            htmlFor="upload-pic"
             className="col-md-12 col-form-label btn btn-default"
           >
             Upload Cover Picture
