@@ -41,6 +41,7 @@ export const PropertyDetailPage = (props) => {
       const {
         data: { output, message },
       } = await getPropertyById(propertyId, user.id);
+
       if (!output.length) {
         history.push("/properties");
       }
@@ -66,7 +67,7 @@ export const PropertyDetailPage = (props) => {
                 <div className="root d-flex">
                   <div className="d-flex flex-column flex-root mb-10">
                     <span className="font-weight-bold font-size-h4 text-dark-50">
-                      3302 Villa Dr, 1 Unit
+                      {propertyDet.address2}
                       <NavLink
                         className="btn btn-light-primary font-weight-bold ml-10"
                         to={`/property/edit/${propertyId}`}
@@ -110,7 +111,7 @@ export const PropertyDetailPage = (props) => {
                                 <div className="d-flex flex-column flex-root align-items-md-end">
                                   <a
                                     className="btn btn-light-primary font-weight-bold"
-                                    href="#"
+                                    href={`/property/${propertyId}/listing/new`}
                                   >
                                     Create a Listing
                                   </a>

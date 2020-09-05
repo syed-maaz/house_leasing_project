@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const BASE_API_URL = process.env.REACT_APP_API_URL;
-const END_POINT = "unit";
+const END_POINT = "listing";
 
 const API_URL = BASE_API_URL + END_POINT;
 
@@ -9,15 +9,7 @@ export function getAllPropertiesByUserId(userId) {
   return axios.get(API_URL + "?user_id=" + userId);
 }
 
-export function getUnitsByPropertyId(propId) {
-  return axios.get(API_URL + "?property_id=" + propId);
-}
-
-export function getUnitById(unit_id, propId) {
-  return axios.get(API_URL + "?property_id=" + propId + "&unit_id=" + unit_id);
-}
-
-export function createUnit(requestBody) {
+export function createListing(requestBody) {
   const config = {
     headers: {
       accept: "application/json",

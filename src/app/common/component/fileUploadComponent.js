@@ -8,6 +8,7 @@ export const FileUploadComponent = (props) => {
 
   const { fileName, uploadedFileName } = props;
 
+  console.log(fileName);
   const onImageChange = async (e) => {
     console.log(e.target.files);
 

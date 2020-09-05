@@ -2,13 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { useHistory } from "react-router-dom";
-import { FileUploadComponent } from "../../common/component/fileUploadComponent";
+
 import { MetronicSplashScreenContext } from "../../../_metronic/layout/_core/MetronicSplashScreen";
 
 import { getPropertyById } from "../Properties/propertyCrud";
+import { createUnit, getUnitById } from "./unitCrud";
 
 import { BasicFormComponent } from "./components/basicFormComponent";
 import { DetailsFormComponent } from "./components/detailsFormComponent";
+import { ReviewFormComponent } from "./components/reviewFormComponent";
+import { property } from "lodash";
 
 export const UnitCreatePage = (props) => {
   let history = useHistory();
@@ -18,7 +21,7 @@ export const UnitCreatePage = (props) => {
 
   const [fileName, setFileName] = useState("");
 
-  const propertyId = props.match.params.propertyId;
+  const { propertyId, unitId } = props.match.params;
 
   if (!propertyId) {
     history.push("/properties");
@@ -38,11 +41,49 @@ export const UnitCreatePage = (props) => {
       setPropertyDet(...propertyDet, output[0]);
       setSplashScreen(false);
     })();
-  }, [propertyId]);
+
+    (async () => {
+      if (unitId !== "new") {
+        const {
+          data: {
+            output: [unitDet],
+          },
+        } = await getUnitById(unitId, propertyId);
+
+        setUnitObj(unitDet);
+      }
+    })();
+  }, [propertyId, unitId]);
 
   const toNextStep = (values) => {
     setUnitObj({ ...unitObj, ...values });
     setFormStep(formStep + 1);
+  };
+
+  const handleSubmitUnit = async () => {
+    const requestObj = {};
+    unitObj.property_id = propertyId;
+
+    if (unitId !== "new") {
+      requestObj.unit_id = unitId;
+      requestObj.property_id = propertyId;
+      requestObj.updatedata = unitObj;
+    } else {
+      requestObj.createdata = unitObj;
+    }
+
+    const {
+      data: { output, status, message },
+    } = await createUnit(requestObj);
+
+    // console.log(output);
+    if (status === "Success") {
+      history.push(`/property/detail/${propertyId}`);
+    }
+  };
+
+  const toPreviousStep = () => {
+    setFormStep(formStep - 1);
   };
 
   return (
@@ -126,7 +167,10 @@ export const UnitCreatePage = (props) => {
                     data-wizard-type="step-content"
                     data-wizard-state={formStep === 1 ? "current" : ""}
                   >
-                    <BasicFormComponent toNextStep={toNextStep} />
+                    <BasicFormComponent
+                      toNextStep={toNextStep}
+                      unitObj={unitObj}
+                    />
                   </div>
 
                   {/* Details form */}
@@ -134,7 +178,11 @@ export const UnitCreatePage = (props) => {
                     data-wizard-type="step-content"
                     data-wizard-state={formStep === 2 ? "current" : ""}
                   >
-                    <DetailsFormComponent toNextStep={toNextStep} />
+                    <DetailsFormComponent
+                      toNextStep={toNextStep}
+                      unitObj={unitObj}
+                      toPreviousStep={toPreviousStep}
+                    />
                   </div>
 
                   {/* Review form */}
@@ -142,73 +190,12 @@ export const UnitCreatePage = (props) => {
                     data-wizard-type="step-content"
                     data-wizard-state={formStep === 3 ? "current" : ""}
                   >
-                    <h3 className="text-dark font-weight-bold text-center card-header pb-5 mb-5 pt-0">
-                      Basic Info
-                    </h3>
-                    <div className="form-group pt-3 mb-0">
-                      <div className="col-md-6 p-0">
-                        <FileUploadComponent
-                          fileName={fileName}
-                          uploadedFileName={setFileName}
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-xl-12">
-                        <div className="form-group">
-                          <label className="font-size-h5">House One</label>
-                          <p className="mb-0">3 Bed | 2 Full Bath</p>
-                          <p>1000 sq ft</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-xl-12">
-                        <div className="form-group">
-                          <label className="font-size-h5">Pet Policy</label>
-                          <ul>
-                            <li>Pet Allowed</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-xl-12">
-                        <div className="form-group">
-                          <label className="font-size-h5">
-                            Features and Amenities
-                          </label>
-                          <ul>
-                            <li className="pb-2">Washer (On Site)</li>
-                            <li className="pb-2">Dryer (On Site)</li>
-                            <li className="pb-2">
-                              Private Lot | Covered | For 2 cars
-                            </li>
-                            <li className="pb-2">Gym/Fitness Center</li>
-                            <li className="pb-2">Air Conditioning</li>
-                            <li className="pb-2">Dishwasher</li>
-                            <li className="pb-2">Storage</li>
-                            <li>Private | Patio | Garden</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-xl-12">
-                        <div className="form-group mb-0">
-                          <label className="font-size-h5">
-                            Other Amenities
-                          </label>
-                          <ul>
-                            <li className="pb-2">
-                              There is an acoustic isolated room for music
-                              studying and recordings.
-                            </li>
-                            <li>There is a tennis table on recreation area.</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                    <ReviewFormComponent
+                      unitDet={unitObj}
+                      propertyDet={propertyDet}
+                      toPreviousStep={toPreviousStep}
+                      submitUnit={handleSubmitUnit}
+                    />
                   </div>
                 </div>
               </div>

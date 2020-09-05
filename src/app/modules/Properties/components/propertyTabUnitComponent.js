@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from "../../../../_metronic/_helpers";
 
 import { ImageContainer } from "../../../common/component/imageContainerComponent";
 
-import { getUnitByPropertyId } from "../../unit/unitCrud";
+import { getUnitsByPropertyId } from "../../unit/unitCrud";
 
 export const PropertyTabUnitComponent = (props) => {
   const { propertyId } = props;
@@ -14,7 +14,7 @@ export const PropertyTabUnitComponent = (props) => {
     (async () => {
       const {
         data: { output, message },
-      } = await getUnitByPropertyId(propertyId);
+      } = await getUnitsByPropertyId(propertyId);
       setUnitList(...unitList, output);
     })();
   }, [propertyId]);
@@ -35,7 +35,7 @@ export const PropertyTabUnitComponent = (props) => {
                 <div className="d-flex flex-column flex-root align-items-md-end">
                   <a
                     className="btn btn-light-primary font-weight-bold"
-                    href={`/unit/new/${propertyId}`}
+                    href={`/property/${propertyId}/unit/new`}
                   >
                     New Unit
                   </a>
@@ -92,6 +92,7 @@ export const PropertyTabUnitComponent = (props) => {
                         <a
                           href="#"
                           className="btn btn-sm btn-light-primary font-weight-bolder text-uppercase"
+                          href={`/property/${propertyId}/unit/${unit.unit_id}`}
                         >
                           Edit
                         </a>

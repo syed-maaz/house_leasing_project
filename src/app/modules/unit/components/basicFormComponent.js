@@ -3,22 +3,15 @@ import { Formik, Field, Form } from "formik";
 
 import { FileUploadComponent } from "../../../common/component/fileUploadComponent";
 
-export const BasicFormComponent = ({ toNextStep }) => {
+export const BasicFormComponent = ({ toNextStep, unitObj }) => {
   const [fileName, setFileName] = useState("");
   return (
     <>
       <Formik
-        initialValues={{
-          unit_name: "",
-          lock_type: "",
-          bedroom: "",
-          lock_id: "",
-          full_bedroom: "",
-          half_bedroom: "",
-          sq_ft: "",
-        }}
+        initialValues={unitObj}
+        enableReinitialize={true}
         onSubmit={(values) => {
-          values.cover_image = fileName;
+          // values.cover_image = fileName;
           toNextStep(values);
         }}
       >
@@ -29,8 +22,10 @@ export const BasicFormComponent = ({ toNextStep }) => {
           <div className="form-group pt-3">
             <div className="col-md-6 p-0">
               <FileUploadComponent
-                fileName={fileName}
-                uploadedFileName={setFileName}
+                fileName={unitObj.cover_image}
+                uploadedFileName={(v) => {
+                  unitObj.cover_image = v;
+                }}
               />
             </div>
             <p>At least one photo is required.</p>
@@ -133,7 +128,7 @@ export const BasicFormComponent = ({ toNextStep }) => {
                 <Field
                   type="number"
                   className="form-control form-control-solid form-control-lg"
-                  name="full_bedroom"
+                  name="full_bathroom"
                   min="0"
                   max="10"
                 />
@@ -142,10 +137,10 @@ export const BasicFormComponent = ({ toNextStep }) => {
             <div className="col-xl-6">
               <div className="form-group">
                 <label>Half Bathrooms</label>
-                <input
+                <Field
                   type="number"
                   className="form-control form-control-solid form-control-lg"
-                  name="hald_bedroom"
+                  name="half_bathroom"
                   min="0"
                   max="10"
                 />
