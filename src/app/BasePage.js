@@ -38,43 +38,43 @@ export default function BasePage() {
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
-        <ContentRoute path="/" component={DashboardPage} />
-        <ContentRoute path="/payments" component={PaymentsList} />
-        <ContentRoute path="/payment/detail" component={PaymentDetailPage} />
-        <ContentRoute
+        <ContentRoute exact path="/" component={DashboardPage} />
+        <ContentRoute exact path="/payments" component={PaymentsList} />
+        <ContentRoute exact path="/payment/detail" component={PaymentDetailPage} />
+        <ContentRoute exact
           path="/payment/transactions"
           component={PaymentTransactionsPage}
         />
 
-        <ContentRoute path="/maintenance/new" component={NewMaintenance} />
-        <ContentRoute
+        <ContentRoute exact path="/maintenance/new" component={NewMaintenance} />
+        <ContentRoute exact
           path="/maintenance/detail"
           component={MaintenanceDetail}
         />
-        <ContentRoute path="/maintenance" component={MaintenanceList} />
+        <ContentRoute exact path="/maintenance" component={MaintenanceList} />
 
-        <ContentRoute path="/applicants" component={ApplicantListPages} />
+        <ContentRoute exact path="/applicants" component={ApplicantListPages} />
 
-        <ContentRoute path="/property/new" component={PropertyCreatePage} />
-        <ContentRoute
+        <ContentRoute exact path="/property/new" component={PropertyCreatePage} />
+        <ContentRoute exact
           path="/property/detail/:id"
           component={PropertyDetailPage}
         />
-        <ContentRoute path="/property/edit/:id" component={PropertyEditPage} />
-        <ContentRoute path="/property/view" component={PropertyViewPage} />
-        <ContentRoute path="/properties" component={PropertyListPage} />
+        <ContentRoute exact path="/property/edit/:id" component={PropertyEditPage} />
+        <ContentRoute exact path="/property/view" component={PropertyViewPage} />
+        <ContentRoute exact path="/properties" component={PropertyListPage} />
 
-        <ContentRoute path="/user/new" component={NewUserDetailPage} />
-        <ContentRoute
+        <ContentRoute exact path="/user/new" component={NewUserDetailPage} />
+        <ContentRoute exact
           path="/user/renter-profile"
           component={RenterProfilePage}
         />
 
-        <ContentRoute path="/builder" component={BuilderPage} />
-        <ContentRoute path="/my-page" component={MyPage} />
-        <Route path="/google-material" component={GoogleMaterialPage} />
-        <Route path="/react-bootstrap" component={ReactBootstrapPage} />
-        <Route path="/e-commerce" exact={true} component={ECommercePage} />
+        <ContentRoute exact path="/builder" component={BuilderPage} />
+        <ContentRoute exact path="/my-page" component={MyPage} />
+        <Route exact path="/google-material" component={GoogleMaterialPage} />
+        <Route exact path="/react-bootstrap" component={ReactBootstrapPage} />
+        <Route exact path="/e-commerce" exact={true} component={ECommercePage} />
         <Redirect to="error/error-v1" />
       </Switch>
     </Suspense>
