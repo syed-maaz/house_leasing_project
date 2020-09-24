@@ -39,6 +39,7 @@ export default function BasePage() {
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
         <ContentRoute exact path="/" component={DashboardPage} />
+        <ContentRoute exact path="/dashboard" component={DashboardPage} />
         <ContentRoute exact path="/payments" component={PaymentsList} />
         <ContentRoute
           exact
@@ -101,7 +102,6 @@ export default function BasePage() {
         <Route
           exact
           path="/e-commerce"
-          exact={true}
           component={ECommercePage}
         />
         <Redirect to="error/error-v1" />

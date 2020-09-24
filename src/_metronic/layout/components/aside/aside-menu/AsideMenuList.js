@@ -83,7 +83,7 @@ export function AsideMenuList({ layoutProps }) {
                 src={toAbsoluteUrl("/media/svg/icons/Communication/Group.svg")}
               />
             </span>
-            <span className="menu-text">TENATS</span>
+            <span className="menu-text">TENANTS</span>
           </NavLink>
         </li>
 
