@@ -5,7 +5,7 @@ import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router";
 
-export const PropertyDetailPage = (props) => {
+export const PropertyDetailPage = props => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Property Detail");
 

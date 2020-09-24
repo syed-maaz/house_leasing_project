@@ -5,22 +5,22 @@ import { toAbsoluteUrl } from "../../_metronic/_helpers";
 
 const cardStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 275
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)",
+    transform: "scale(0.8)"
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 12
   },
   rowTopMargin: {
-    marginTop: 5,
-  },
+    marginTop: 5
+  }
 });
 
 export function DashboardPage() {

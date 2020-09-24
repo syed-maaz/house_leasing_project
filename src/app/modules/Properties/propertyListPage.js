@@ -18,20 +18,21 @@ export const PropertyListPage = () => {
 
   const { user } = useSelector(
     ({ auth }) => ({
-      user: auth.user,
+      user: auth.user
     }),
     shallowEqual
   );
 
   useEffect(() => {
-    // code to run on component mount
-    (async () => {
-      const {
-        data: { output },
-      } = await getAllPropertiesByUserId(user.id);
-
-      setProperties(...properties, output);
-    })();
+    if (user) {
+      (async () => {
+        const {
+          data: { output }
+        } = await getAllPropertiesByUserId(user.id);
+  
+        setProperties(...properties, output);
+      })();
+    }
   }, [user]);
 
   useEffect(() => {

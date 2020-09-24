@@ -106,7 +106,7 @@ export const NewUserDetailPage = () => {
                     className="w-100 image-input image-input-empty image-input-outline pl-15 pr-15"
                     id="kt_image_5"
                     style={{
-                      backgroundImage: "url(assets/media/users/blank.png)",
+                      backgroundImage: "url(assets/media/users/blank.png)"
                     }}
                   >
                     <div
@@ -117,9 +117,7 @@ export const NewUserDetailPage = () => {
                 </div>
                 <div className="row pt-5">
                   <div className="col-md-12 d-flex justify-content-center">
-                    <button className="btn btn-default">
-                      Select Image
-                    </button>
+                    <button className="btn btn-default">Select Image</button>
                   </div>
                 </div>
               </div>

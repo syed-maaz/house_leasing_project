@@ -47,12 +47,12 @@ export function LayoutSplashScreen({ visible = true }) {
       return;
     }
 
-    setCount((prev) => {
+    setCount(prev => {
       return prev + 1;
     });
 
     return () => {
-      setCount((prev) => {
+      setCount(prev => {
         return prev - 1;
       });
     };

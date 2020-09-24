@@ -7,7 +7,7 @@ import { toAbsoluteUrl, checkIsActive } from "../../../../_helpers";
 
 export function AsideMenuList({ layoutProps }) {
   const location = useLocation();
-  const getMenuItemActive = (url) => {
+  const getMenuItemActive = url => {
     return checkIsActive(location, url)
       ? " menu-item-active menu-item-open "
       : "";

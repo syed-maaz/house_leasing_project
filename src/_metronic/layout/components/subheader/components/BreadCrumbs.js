@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export function BreadCrumbs({items}) {
+export function BreadCrumbs({ items }) {
   if (!items || !items.length) {
-      return "";
+    return "";
   }
 
   return (

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getFileUrl, uploadImage } from "../../common/crud/fileUploadCrud";
 import { ImageContainer } from "./imageContainerComponent";
 
-export const FileUploadComponent = (props) => {
+export const FileUploadComponent = props => {
   const [uploadedPicture, setUploadedPicture] = useState("");
 
   const { fileName, uploadedFileName } = props;
@@ -21,7 +21,7 @@ export const FileUploadComponent = (props) => {
   //     }
   //   }, [fileName]);
 
-  const onImageChange = async (e) => {
+  const onImageChange = async e => {
     console.log(e.target.files);
 
     if (e.target.files && e.target.files[0]) {
@@ -31,8 +31,8 @@ export const FileUploadComponent = (props) => {
 
       const {
         data: {
-          output: [fileDet],
-        },
+          output: [fileDet]
+        }
       } = await getFileUrl();
 
       console.log(fileDet);

@@ -23,7 +23,7 @@ export function HeaderMenuWrapper() {
       headerSelfTheme: objectPath.get(uiService.config, "header.self.theme"),
       ulClasses: uiService.getClasses("header_menu_nav", true),
       disabledAsideSelfDisplay:
-        objectPath.get(uiService.config, "aside.self.display") === false,
+        objectPath.get(uiService.config, "aside.self.display") === false
     };
   }, [uiService]);
   const getHeaderLogo = () => {

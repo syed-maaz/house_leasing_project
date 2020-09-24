@@ -14,7 +14,7 @@ export function login(email, password) {
   return new Promise((resolve, reject) => {
     if (email && password) {
       const user = userTableMock.find(
-        (x) =>
+        x =>
           x.email.toLowerCase() === email.toLowerCase() &&
           x.password === password
       );

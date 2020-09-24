@@ -2,15 +2,19 @@
 "use strict";
 // DOCS: https://javascript.info/cookie
 
-// Component Definition 
-export var KTCookie = function() {
+// Component Definition
+export var KTCookie = (function() {
   return {
     // returns the cookie with the given name,
     // or undefined if not found
     getCookie: function(name) {
-      var matches = document.cookie.match(new RegExp(
-        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-      ));
+      var matches = document.cookie.match(
+        new RegExp(
+          "(?:^|; )" +
+            name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+            "=([^;]*)"
+        )
+      );
       return matches ? decodeURIComponent(matches[1]) : undefined;
     },
     // Please note that a cookie value is encoded,
@@ -20,13 +24,14 @@ export var KTCookie = function() {
         options = {};
       }
 
-      options = Object.assign({}, {path: '/'}, options);
+      options = Object.assign({}, { path: "/" }, options);
 
       if (options.expires instanceof Date) {
         options.expires = options.expires.toUTCString();
       }
 
-      var updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+      var updatedCookie =
+        encodeURIComponent(name) + "=" + encodeURIComponent(value);
 
       for (var optionKey in options) {
         if (!options.hasOwnProperty(optionKey)) {
@@ -44,13 +49,13 @@ export var KTCookie = function() {
     // To delete a cookie, we can call it with a negative expiration date:
     deleteCookie: function(name) {
       setCookie(name, "", {
-        'max-age': -1
-      })
+        "max-age": -1
+      });
     }
-  }
-}();
+  };
+})();
 
 // webpack support
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== "undefined" && typeof module.exports !== "undefined") {
   // module.exports = KTCookie;
 }

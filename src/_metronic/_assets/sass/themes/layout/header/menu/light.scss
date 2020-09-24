@@ -9,4 +9,7 @@
 @include menu-hor-build-theme(get($header-menu-config, desktop), light);
 
 // Build Mobile Header Menu Theme
-@include menu-ver-build-theme(get($header-menu-config, tablet-and-mobile), light);
+@include menu-ver-build-theme(
+  get($header-menu-config, tablet-and-mobile),
+  light
+);

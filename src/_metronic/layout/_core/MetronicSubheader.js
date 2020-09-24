@@ -1,4 +1,4 @@
-import React, {createContext, useState, useContext} from "react";
+import React, { createContext, useState, useContext } from "react";
 
 export function getBreadcrumbsAndTitle(menuId, pathName) {
   const result = {
@@ -10,8 +10,9 @@ export function getBreadcrumbsAndTitle(menuId, pathName) {
     return result;
   }
 
-
-  const activeLinksArray = Array.from(menu.getElementsByClassName("active") || []);
+  const activeLinksArray = Array.from(
+    menu.getElementsByClassName("active") || []
+  );
   const activeLinks = activeLinksArray.filter(el => el.tagName === "A");
   if (!activeLinks) {
     return result;
@@ -22,12 +23,10 @@ export function getBreadcrumbsAndTitle(menuId, pathName) {
     if (titleSpans) {
       const titleSpan = Array.from(titleSpans).find(t => t.innerHTML);
       if (titleSpan) {
-        result.breadcrumbs.push(
-            {
-              pathname: link.pathname,
-              title: titleSpan.innerHTML
-            }
-        );
+        result.breadcrumbs.push({
+          pathname: link.pathname,
+          title: titleSpan.innerHTML
+        });
       }
     }
   });
@@ -42,10 +41,10 @@ export function getTitle(breadCrumbs, pathname) {
 
   const item = breadCrumbs.find(b => b.pathname === pathname);
   if (!item) {
-    return  "";
+    return "";
   }
 
-  return  item.title;
+  return item.title;
 }
 
 const SubheaderContext = createContext();
@@ -60,5 +59,9 @@ export function MetronicSubheaderProvider({ children }) {
   const [title, setTitle] = useState("");
   const [breadcrumbs, setBreadcrumbs] = useState([]);
   const value = { title, setTitle, breadcrumbs, setBreadcrumbs };
-  return <SubheaderContext.Provider value={value}>{children}</SubheaderContext.Provider>;
+  return (
+    <SubheaderContext.Provider value={value}>
+      {children}
+    </SubheaderContext.Provider>
+  );
 }

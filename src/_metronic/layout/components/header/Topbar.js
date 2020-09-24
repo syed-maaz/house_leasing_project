@@ -30,14 +30,12 @@ export function Topbar() {
         uiService.config,
         "extras.languages.display"
       ),
-      viewUserDisplay: objectPath.get(uiService.config, "extras.user.display"),
+      viewUserDisplay: objectPath.get(uiService.config, "extras.user.display")
     };
   }, [uiService]);
 
   return (
     <div className="topbar">
-
-
       {layoutProps.viewLanguagesDisplay && <LanguageSelectorDropdown />}
 
       {layoutProps.viewUserDisplay && <QuickUserToggler />}

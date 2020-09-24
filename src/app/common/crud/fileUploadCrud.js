@@ -17,8 +17,8 @@ export function uploadImage(fileData, uploadUrl) {
   console.log(fileData);
   const config = {
     headers: {
-      "Content-Type": fileData.type,
-    },
+      "Content-Type": fileData.type
+    }
   };
 
   return axios.put(uploadUrl, fileData, config);

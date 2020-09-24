@@ -8,7 +8,7 @@ export function ContentRoute(arqs) {
   console.log(children);
   return (
     <Route {...props}>
-      {(routeProps) => {
+      {routeProps => {
         console.log(routeProps);
         if (typeof children === "function") {
           return <Content>{children(routeProps)}</Content>;
