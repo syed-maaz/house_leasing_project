@@ -53,12 +53,23 @@ export const MaintenanceDetail = ({ match }) => {
   };
 
 
-  const getFromComment = (html, name) => {
-    const holder = document.createElement('div')
-    holder.innerHTML = html
-    const el = holder.querySelector(`#${name}`)
-    if (!el) return ''
-    return el.innerText
+  const getFromComment = (reply, name) => {
+    console.log(reply)
+    if (reply.body.includes(`id="${name}`)) {
+      const holder = document.createElement('div')
+      holder.innerHTML = reply.body
+      const el = holder.querySelector(`#${name}`)
+      if (!el) return ''
+      return el.innerText
+    }
+
+    if (name === 'email') {
+      return reply.from_email
+    }
+
+    if (name === 'text') {
+      return reply.body_text
+    }
   }
 
   const addComment = e => {
@@ -199,7 +210,7 @@ export const MaintenanceDetail = ({ match }) => {
               }
 
               {/* Chat Table */}
-              <div className="col-md-12 d-flex justify-content-end mt-10">
+              <div className="col-md-12 mt-10">
                 {
                   Object.keys(groupedRepliesByDate).map(date => {
                     const replies = groupedRepliesByDate[date]
@@ -230,7 +241,7 @@ export const MaintenanceDetail = ({ match }) => {
                             <tr key={reply.id}>
                               <td
                                 className={
-                                  getFromComment(reply.body, 'email').email ===
+                                  getFromComment(reply, 'email').email ===
                                     currentUser.attributes.email
                                     ? "active"
                                     : ""
@@ -254,7 +265,7 @@ export const MaintenanceDetail = ({ match }) => {
                                         href={() => false}
                                         className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-h3 "
                                       >
-                                        {getFromComment(reply.body, 'email')}
+                                        {getFromComment(reply, 'email')}
                                       </a>
                                       <span>
                                         {format(new Date(reply.created_at), "HH:MM a")}
@@ -262,7 +273,7 @@ export const MaintenanceDetail = ({ match }) => {
                                     </span>
 
                                     <p className="text-muted font-weight-bold">
-                                      {getFromComment(reply.body, 'text')}
+                                      {getFromComment(reply, 'text')}
                                     </p>
                                     <div className="reply-attachements">
                                       {reply.attachments.map(attachment => {
