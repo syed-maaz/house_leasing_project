@@ -161,7 +161,11 @@ export const MaintenanceDetail = () => {
               {/* Chat Table */}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <div className="col-md-12 mt-10">
+=======
+              <div className="col-md-12 d-flex justify-content-end mt-10">
+>>>>>>> parent of d0be4f3... fix replies body and grid
 =======
               <div className="col-md-12 d-flex justify-content-end mt-10">
 >>>>>>> parent of d0be4f3... fix replies body and grid
