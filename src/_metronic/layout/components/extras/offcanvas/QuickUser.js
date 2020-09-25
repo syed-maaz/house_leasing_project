@@ -6,7 +6,7 @@ import {toAbsoluteUrl} from "../../../../_helpers";
 
 export function QuickUser() {
   const history = useHistory();
-
+/*
   const logoutClick = () => {
       const toggle = document.getElementById("kt_quick_user_toggle");
       if (toggle) {
@@ -14,7 +14,7 @@ export function QuickUser() {
       }
       history.push("/logout");
   };
-
+*/
   return (
       <div id="kt_quick_user" className="offcanvas offcanvas-right offcanvas p-10">
         <div className="offcanvas-header d-flex align-items-center justify-content-between pb-5">
@@ -74,7 +74,7 @@ export function QuickUser() {
               {/* <Link to="/logout" className="btn btn-light-primary btn-bold">
                 Sign Out
               </Link> */}
-              <button className="btn btn-light-primary btn-bold" onClick={logoutClick}>Sign out</button>
+              <button className="btn btn-light-primary btn-bold">Sign out</button>
             </div>
           </div>
 
