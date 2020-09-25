@@ -43,21 +43,15 @@ export const PropertyViewPage = () => {
                   <div className="d-flex flex-column mb-10 mb-md-0 text-md-left">
                     <h5>35 W 51st, Unit 1</h5>
                     <h5>Chattanooga, TN</h5>
-                    <h3 className="font-weight-bold mt-10">
-                      $1000.00 <span className="font-size-h6">/month</span>
-                    </h3>
+                    <h3 className="font-weight-bold mt-10">$1000.00 <span className="font-size-h6">/month</span></h3>
                   </div>
 
                   <div className="d-flex flex-column text-md-right">
                     <h5>3 Bed | 4 Full Half Bath | 500 sq ft</h5>
                     <h6>Dormitory | Cats and dogs are OK</h6>
                     <div className="mt-10">
-                      <button type="button" class="btn btn-light-primary mr-5">
-                        See more by this lordland
-                      </button>
-                      <button type="button" class="btn btn-light-primary">
-                        Share Listing
-                      </button>
+                      <button type="button" class="btn btn-light-primary mr-5">See more by this lordland</button>
+                      <button type="button" class="btn btn-light-primary">Share Listing</button>
                     </div>
                   </div>
                 </div>
@@ -69,10 +63,7 @@ export const PropertyViewPage = () => {
                   <div className="d-flex flex-column mb-10 mb-md-0 text-md-left">
                     <h3>Great House</h3>
                     <h5 className="mt-6">Move-in Details</h5>
-                    <p>
-                      Security Deposit:{" "}
-                      <span className="font-weight-bold">$500.00</span>
-                    </p>
+                    <p>Security Deposit: <span className="font-weight-bold">$500.00</span></p>
                   </div>
 
                   <div className="d-flex flex-column text-md-right">
@@ -119,12 +110,8 @@ export const PropertyViewPage = () => {
               <div className="col-md-9">
                 <div className="text-right">
                   <div className="mt-10">
-                    <button type="button" class="btn btn-light-primary mr-5">
-                      Schedule Tour
-                    </button>
-                    <button type="button" class="btn btn-light-primary">
-                      Apply Now
-                    </button>
+                    <button type="button" class="btn btn-light-primary mr-5">Schedule Tour</button>
+                    <button type="button" class="btn btn-light-primary">Apply Now</button>
                   </div>
                 </div>
               </div>

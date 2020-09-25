@@ -41,56 +41,32 @@ export default function BasePage() {
         <ContentRoute exact path="/" component={DashboardPage} />
         <ContentRoute exact path="/dashboard" component={DashboardPage} />
         <ContentRoute exact path="/payments" component={PaymentsList} />
-        <ContentRoute
-          exact
-          path="/payment/detail"
-          component={PaymentDetailPage}
-        />
-        <ContentRoute
-          exact
+        <ContentRoute exact path="/payment/detail" component={PaymentDetailPage} />
+        <ContentRoute exact
           path="/payment/transactions"
           component={PaymentTransactionsPage}
         />
 
-        <ContentRoute
-          exact
-          path="/maintenance/new"
-          component={NewMaintenance}
-        />
-        <ContentRoute
-          exact
-          path="/maintenance/detail/:id"
+        <ContentRoute exact path="/maintenance/new" component={NewMaintenance} />
+        <ContentRoute exact
+          path="/maintenance/detail"
           component={MaintenanceDetail}
         />
         <ContentRoute exact path="/maintenance" component={MaintenanceList} />
 
         <ContentRoute exact path="/applicants" component={ApplicantListPages} />
 
-        <ContentRoute
-          exact
-          path="/property/new"
-          component={PropertyCreatePage}
-        />
-        <ContentRoute
-          exact
+        <ContentRoute exact path="/property/new" component={PropertyCreatePage} />
+        <ContentRoute exact
           path="/property/detail/:id"
           component={PropertyDetailPage}
         />
-        <ContentRoute
-          exact
-          path="/property/edit/:id"
-          component={PropertyEditPage}
-        />
-        <ContentRoute
-          exact
-          path="/property/view"
-          component={PropertyViewPage}
-        />
+        <ContentRoute exact path="/property/edit/:id" component={PropertyEditPage} />
+        <ContentRoute exact path="/property/view" component={PropertyViewPage} />
         <ContentRoute exact path="/properties" component={PropertyListPage} />
 
         <ContentRoute exact path="/user/new" component={NewUserDetailPage} />
-        <ContentRoute
-          exact
+        <ContentRoute exact
           path="/user/renter-profile"
           component={RenterProfilePage}
         />
@@ -99,11 +75,15 @@ export default function BasePage() {
         <ContentRoute exact path="/my-page" component={MyPage} />
         <Route exact path="/google-material" component={GoogleMaterialPage} />
         <Route exact path="/react-bootstrap" component={ReactBootstrapPage} />
+<<<<<<< HEAD
         <Route
           exact
           path="/e-commerce"
           component={ECommercePage}
         />
+=======
+        <Route exact path="/e-commerce" exact={true} component={ECommercePage} />
+>>>>>>> parent of ae009ab... maintanance: add ticket, reply, list open and closed ..
         <Redirect to="error/error-v1" />
       </Switch>
     </Suspense>

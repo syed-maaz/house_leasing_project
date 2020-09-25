@@ -7,8 +7,8 @@ import { useCustomersUIContext } from "../CustomersUIContext";
 
 const selectedCustomers = (entities, ids) => {
   const _customers = [];
-  ids.forEach(id => {
-    const customer = entities.find(el => el.id === id);
+  ids.forEach((id) => {
+    const customer = entities.find((el) => el.id === id);
     if (customer) {
       _customers.push(customer);
     }
@@ -23,18 +23,18 @@ export function CustomersUpdateStateDialog({ show, onHide }) {
     return {
       ids: customersUIContext.ids,
       setIds: customersUIContext.setIds,
-      queryParams: customersUIContext.queryParams
+      queryParams: customersUIContext.queryParams,
     };
   }, [customersUIContext]);
 
   // Customers Redux state
   const { customers, isLoading } = useSelector(
-    state => ({
+    (state) => ({
       customers: selectedCustomers(
         state.customers.entities,
         customersUIProps.ids
       ),
-      isLoading: state.customers.actionsLoading
+      isLoading: state.customers.actionsLoading,
     }),
     shallowEqual
   );
@@ -88,7 +88,7 @@ export function CustomersUpdateStateDialog({ show, onHide }) {
         {/*end::Loading*/}
 
         <div className="timeline timeline-5 mt-3">
-          {customers.map(customer => (
+          {customers.map((customer) => (
             <div
               className="timeline-item align-items-start"
               key={`customersUpdate${customer.id}`}
@@ -122,7 +122,7 @@ export function CustomersUpdateStateDialog({ show, onHide }) {
           <select
             className="form-control"
             value={status}
-            onChange={e => setStatus(+e.target.value)}
+            onChange={(e) => setStatus(+e.target.value)}
           >
             <option value="0">Suspended</option>
             <option value="1">Active</option>

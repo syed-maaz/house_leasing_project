@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 import { NavLink } from "react-router-dom";
 import SVG from "react-inlinesvg";
-import { addReply, closeTicket, getReplies, getTicket } from "../../common/crud/freshdesk";
-import { format, isToday, isYesterday } from "date-fns";
 
 import {
   Form,
@@ -14,12 +12,11 @@ import {
   ControlLabel,
   File
 } from "react-bootstrap";
-import { shallowEqual, useSelector } from "react-redux";
-import { Auth } from "aws-amplify";
 
-export const MaintenanceDetail = ({ match }) => {
+export const MaintenanceDetail = () => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("LeaseNinja | New Maintenance Request");
+<<<<<<< HEAD
   const fileRef = useRef(null);
   const [commentData, setCommentData] = useState({});
   const [currentUser, setCurrentUser] = useState({});
@@ -137,6 +134,8 @@ export const MaintenanceDetail = ({ match }) => {
       setFilesPreviews([...filesPreviews, ...previews])
     })
   }
+=======
+>>>>>>> parent of ae009ab... maintanance: add ticket, reply, list open and closed ..
 
   return (
     <>
@@ -154,62 +153,24 @@ export const MaintenanceDetail = ({ match }) => {
           <div className="card-body">
             <div className="row justify-content-center">
               <div className="col-md-12 d-flex justify-content-between">
-                <span className="d-flex flex-column flex-root text-dark">
-                  <span className="font-weight-bolder m-0 font-size-h4">
-                    {ticket.subject}
-                  </span>
-                  <span className="d-flex flex-column flex-root text-dark mb-20">
-                    Created On{" "}
-                    {format(new Date(ticket.created_at), "MMM dd, yyyy")}{" "}
-                      By {ticket.requester.name}
-                  </span>
-                  <span className="d-flex">
-                    <span className="d-flex flex-column font-size-h4">
-                      Waiting for tenant
-                    </span>
-                    <span className="d-flex flex-column ml-10">
-                      <span className="m-0 font-size-h4">{ticket.custom_fields.cf_location_address}</span>
-                      <span className="mb-6">Unit {ticket.custom_fields.cf_location_unit}</span>
-                    </span>
-                  </span>
-                </span>
+                <span className="d-flex flex-column flex-root font-weight-bolder text-dark font-size-h3"></span>
                 <span className="d-flex flex-column flex-root text-right">
-                  <p className="mb-6">
-                    <h3>
-                      <span className={"badge badge-pill " + (ticket.status === 2 ? "badge-light" : "badge-danger")}>
-                        <span className="font-weight-normal">Status: </span>
-                        <span className="font-weight-bolder">{ticket.status === 2 ? 'Open' : 'Closed'}</span>
-                      </span>
-                    </h3>
-                  </p>
-
+                  <p className="font-weight-bolder m-0 font-size-h5">Jerry Mattedi</p>
+                  <p className="mb-6">Tenant</p>
+                  <p className="m-0">302 Villa De</p>
+                  <p className="mb-6">Unit 2</p>
                 </span>
               </div>
-
-              {
-                ticket.attachments.length > 0 &&
-                <div className="mb-6 ml-5 w-100">
-                  <h5>Attachments</h5>
-                  <span className="d-flex flex-start">
-                    {
-                      ticket.attachments.map(attachment => {
-                        return <div>
-                          <a
-                            key={attachment.id}
-                            href={attachment.attachment_url}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            <img alt={attachment.name} src={attachment.attachment_url} className="img-thumbnail rounded mr-10" style={{ height: '100px' }} />
-                          </a>
-                        </div>
-                      })
-                    }
-                  </span>
-                </div>
-              }
-
+              <div className="col-md-12 d-flex justify-content-end ">
+                <NavLink
+                  className="d-flex btn btn-light-primary font-weight-bold flex-end"
+                  to="/maintenance/new"
+                >
+                  Send To Vendor
+                </NavLink>
+              </div>
               {/* Chat Table */}
+<<<<<<< HEAD
               <div className="col-md-12 mt-10">
                 {
                   Object.keys(groupedRepliesByDate).map(date => {
@@ -301,75 +262,131 @@ export const MaintenanceDetail = ({ match }) => {
 
                   })
                 }
+=======
+              <div className="col-md-12 d-flex justify-content-end mt-10">
+                <table className="table table-head-custom table-head-bg table-bordered table-hover table-vertical-center">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="symbol symbol-50 symbol-light mr-4">
+                            <span className="symbol-label">
+                              <span className="svg-icon h-75 align-self-end">
+                                <SVG
+                                  src={toAbsoluteUrl(
+                                    "/media/svg/avatars/001-boy.svg"
+                                  )}
+                                />
+                              </span>
+                            </span>
+                          </div>
+                          <div>
+                            <a
+                              href={() => false}
+                              className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-h3 "
+                            >
+                              Brad Simmons
+                            </a>
+                            <p className="text-muted font-weight-bold">
+                              Hello I have a problem
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="symbol symbol-50 symbol-light mr-4">
+                            <span className="symbol-label">
+                              <span className="svg-icon h-75 align-self-end">
+                                <SVG
+                                  src={toAbsoluteUrl(
+                                    "/media/svg/avatars/001-boy.svg"
+                                  )}
+                                />
+                              </span>
+                            </span>
+                          </div>
+                          <div>
+                            <a
+                              href={() => false}
+                              className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-h3 "
+                            >
+                              Jimmy
+                            </a>
+                            <p className="text-muted font-weight-bold">
+                              What Problem
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <div className="symbol symbol-50 symbol-light mr-4">
+                            <span className="symbol-label">
+                              <span className="svg-icon h-75 align-self-end">
+                                <SVG
+                                  src={toAbsoluteUrl(
+                                    "/media/svg/avatars/001-boy.svg"
+                                  )}
+                                />
+                              </span>
+                            </span>
+                          </div>
+                          <div>
+                            <a
+                              href={() => false}
+                              className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-h3 "
+                            >
+                              Brad Simmons
+                            </a>
+                            <p className="text-muted font-weight-bold">
+                              There is water leakage
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+>>>>>>> parent of ae009ab... maintanance: add ticket, reply, list open and closed ..
               </div>
               <div className="row col-md-12 justify-content-center mt-10 p-0">
                 <Form className="col-md-12">
-                  {
-                    ticket.status !== 5 &&
-                    <Form.Group controlId="formGroupEmail">
-                      <Form.Label>Add Comment</Form.Label>
-                      <Form.Control
-                        name="comment"
-                        onChange={handleCommentChange}
-                        as="textarea"
-                        value={commentData.comment || ''}
-                      />
-                      <div class="d-flex mt-5">
-                        {
-                          filesPreviews.map(filePreview => {
-                            return <div>
-                              <img alt="preview" src={filePreview} className="img-thumbnail rounded mr-10" style={{ height: '100px' }} />
-                            </div>
-                          })
-                        }
-                      </div>
-                    </Form.Group>
-                  }
-
+                  <Form.Group controlId="formGroupEmail">
+                    <Form.Label>Add Comment</Form.Label>
+                    <Form.Control as="textarea" />
+                  </Form.Group>
                   <div className="d-flex mt-5">
                     <span className="d-flex flex-root flex-column font-weight-bold">
-                      {
-                        ticket.status !== 5 &&
-                        <Form.Group>
-                          <Form.File
-                            ref={fileRef}
-                            onChange={handleFileChange}
-                            id="exampleFormControlFile1"
-                            label="Add photos, video, or files"
-                            multiple
-                          />
-                        </Form.Group>
-                      }
-
+                      <Form.Group>
+                        <Form.File id="exampleFormControlFile1" label="Add photos, video, or files" />
+                      </Form.Group>
                     </span>
                     <span className="d-flex flex-root flex-column justify-content-end">
                       <div className="col-md-12 d-flex justify-content-end pr-0">
                         <div className="float-right">
                           <NavLink
-                            className="btn btn-light font-weight-bold2"
+                            className="btn btn-light-danger font-weight-bold2"
                             to=""
-                            onClick={handleCloseTicket}
                           >
-                            {ticket.status === 5 ? 'Move to open request' : 'Close Ticket'}
+                            Close Ticket
                           </NavLink>
-                          {
-                            ticket.status !== 5 &&
-                            <NavLink
-                              className="btn btn-light-primary font-weight-bold flex-end ml-3"
-                              to=""
-                              onClick={addComment}
-                              disabled={!loadingAddComment ? 'disabled' : false}
-                            >
-                              {loadingAddComment ? '...' : 'Add Comment'}
-                            </NavLink>
-                          }
+                          <NavLink
+                            className="btn btn-light-primary font-weight-bold flex-end ml-3"
+                            to=""
+                          >
+                            Add Comment
+                          </NavLink>
                         </div>
                       </div>
                     </span>
                   </div>
                 </Form>
               </div>
-
             </div>
           </div>
         </div>

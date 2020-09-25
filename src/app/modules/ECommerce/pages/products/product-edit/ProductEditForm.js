@@ -10,7 +10,7 @@ import {
   AVAILABLE_COLORS,
   AVAILABLE_MANUFACTURES,
   ProductStatusTitles,
-  ProductConditionTitles
+  ProductConditionTitles,
 } from "../ProductsUIHelpers";
 
 // Validation schema
@@ -36,17 +36,21 @@ const ProductEditSchema = Yup.object().shape({
     .min(1, "$1 is minimum")
     .max(1000000, "$1000000 is maximum")
     .required("Price is required"),
-  VINCode: Yup.string().required("VINCode is required")
+  VINCode: Yup.string().required("VINCode is required"),
 });
 
-export function ProductEditForm({ product, btnRef, saveProduct }) {
+export function ProductEditForm({
+  product,
+  btnRef,
+  saveProduct,
+}) {
   return (
     <>
       <Formik
         enableReinitialize={true}
         initialValues={product}
         validationSchema={ProductEditSchema}
-        onSubmit={values => {
+        onSubmit={(values) => {
           saveProduct(values);
         }}
       >
@@ -64,7 +68,7 @@ export function ProductEditForm({ product, btnRef, saveProduct }) {
                 </div>
                 <div className="col-lg-4">
                   <Select name="manufacture" label="Color">
-                    {AVAILABLE_MANUFACTURES.map(manufacture => (
+                    {AVAILABLE_MANUFACTURES.map((manufacture) => (
                       <option key={manufacture} value={manufacture}>
                         {manufacture}
                       </option>
@@ -93,7 +97,7 @@ export function ProductEditForm({ product, btnRef, saveProduct }) {
                 </div>
                 <div className="col-lg-4">
                   <Select name="color" label="Color">
-                    {AVAILABLE_COLORS.map(color => (
+                    {AVAILABLE_COLORS.map((color) => (
                       <option key={color} value={color}>
                         {color}
                       </option>

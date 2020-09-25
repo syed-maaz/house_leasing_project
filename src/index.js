@@ -22,7 +22,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {
   MetronicLayoutProvider,
   MetronicSplashScreenProvider,
-  MetronicSubheaderProvider
+  MetronicSubheaderProvider,
 } from "./_metronic/layout";
 import { MetronicI18nProvider } from "./_metronic/i18n";
 

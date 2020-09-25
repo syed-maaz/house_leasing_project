@@ -8,7 +8,7 @@ export function getInitLayoutConfig() {
         md: "768",
         lg: "992",
         xl: "1200",
-        xxl: "1200"
+        xxl: "1200",
       },
       colors: {
         theme: {
@@ -21,7 +21,7 @@ export function getInitLayoutConfig() {
             warning: "#FFA800",
             danger: "#F64E60",
             light: "#F3F6F9",
-            dark: "#212121"
+            dark: "#212121",
           },
           light: {
             white: "#ffffff",
@@ -32,7 +32,7 @@ export function getInitLayoutConfig() {
             warning: "#FFF4DE",
             danger: "#FFE2E5",
             light: "#F3F6F9",
-            dark: "#D6D6E0"
+            dark: "#D6D6E0",
           },
           inverse: {
             white: "#ffffff",
@@ -43,8 +43,8 @@ export function getInitLayoutConfig() {
             warning: "#ffffff",
             danger: "#ffffff",
             light: "#464E5F",
-            dark: "#ffffff"
-          }
+            dark: "#ffffff",
+          },
         },
         gray: {
           gray100: "#F3F6F9",
@@ -55,21 +55,21 @@ export function getInitLayoutConfig() {
           gray600: "#80808F",
           gray700: "#464E5F",
           gray800: "#1B283F",
-          gray900: "#212121"
-        }
+          gray900: "#212121",
+        },
       },
-      fontFamily: "Poppins"
+      fontFamily: "Poppins",
     },
     // == Page Splash Screen loading
     loader: {
       enabled: true,
       type: "", // default|spinner-message|spinner-logo
       logo: toAbsoluteUrl("/media/logos/logo-dark-sm.png"),
-      message: "Please wait..."
+      message: "Please wait...",
     },
     // page toolbar
     toolbar: {
-      display: true
+      display: true,
     },
     header: {
       self: {
@@ -77,31 +77,31 @@ export function getInitLayoutConfig() {
         theme: "light", // light|dark
         fixed: {
           desktop: true,
-          mobile: true
-        }
+          mobile: true,
+        },
       },
       menu: {
         self: {
           display: true,
           layout: "default", // tab/default
           "root-arrow": false,
-          "icon-style": "duotone" // duotone, line, bold, solid
+          "icon-style": "duotone", // duotone, line, bold, solid
         },
         desktop: {
           arrow: true,
           toggle: "click",
           submenu: {
             theme: "light", // light|dark
-            arrow: true
-          }
+            arrow: true,
+          },
         },
         mobile: {
           submenu: {
             theme: "dark",
-            accordion: true
-          }
-        }
-      }
+            accordion: true,
+          },
+        },
+      },
     },
     subheader: {
       display: false,
@@ -111,15 +111,15 @@ export function getInitLayoutConfig() {
       fixed: true,
       width: "fluid", // fixed/fluid,
       clear: false,
-      style: "solid" // solid/transparent
+      style: "solid", // solid/transparent
     },
     content: {
-      width: "fixed" // fluid|fixed
+      width: "fixed", // fluid|fixed
     },
     brand: {
       self: {
-        theme: "dark" // light/dark
-      }
+        theme: "dark", // light/dark
+      },
     },
     aside: {
       self: {
@@ -129,13 +129,13 @@ export function getInitLayoutConfig() {
         minimize: {
           toggle: true, // allow toggle
           default: false, // default state
-          hoverable: true // allow hover
-        }
+          hoverable: true, // allow hover
+        },
       },
       footer: {
         self: {
-          display: true
-        }
+          display: true,
+        },
       },
       menu: {
         dropdown: false, // ok
@@ -145,79 +145,79 @@ export function getInitLayoutConfig() {
           accordion: true,
           dropdown: {
             arrow: true,
-            "hover-timeout": 500 // in milliseconds
-          }
-        }
-      }
+            "hover-timeout": 500, // in milliseconds
+          },
+        },
+      },
     },
     footer: {
       self: {
         fixed: true,
-        width: "fluid"
-      }
+        width: "fluid",
+      },
     },
     extras: {
       search: {
         display: true,
         layout: "dropdown", // offcanvas, dropdown
         offcanvas: {
-          direction: "right"
-        }
+          direction: "right",
+        },
       },
       notifications: {
         display: true,
         layout: "dropdown", // offcanvas, dropdown
         dropdown: {
-          style: "dark" // light, dark
+          style: "dark", // light, dark
         },
         offcanvas: {
-          directions: "right"
-        }
+          directions: "right",
+        },
       },
       "quick-actions": {
         display: true,
         layout: "dropdown", // offcanvas, dropdown,
         dropdown: {
-          style: "dark" // light, dark
+          style: "dark", // light, dark
         },
         offcanvas: {
-          directions: "right"
-        }
+          directions: "right",
+        },
       },
       user: {
         display: true,
         layout: "offcanvas", // offcanvas, dropdown
         dropdown: {
-          style: "dark"
+          style: "dark",
         },
         offcanvas: {
-          directions: "right"
-        }
+          directions: "right",
+        },
       },
       languages: {
-        display: true
+        display: true,
       },
       cart: {
         display: true,
         dropdown: {
-          style: "dark" // ligth, dark
-        }
+          style: "dark", // ligth, dark
+        },
       },
       "quick-panel": {
         display: true,
         offcanvas: {
-          directions: "right"
-        }
+          directions: "right",
+        },
       },
       chat: {
-        display: true
+        display: true,
       },
       toolbar: {
-        display: true
+        display: true,
       },
       scrolltop: {
-        display: true
-      }
-    }
+        display: true,
+      },
+    },
   };
 }

@@ -14,7 +14,7 @@ const initialValues = {
   password: "",
   changepassword: "",
   userGroup: "",
-  acceptTerms: false
+  acceptTerms: false,
 };
 
 function Registration(props) {
@@ -26,7 +26,7 @@ function Registration(props) {
       .max(50, "Maximum 50 symbols")
       .required(
         intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD"
+          id: "AUTH.VALIDATION.REQUIRED_FIELD",
         })
       ),
     email: Yup.string()
@@ -35,7 +35,7 @@ function Registration(props) {
       .max(50, "Maximum 50 symbols")
       .required(
         intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD"
+          id: "AUTH.VALIDATION.REQUIRED_FIELD",
         })
       ),
     phoneNumber: Yup.string()
@@ -43,7 +43,7 @@ function Registration(props) {
       .max(50, "Maximum 50 symbols")
       .required(
         intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD"
+          id: "AUTH.VALIDATION.REQUIRED_FIELD",
         })
       ),
     password: Yup.string()
@@ -51,28 +51,30 @@ function Registration(props) {
       .max(50, "Maximum 50 symbols")
       .required(
         intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD"
+          id: "AUTH.VALIDATION.REQUIRED_FIELD",
         })
       ),
     changepassword: Yup.string()
       .required(
         intl.formatMessage({
-          id: "AUTH.VALIDATION.REQUIRED_FIELD"
+          id: "AUTH.VALIDATION.REQUIRED_FIELD",
         })
       )
       .when("password", {
-        is: val => (val && val.length > 0 ? true : false),
+        is: (val) => (val && val.length > 0 ? true : false),
         then: Yup.string().oneOf(
           [Yup.ref("password")],
           "Password and Confirm Password didn't match"
-        )
+        ),
       }),
     userGroup: Yup.string().required(
       intl.formatMessage({
-        id: "AUTH.VALIDATION.REQUIRED_FIELD"
+        id: "AUTH.VALIDATION.REQUIRED_FIELD",
       })
     ),
-    acceptTerms: Yup.bool().required("You must accept the terms and conditions")
+    acceptTerms: Yup.bool().required(
+      "You must accept the terms and conditions"
+    ),
   });
 
   const enableLoading = () => {
@@ -83,7 +85,7 @@ function Registration(props) {
     setLoading(false);
   };
 
-  const getInputClasses = fieldname => {
+  const getInputClasses = (fieldname) => {
     if (formik.touched[fieldname] && formik.errors[fieldname]) {
       return "is-invalid";
     }
@@ -100,13 +102,7 @@ function Registration(props) {
     validationSchema: RegistrationSchema,
     onSubmit: (values, { setStatus, setSubmitting }) => {
       enableLoading();
-      register(
-        values.email,
-        values.fullname,
-        values.username,
-        values.password,
-        values.userGroup
-      )
+      register(values.email, values.fullname, values.username, values.password, values.userGroup)
         .then(({ data: { accessToken } }) => {
           props.register(accessToken);
           disableLoading();
@@ -115,12 +111,12 @@ function Registration(props) {
           setSubmitting(false);
           setStatus(
             intl.formatMessage({
-              id: "AUTH.VALIDATION.INVALID_LOGIN"
+              id: "AUTH.VALIDATION.INVALID_LOGIN",
             })
           );
           disableLoading();
         });
-    }
+    },
   });
 
   return (
@@ -135,195 +131,197 @@ function Registration(props) {
           className="font-weight-bold ml-2"
           id="kt_login_signup"
         >
-          Sign In
+        Sign In
         </Link>
       </div>
       {/*end::Content header*/}
 
-      <div className="login-form login-signin" style={{ display: "block" }}>
-        <div className="text-center mb-10 mb-lg-20">
-          <h3 className="font-size-h1">
-            <FormattedMessage id="AUTH.REGISTER.TITLE" />
-          </h3>
-          <p className="text-muted font-weight-bold">
-            Enter your details to create your account
-          </p>
-        </div>
-
-        <form
-          id="kt_login_signin_form"
-          className="form fv-plugins-bootstrap fv-plugins-framework animated animate__animated animate__backInUp"
-          onSubmit={formik.handleSubmit}
-        >
-          {/* begin: Alert */}
-          {formik.status && (
-            <div className="mb-10 alert alert-custom alert-light-danger alert-dismissible">
-              <div className="alert-text font-weight-bold">{formik.status}</div>
-            </div>
-          )}
-          {/* end: Alert */}
-
-          {/* begin: Fullname */}
-          <div className="form-group fv-plugins-icon-container">
-            <input
-              placeholder="Full name"
-              type="text"
-              className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                "fullname"
-              )}`}
-              name="fullname"
-              {...formik.getFieldProps("fullname")}
-            />
-            {formik.touched.fullname && formik.errors.fullname ? (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">{formik.errors.fullname}</div>
-              </div>
-            ) : null}
-          </div>
-          {/* end: Fullname */}
-
-          {/* begin: Email */}
-          <div className="form-group fv-plugins-icon-container">
-            <input
-              placeholder="Email"
-              type="email"
-              className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                "email"
-              )}`}
-              name="email"
-              {...formik.getFieldProps("email")}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">{formik.errors.email}</div>
-              </div>
-            ) : null}
-          </div>
-          {/* end: Email */}
-
-          {/* begin: Phone number */}
-          <div className="form-group fv-plugins-icon-container">
-            <input
-              placeholder="Phone number"
-              type="text"
-              className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                "phoneNumber"
-              )}`}
-              name="phoneNumber"
-              {...formik.getFieldProps("phoneNumber")}
-            />
-            {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">{formik.errors.phoneNumber}</div>
-              </div>
-            ) : null}
-          </div>
-          {/* end: Phone number */}
-
-          {/* begin: Password */}
-          <div className="form-group fv-plugins-icon-container">
-            <input
-              placeholder="Password"
-              type="password"
-              className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                "password"
-              )}`}
-              name="password"
-              {...formik.getFieldProps("password")}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">{formik.errors.password}</div>
-              </div>
-            ) : null}
-          </div>
-          {/* end: Password */}
-
-          {/* begin: Confirm Password */}
-          <div className="form-group fv-plugins-icon-container">
-            <input
-              placeholder="Confirm Password"
-              type="password"
-              className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                "changepassword"
-              )}`}
-              name="changepassword"
-              {...formik.getFieldProps("changepassword")}
-            />
-            {formik.touched.changepassword && formik.errors.changepassword ? (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">
-                  {formik.errors.changepassword}
-                </div>
-              </div>
-            ) : null}
-          </div>
-          {/* end: Confirm Password */}
-
-          {/* begin: User group */}
-          <div className="form-group fv-plugins-icon-container">
-            <select
-              name="userGroup"
-              className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
-                "userGroup"
-              )}`}
-              {...formik.getFieldProps("userGroup")}
-              style={{ display: "block" }}
-            >
-              <option value="" label="Select your user group" />
-              <option value="Administrator" label="Administrator" />
-              <option value="Landlord" label="Landlord" />
-              <option value="Tenant" label="Tenant" />
-            </select>
-            {formik.errors.color && formik.touched.color && (
-              <div className="input-feedback">{formik.errors.color}</div>
-            )}
-          </div>
-          {/* end: User group */}
-
-          {/* begin: Terms and Conditions */}
-          <div className="form-group">
-            <label className="checkbox">
-              <input
-                type="checkbox"
-                name="acceptTerms"
-                {...formik.getFieldProps("acceptTerms")}
-              />
-              I agree to the{" "}
-              <Link to="/terms" target="_blank" rel="noopener noreferrer">
-                Terms & Conditions
-              </Link>
-              .
-              <span />
-            </label>
-            {formik.touched.acceptTerms && formik.errors.acceptTerms ? (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">{formik.errors.acceptTerms}</div>
-              </div>
-            ) : null}
-          </div>
-          {/* end: Terms and Conditions */}
-          <div className="form-group d-flex flex-wrap flex-center">
-            <button
-              type="submit"
-              disabled={formik.isSubmitting || !formik.values.acceptTerms}
-              className="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4"
-            >
-              <span>Submit</span>
-              {loading && <span className="ml-3 spinner spinner-white"></span>}
-            </button>
-
-            <Link to="/auth/login">
-              <button
-                type="button"
-                className="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-4"
-              >
-                Cancel
-              </button>
-            </Link>
-          </div>
-        </form>
+    <div className="login-form login-signin" style={{ display: "block" }}>
+      <div className="text-center mb-10 mb-lg-20">
+        <h3 className="font-size-h1">
+          <FormattedMessage id="AUTH.REGISTER.TITLE" />
+        </h3>
+        <p className="text-muted font-weight-bold">
+          Enter your details to create your account
+        </p>
       </div>
+
+      <form
+        id="kt_login_signin_form"
+        className="form fv-plugins-bootstrap fv-plugins-framework animated animate__animated animate__backInUp"
+        onSubmit={formik.handleSubmit}
+      >
+        {/* begin: Alert */}
+        {formik.status && (
+          <div className="mb-10 alert alert-custom alert-light-danger alert-dismissible">
+            <div className="alert-text font-weight-bold">{formik.status}</div>
+          </div>
+        )}
+        {/* end: Alert */}
+
+        {/* begin: Fullname */}
+        <div className="form-group fv-plugins-icon-container">
+          <input
+            placeholder="Full name"
+            type="text"
+            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+              "fullname"
+            )}`}
+            name="fullname"
+            {...formik.getFieldProps("fullname")}
+          />
+          {formik.touched.fullname && formik.errors.fullname ? (
+            <div className="fv-plugins-message-container">
+              <div className="fv-help-block">{formik.errors.fullname}</div>
+            </div>
+          ) : null}
+        </div>
+        {/* end: Fullname */}
+
+        {/* begin: Email */}
+        <div className="form-group fv-plugins-icon-container">
+          <input
+            placeholder="Email"
+            type="email"
+            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+              "email"
+            )}`}
+            name="email"
+            {...formik.getFieldProps("email")}
+          />
+          {formik.touched.email && formik.errors.email ? (
+            <div className="fv-plugins-message-container">
+              <div className="fv-help-block">{formik.errors.email}</div>
+            </div>
+          ) : null}
+        </div>
+        {/* end: Email */}
+
+        {/* begin: Phone number */}
+        <div className="form-group fv-plugins-icon-container">
+          <input
+            placeholder="Phone number"
+            type="text"
+            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+              "phoneNumber"
+            )}`}
+            name="phoneNumber"
+            {...formik.getFieldProps("phoneNumber")}
+          />
+          {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+            <div className="fv-plugins-message-container">
+              <div className="fv-help-block">{formik.errors.phoneNumber}</div>
+            </div>
+          ) : null}
+        </div>
+        {/* end: Phone number */}
+
+        {/* begin: Password */}
+        <div className="form-group fv-plugins-icon-container">
+          <input
+            placeholder="Password"
+            type="password"
+            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+              "password"
+            )}`}
+            name="password"
+            {...formik.getFieldProps("password")}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <div className="fv-plugins-message-container">
+              <div className="fv-help-block">{formik.errors.password}</div>
+            </div>
+          ) : null}
+        </div>
+        {/* end: Password */}
+
+        {/* begin: Confirm Password */}
+        <div className="form-group fv-plugins-icon-container">
+          <input
+            placeholder="Confirm Password"
+            type="password"
+            className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+              "changepassword"
+            )}`}
+            name="changepassword"
+            {...formik.getFieldProps("changepassword")}
+          />
+          {formik.touched.changepassword && formik.errors.changepassword ? (
+            <div className="fv-plugins-message-container">
+              <div className="fv-help-block">
+                {formik.errors.changepassword}
+              </div>
+            </div>
+          ) : null}
+        </div>
+        {/* end: Confirm Password */}
+        
+        {/* begin: User group */}
+        <div className="form-group fv-plugins-icon-container">
+        <select
+        name="userGroup"
+        className={`form-control form-control-solid h-auto py-5 px-6 ${getInputClasses(
+          "userGroup"
+        )}`}
+        {...formik.getFieldProps("userGroup")}
+        style={{ display: 'block' }}
+        >
+        <option value="" label="Select your user group" />
+        <option value="Administrator" label="Administrator" />
+        <option value="Landlord" label="Landlord" />
+        <option value="Tenant" label="Tenant" />
+      </select>
+      {formik.errors.color &&
+        formik.touched.color &&
+        <div className="input-feedback">
+          {formik.errors.color}
+        </div>}
+        </div>
+        {/* end: User group */}
+
+        {/* begin: Terms and Conditions */}
+        <div className="form-group">
+          <label className="checkbox">
+            <input
+              type="checkbox"
+              name="acceptTerms"
+              {...formik.getFieldProps("acceptTerms")}
+            />
+            I agree to the{" "}
+            <Link to="/terms" target="_blank" rel="noopener noreferrer">
+              Terms & Conditions
+            </Link>
+            .
+            <span />
+          </label>
+          {formik.touched.acceptTerms && formik.errors.acceptTerms ? (
+            <div className="fv-plugins-message-container">
+              <div className="fv-help-block">{formik.errors.acceptTerms}</div>
+            </div>
+          ) : null}
+        </div>
+        {/* end: Terms and Conditions */}
+        <div className="form-group d-flex flex-wrap flex-center">
+          <button
+            type="submit"
+            disabled={formik.isSubmitting || !formik.values.acceptTerms}
+            className="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4"
+          >
+            <span>Submit</span>
+            {loading && <span className="ml-3 spinner spinner-white"></span>}
+          </button>
+
+          <Link to="/auth/login">
+            <button
+              type="button"
+              className="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-4"
+            >
+              Cancel
+            </button>
+          </Link>
+        </div>
+      </form>
+    </div>
     </div>
   );
 }

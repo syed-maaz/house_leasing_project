@@ -58,6 +58,7 @@ export const PaymentsList = () => {
                           >
                             Brad Simmons
                           </a>
+
                         </div>
                       </div>
                     </td>
@@ -94,10 +95,7 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <NavLink
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                        to="/payment/detail"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
                       </NavLink>
                     </td>
@@ -123,6 +121,7 @@ export const PaymentsList = () => {
                           >
                             Jessie Clarcson
                           </a>
+
                         </div>
                       </div>
                     </td>
@@ -161,10 +160,7 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <NavLink
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                        to="/payment/detail"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
                       </NavLink>
                     </td>
@@ -190,6 +186,7 @@ export const PaymentsList = () => {
                           >
                             Lebron Wayde
                           </a>
+
                         </div>
                       </div>
                     </td>
@@ -222,10 +219,7 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <NavLink
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                        to="/payment/detail"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
                       </NavLink>
                     </td>
@@ -251,6 +245,7 @@ export const PaymentsList = () => {
                           >
                             Natali Trump
                           </a>
+
                         </div>
                       </div>
                     </td>
@@ -287,10 +282,7 @@ export const PaymentsList = () => {
                       </span>
                     </td>
                     <td className="pr-0 text-right">
-                      <NavLink
-                        className="btn btn-light-success font-weight-bolder font-size-sm"
-                        to="/payment/detail"
-                      >
+                      <NavLink className="btn btn-light-success font-weight-bolder font-size-sm" to="/payment/detail">
                         Detail
                       </NavLink>
                     </td>

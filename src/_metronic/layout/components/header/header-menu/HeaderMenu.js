@@ -6,7 +6,7 @@ import { checkIsActive } from "../../../../_helpers";
 
 export function HeaderMenu({ layoutProps }) {
   const location = useLocation();
-  const getMenuItemActive = url => {
+  const getMenuItemActive = (url) => {
     return checkIsActive(location, url) ? "menu-item-active" : "";
   };
 

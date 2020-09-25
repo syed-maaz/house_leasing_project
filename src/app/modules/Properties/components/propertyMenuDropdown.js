@@ -2,7 +2,7 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import { DropdownCustomToggler } from "../../../../_metronic/_partials/dropdowns";
 
-export const PropertyMenuDropdown = props => {
+export const PropertyMenuDropdown = (props) => {
   const { id } = props;
   return (
     <Dropdown className="dropdown-inline" alignRight>

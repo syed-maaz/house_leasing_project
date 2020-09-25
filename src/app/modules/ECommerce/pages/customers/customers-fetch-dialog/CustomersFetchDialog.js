@@ -6,8 +6,8 @@ import { useCustomersUIContext } from "../CustomersUIContext";
 
 const selectedCustomers = (entities, ids) => {
   const _customers = [];
-  ids.forEach(id => {
-    const customer = entities.find(el => el.id === id);
+  ids.forEach((id) => {
+    const customer = entities.find((el) => el.id === id);
     if (customer) {
       _customers.push(customer);
     }
@@ -20,17 +20,17 @@ export function CustomersFetchDialog({ show, onHide }) {
   const customersUIContext = useCustomersUIContext();
   const customersUIProps = useMemo(() => {
     return {
-      ids: customersUIContext.ids
+      ids: customersUIContext.ids,
     };
   }, [customersUIContext]);
 
   // Customers Redux state
   const { customers } = useSelector(
-    state => ({
+    (state) => ({
       customers: selectedCustomers(
         state.customers.entities,
         customersUIProps.ids
-      )
+      ),
     }),
     shallowEqual
   );
@@ -56,11 +56,8 @@ export function CustomersFetchDialog({ show, onHide }) {
       </Modal.Header>
       <Modal.Body>
         <div className="timeline timeline-5 mt-3">
-          {customers.map(customer => (
-            <div
-              className="timeline-item align-items-start"
-              key={`id${customer.id}`}
-            >
+          {customers.map((customer) => (
+            <div className="timeline-item align-items-start" key={`id${customer.id}`}>
               <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg text-right pr-3" />
               <div className="timeline-badge">
                 <i
@@ -71,15 +68,13 @@ export function CustomersFetchDialog({ show, onHide }) {
               </div>
               <div className="timeline-content text-dark-50 mr-5">
                 <span
-                  className={`label label-lg label-light-${
-                    CustomerStatusCssClasses[customer.status]
-                  } label-inline`}
-                >
-                  ID: {customer.id}
+                    className={`label label-lg label-light-${
+                      CustomerStatusCssClasses[customer.status]
+                    } label-inline`}
+                  >
+                    ID: {customer.id}
                 </span>
-                <span className="ml-3">
-                  {customer.lastName}, {customer.firstName}
-                </span>
+                <span className="ml-3">{customer.lastName}, {customer.firstName}</span>                
               </div>
             </div>
           ))}

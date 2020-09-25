@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import {
   getPropertyById,
   updateProperty,
-  deleteProperty
+  deleteProperty,
 } from "./propertyCrud";
 import { shallowEqual, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -18,10 +18,10 @@ import { FileUploadComponent } from "../../common/component/fileUploadComponent"
 import {
   getDropdownValues,
   GET_PROPERTY_TYPE,
-  GET_STATES
+  GET_STATES,
 } from "../../common/crud/dropdownCrud";
 
-export const PropertyEditPage = props => {
+export const PropertyEditPage = (props) => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Property Edit");
   const history = useHistory();
@@ -45,7 +45,7 @@ export const PropertyEditPage = props => {
 
   const { user } = useSelector(
     ({ auth }) => ({
-      user: auth.user
+      user: auth.user,
     }),
     shallowEqual
   );
@@ -55,7 +55,7 @@ export const PropertyEditPage = props => {
 
     (async () => {
       const {
-        data: { output }
+        data: { output },
       } = await getPropertyById(propertyId, user.id);
       setPropertyDet(...propertyDet, output[0]);
       setCopyPropertyDet(...copyPropertyDet, output[0]);
@@ -64,14 +64,14 @@ export const PropertyEditPage = props => {
 
     (async () => {
       const {
-        data: { output }
+        data: { output },
       } = await getDropdownValues(GET_PROPERTY_TYPE);
       setPropertyTypes(...propertyTypes, output);
     })();
 
     (async () => {
       const {
-        data: { output }
+        data: { output },
       } = await getDropdownValues(GET_STATES);
       setStateList(...stateList, output);
     })();
@@ -82,7 +82,7 @@ export const PropertyEditPage = props => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handlePropertySubmit = async e => {
+  const handlePropertySubmit = async (e) => {
     e.preventDefault();
 
     setShowSuccessBox(false);
@@ -100,7 +100,7 @@ export const PropertyEditPage = props => {
     }
   };
 
-  const handlePropertyTypeSubmit = async e => {
+  const handlePropertyTypeSubmit = async (e) => {
     e.preventDefault();
 
     console.log("dsdsd");
@@ -117,7 +117,7 @@ export const PropertyEditPage = props => {
     }
   };
 
-  const handleImageUpdate = async e => {
+  const handleImageUpdate = async (e) => {
     e.preventDefault();
 
     setIsLoading(true);
@@ -178,12 +178,12 @@ export const PropertyEditPage = props => {
                   <div className="col-md-5">
                     <FileUploadComponent
                       fileName={propertyDet.image_url}
-                      uploadedFileName={v => {
+                      uploadedFileName={(v) => {
                         const val = v;
-                        setCopyPropertyDet(prev => {
+                        setCopyPropertyDet((prev) => {
                           return {
                             ...prev,
-                            image_url: val
+                            image_url: val,
                           };
                         });
                       }}
@@ -201,7 +201,7 @@ export const PropertyEditPage = props => {
                           </p>
                           <a
                             className="btn btn-secondary"
-                            onClick={e =>
+                            onClick={(e) =>
                               setShowEditAddressPanel(!showEditAddressPanel)
                             }
                           >
@@ -221,12 +221,12 @@ export const PropertyEditPage = props => {
                                 className="form-control"
                                 placeholder="Input Street Address"
                                 required
-                                onChange={e => {
+                                onChange={(e) => {
                                   const val = e.target.value;
-                                  setCopyPropertyDet(prev => {
+                                  setCopyPropertyDet((prev) => {
                                     return {
                                       ...prev,
-                                      street_address: val
+                                      street_address: val,
                                     };
                                   });
                                 }}
@@ -241,12 +241,12 @@ export const PropertyEditPage = props => {
                                 className="form-control"
                                 placeholder="Input Street Address 2"
                                 required
-                                onChange={e => {
+                                onChange={(e) => {
                                   const val = e.target.value;
-                                  setCopyPropertyDet(prev => {
+                                  setCopyPropertyDet((prev) => {
                                     return {
                                       ...prev,
-                                      address2: val
+                                      address2: val,
                                     };
                                   });
                                 }}
@@ -262,12 +262,12 @@ export const PropertyEditPage = props => {
                                 value={copyPropertyDet.city}
                                 className="form-control"
                                 required
-                                onChange={e => {
+                                onChange={(e) => {
                                   const val = e.target.value;
-                                  setCopyPropertyDet(prev => {
+                                  setCopyPropertyDet((prev) => {
                                     return {
                                       ...prev,
-                                      city: val
+                                      city: val,
                                     };
                                   });
                                 }}
@@ -295,12 +295,12 @@ export const PropertyEditPage = props => {
                                 value={copyPropertyDet.zip}
                                 className="form-control"
                                 required
-                                onChange={e => {
+                                onChange={(e) => {
                                   const val = e.target.value;
-                                  setCopyPropertyDet(prev => {
+                                  setCopyPropertyDet((prev) => {
                                     return {
                                       ...prev,
-                                      zip: val
+                                      zip: val,
                                     };
                                   });
                                 }}
@@ -317,7 +317,7 @@ export const PropertyEditPage = props => {
                               </button>
                               <a
                                 class="btn btn-light-danger font-weight-bold ml-3"
-                                onClick={e =>
+                                onClick={(e) =>
                                   setShowEditAddressPanel(!showEditAddressPanel)
                                 }
                               >
@@ -339,7 +339,7 @@ export const PropertyEditPage = props => {
                           <div className="col-md-12 col-sm-12 p-0">
                             <a
                               className="btn btn-secondary"
-                              onClick={e =>
+                              onClick={(e) =>
                                 setShowPropertyTypePanel(!showPropertyTypePanel)
                               }
                             >
@@ -379,7 +379,7 @@ export const PropertyEditPage = props => {
                               </button>
                               <a
                                 class="btn btn-light-danger font-weight-bold ml-3"
-                                onClick={e =>
+                                onClick={(e) =>
                                   setShowPropertyTypePanel(
                                     !showPropertyTypePanel
                                   )

@@ -13,7 +13,9 @@ export const ConditionColumnFormatter = (cellContent, row) => (
     ></span>
     &nbsp;
     <span
-      className={`font-bold font-${ProductConditionCssClasses[row.condition]}`}
+      className={`font-bold font-${
+        ProductConditionCssClasses[row.condition]
+      }`}
     >
       {ProductConditionTitles[row.condition]}
     </span>

@@ -1,9 +1,9 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 import React from "react";
 import SVG from "react-inlinesvg";
-import { Dropdown } from "react-bootstrap";
-import { DropdownCustomToggler, DropdownMenu1 } from "../../dropdowns";
-import { toAbsoluteUrl } from "../../../_helpers";
+import {Dropdown} from "react-bootstrap";
+import {DropdownCustomToggler, DropdownMenu1} from "../../dropdowns";
+import {toAbsoluteUrl} from "../../../_helpers";
 
 export function ListsWidget9({ className }) {
   return (
@@ -167,9 +167,7 @@ export function ListsWidget9({ className }) {
             </div>
 
             <div className="timeline-item align-items-start">
-              <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg text-right pr-3">
-                20:30
-              </div>
+              <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg text-right pr-3">20:30</div>
               <div className="timeline-badge">
                 <i className="fa fa-genderless text-info icon-xxl"></i>
               </div>

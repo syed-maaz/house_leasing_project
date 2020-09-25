@@ -11,12 +11,9 @@ import {
   Grid,
   Typography
 } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import { purple } from "@material-ui/core/colors";
-import {
-  Notice,
-  KTCodeExample
-} from "../../../../_metronic/_partials/controls";
+import {withStyles} from "@material-ui/core/styles";
+import {purple} from "@material-ui/core/colors";
+import {Notice, KTCodeExample} from "../../../../_metronic/_partials/controls";
 
 // Example 4
 const PurpleSwitch = withStyles({

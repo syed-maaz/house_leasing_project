@@ -11,10 +11,7 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker
 } from "@material-ui/pickers";
-import {
-  Notice,
-  KTCodeExample
-} from "../../../../_metronic/_partials/controls";
+import {Notice, KTCodeExample} from "../../../../_metronic/_partials/controls";
 
 // Example 1
 const useStyles = makeStyles(theme => ({
@@ -172,7 +169,7 @@ export default function PickersExamplesPage() {
               />
             </form>
           </KTCodeExample>
-          {/* 
+{/* 
           <KTCodeExample
             jsCode={jsCode4}
             beforeCodeTitle="@material-ui/pickers"

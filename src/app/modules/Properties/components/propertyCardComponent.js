@@ -4,7 +4,7 @@ import { PropertyMenuDropdown } from "./propertyMenuDropdown";
 
 import { ImageContainer } from "../../../common/component/imageContainerComponent";
 
-export const PropertyCardComponent = props => {
+export const PropertyCardComponent = (props) => {
   const { item } = props;
 
   const [imageUrl, setImageUrl] = useState("");

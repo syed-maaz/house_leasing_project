@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import {
   getDropdownValues,
   GET_PROPERTY_TYPE,
-  GET_STATES
+  GET_STATES,
 } from "../../common/crud/dropdownCrud";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 
@@ -30,14 +30,14 @@ export const PropertyCreatePage = () => {
     // code to run on component mount
     (async () => {
       const {
-        data: { output }
+        data: { output },
       } = await getDropdownValues(GET_PROPERTY_TYPE);
       setPropertyTypes(...propertyTypes, output);
     })();
 
     (async () => {
       const {
-        data: { output }
+        data: { output },
       } = await getDropdownValues(GET_STATES);
       setStateList(...stateList, output);
     })();
@@ -45,12 +45,12 @@ export const PropertyCreatePage = () => {
 
   const { user } = useSelector(
     ({ auth }) => ({
-      user: auth.user
+      user: auth.user,
     }),
     shallowEqual
   );
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     const formData = new FormData(e.target);
@@ -67,7 +67,7 @@ export const PropertyCreatePage = () => {
       unitList = unitArray;
     }
     const {
-      data: { output }
+      data: { output },
     } = await createProperty(requestBody, unitList);
     history.push("/property/detail/" + output[0].id);
   };
@@ -78,7 +78,7 @@ export const PropertyCreatePage = () => {
     setUnitArray(temp);
   };
 
-  const deleteUnitByIndex = index => {
+  const deleteUnitByIndex = (index) => {
     const temp = [...unitArray];
     temp.splice(index, 1);
     setUnitArray(temp);
@@ -138,7 +138,7 @@ export const PropertyCreatePage = () => {
                               unitType === "s" ? "btn-success" : "btn-secondary"
                             }`}
                             type="button"
-                            onClick={e => setUnitType("s")}
+                            onClick={(e) => setUnitType("s")}
                           >
                             Single Unit
                           </button>
@@ -149,7 +149,7 @@ export const PropertyCreatePage = () => {
                               unitType === "m" ? "btn-success" : "btn-secondary"
                             }`}
                             type="button"
-                            onClick={e => setUnitType("m")}
+                            onClick={(e) => setUnitType("m")}
                           >
                             Multiple Unit
                           </button>
@@ -235,9 +235,7 @@ export const PropertyCreatePage = () => {
                         <>
                           <div className="form-group row mb-3">
                             <div className="col-md-12">
-                              <h4>
-                                Add units you’ll be managing in Lease Ninja
-                              </h4>
+                              <h4>Add units you’ll be managing in Lease Ninja</h4>
                               <p className="m-0">
                                 At least one unit is required. You can add more
                                 units later.
@@ -251,15 +249,13 @@ export const PropertyCreatePage = () => {
                                 Unit Name
                               </label>
                               <div
-                                className={`${
-                                  i > 0 ? "col-sm-11" : "col-sm-12"
-                                }`}
+                                className={`${i > 0 ? "col-sm-11" : "col-sm-12"}`}
                               >
                                 <input
                                   type="text"
                                   className="form-control"
                                   required
-                                  onChange={e =>
+                                  onChange={(e) =>
                                     setUnitValue(e.target.value, i)
                                   }
                                 />

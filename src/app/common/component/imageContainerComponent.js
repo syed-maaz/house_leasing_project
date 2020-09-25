@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getFileUrl } from "../crud/fileUploadCrud";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
 
-export const ImageContainer = props => {
+export const ImageContainer = (props) => {
   const { imageName, height } = props;
   const [isImgLoaded, setImgLoaded] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
@@ -13,8 +13,8 @@ export const ImageContainer = props => {
       (async () => {
         const {
           data: {
-            output: [file]
-          }
+            output: [file],
+          },
         } = await getFileUrl(imageName);
         setImageUrl(file.url);
       })();

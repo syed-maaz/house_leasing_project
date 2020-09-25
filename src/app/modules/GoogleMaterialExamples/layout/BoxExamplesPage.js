@@ -1,9 +1,6 @@
 import React from "react";
-import { Box } from "@material-ui/core";
-import {
-  Notice,
-  KTCodeExample
-} from "../../../../_metronic/_partials/controls";
+import {Box} from "@material-ui/core";
+import {Notice, KTCodeExample} from "../../../../_metronic/_partials/controls";
 
 const jsCode = `
 <Box component="span" m={5}>

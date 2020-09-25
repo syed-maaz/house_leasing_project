@@ -1,8 +1,8 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
-import React, { useMemo, useEffect } from "react";
+import React, {useMemo, useEffect} from "react";
 import objectPath from "object-path";
 import ApexCharts from "apexcharts";
-import { useHtmlClassService } from "../../../layout";
+import {useHtmlClassService} from "../../../layout";
 
 export function StatsWidget11({ className }) {
   const uiService = useHtmlClassService();

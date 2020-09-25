@@ -1,25 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSubheader } from "../../../_metronic/layout";
 import SVG from "react-inlinesvg";
 import { toAbsoluteUrl } from "../../../_metronic/_helpers";
-import { NavLink, Link } from "react-router-dom";
-import { getTickets } from "../../common/crud/freshdesk";
-import { Auth } from "aws-amplify";
-import { format } from "date-fns";
+import { NavLink } from "react-router-dom";
 
 export const MaintenanceList = () => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("LeaseNinja | Maintenance");
-  const [status, setStatus] = useState(2);
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    Auth.currentAuthenticatedUser().then(user => {
-      getTickets(user).then(res => {
-        setList(res.data);
-      });
-    });
-  }, []);
 
   return (
     <>
@@ -40,17 +27,11 @@ export const MaintenanceList = () => {
                 <div className="d-flex justify-content-between pb-5">
                   <div className="d-flex flex-column flex-root p-3">
                     <div class="d-inline-flex p-3">
-                      <span
-                        className={"nav-clickable d-flex flex-column  mt-3 p-2 text-uppercase" + (status === 2 ? " active" : "")}
-                        onClick={() => setStatus(2)}
-                      >
-                        Open ({list.filter(e => e.status === 2).length})
+                      <span className="d-flex flex-column  mt-3 p-2 text-uppercase">
+                        Open (2)
                       </span>
-                      <span
-                        className={"nav-clickable d-flex flex-column mt-3 p-2 text-uppercase" + (status === 5 ? " active" : "")}
-                        onClick={() => setStatus(5)}
-                      >
-                        Close ({list.filter(e => e.status === 5).length})
+                      <span className="d-flex flex-column mt-3 p-2 text-uppercase">
+                        Close (0)
                       </span>
                     </div>
                   </div>
@@ -66,53 +47,80 @@ export const MaintenanceList = () => {
                     </div>
                   </div>
                 </div>
-                {list
-                  .filter(e => e.status === status)
-                  .map(ticket => (
-                    <Link
-                      to={`/maintenance/detail/${ticket.id}`}
-                    >
-                      <div className="border p-6 mb-5">
-                        <div className="d-flex justify-content-between mb-0">
-                          <div className="d-flex flex-column flex-root">
-                            <h4 className="font-weight-bold mb-2 font-size-h5 text-dark-50">
-                              {ticket.subject}
-                            </h4>
-                          </div>
-                          <div className="d-flex flex-column flex-root align-items-md-end">
-                            <span className="font-weight-bold mb-2 font-size-h6 text-dark-50 text-right">
-                              {ticket.custom_fields.cf_location_address}
-                            </span>
-                          </div>
-                          <div className="d-flex flex-column flex-root align-items-md-end">
-                            <span className="d-flex flex-column opacity-70 font-size-sm font-weight-light font-dark">
-                              {
-                                ticket.status === 5 &&
-                                <span className="font-weight-bold mb-2 font-size-h6 text-dark-50 text-right">
-                                  Closed {format(new Date(ticket.updated_at), "MMM dd, yyyy")}
-                                </span>
-                              }
-                            </span>
-                          </div>
-                        </div>
-                        <div className="d-flex justify-content-between">
-                          <div className="d-flex flex-column flex-root">
-                            <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
-                              Created On{" "}
-                              {format(new Date(ticket.created_at), "MMM dd, yyyy")}{" "}
-                            By {ticket.requester.name}
-                            </span>
-                          </div>
-                          <div className="d-flex flex-column flex-root align-items-md-end">
-                            <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
-                              Unit {ticket.custom_fields.cf_location_unit}
-                            </span>
-                          </div>
-                          <div className="d-flex flex-column flex-root align-items-md-end"></div>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+                <div className="border p-6 mb-5">
+                  <div className="d-flex justify-content-between mb-0">
+                    <div className="d-flex flex-column flex-root">
+                      <h4 className="font-weight-bold mb-2 font-size-h5 text-dark-50">
+                        Broken Dishwasher
+                      </h4>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        55 Cannary Ln
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="opacity-70 font-size-sm font-weight-light">
+                        <NavLink
+                          className="btn btn-light-primary font-weight-bold"
+                          to="/maintenance/detail"
+                        >
+                          View
+                        </NavLink>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <div className="d-flex flex-column flex-root">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        Created On 11 June 2019 By Mika
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        Unit 1
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end"></div>
+                  </div>
+                </div>
+                <div className="border p-6 mb-5">
+                  <div className="d-flex justify-content-between mb-0">
+                    <div className="d-flex flex-column flex-root">
+                      <h4 className="font-weight-bold mb-2 font-size-h5 text-dark-50">
+                        Broken Dishwasher
+                      </h4>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        55 Cannary Ln
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="opacity-70 font-size-sm font-weight-light">
+                        <NavLink
+                          className="btn btn-light-primary font-weight-bold"
+                          to="/maintenance/detail"
+                        >
+                          View
+                        </NavLink>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <div className="d-flex flex-column flex-root">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        Created On 11 June 2019 By Mika
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end">
+                      <span className="font-weight-bold mb-2 font-size-h6 text-dark-50">
+                        Unit 1
+                      </span>
+                    </div>
+                    <div className="d-flex flex-column flex-root align-items-md-end"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,10 +1,7 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import { Hidden, Paper, Typography, Grid } from "@material-ui/core";
-import {
-  Notice,
-  KTCodeExample
-} from "../../../../_metronic/_partials/controls";
+import {makeStyles} from "@material-ui/core";
+import {Hidden, Paper, Typography, Grid} from "@material-ui/core";
+import {Notice, KTCodeExample} from "../../../../_metronic/_partials/controls";
 
 const jsCode1 = `
 import React from 'react';
