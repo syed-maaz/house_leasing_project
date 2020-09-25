@@ -26,5 +26,9 @@ export function createUnit(requestBody) {
     data: {},
   };
 
-  return axios.post(API_URL, requestBody, config);
+  if (requestBody.createdata) {
+    return axios.post(API_URL, requestBody, config);
+  } else {
+    return axios.put(API_URL, requestBody, config);
+  }
 }

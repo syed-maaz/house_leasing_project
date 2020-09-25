@@ -79,7 +79,7 @@ export const LeaseListingFormComponent = ({ formObj, changeFormStep }) => {
                   <label>When is it available?</label>
                   <div class="form-check mb-1">
                     <Field
-                      name="availibility"
+                      name="availability"
                       type="checkbox"
                       className="form-check-input"
                       value="no-specified-movein-date"
@@ -90,7 +90,7 @@ export const LeaseListingFormComponent = ({ formObj, changeFormStep }) => {
                   </div>
                   <div class="form-check mb-1">
                     <Field
-                      name="availibility"
+                      name="availability"
                       type="checkbox"
                       className="form-check-input"
                       value="avaiable-now"
@@ -101,7 +101,7 @@ export const LeaseListingFormComponent = ({ formObj, changeFormStep }) => {
                   </div>
                   <div class="form-check mb-1">
                     <Field
-                      name="availibility"
+                      name="availability"
                       type="checkbox"
                       className="form-check-input"
                       value="prefere-move-in-date"
@@ -111,14 +111,10 @@ export const LeaseListingFormComponent = ({ formObj, changeFormStep }) => {
                     </label>
                   </div>
                 </div>
-                <div className="form-group mb-0">
+                {/* <div className="form-group mb-0">
                   <label>Move-in Date</label>
-                  <Field
-                    name="movein-date"
-                    type="text"
-                    className="form-control"
-                  />
-                </div>
+                  <Field name="move" type="text" className="form-control" />
+                </div> */}
               </div>
             </div>
             <div className="d-flex justify-content-between pt-10">

@@ -61,7 +61,10 @@ export const ListingCreatePage = (props) => {
   const handleSubmit = async (obj) => {
     setFormObj({ ...formObj, ...obj });
     const requestObj = {};
-    obj.property_id = propertyId;
+    // obj.property_id = propertyId;
+
+    obj.availability = JSON.stringify(obj.availability);
+    obj.lease_duration = JSON.stringify(obj.lease_duration);
 
     if (listingId !== "new") {
       requestObj.listing_id = listingId;
@@ -76,7 +79,7 @@ export const ListingCreatePage = (props) => {
 
     // console.log(output);
     if (status === "Success") {
-      history.push(`/property/detail/${propertyId}`);
+      history.push(`/property/detail/${propertyId}#listings`);
     }
   };
 

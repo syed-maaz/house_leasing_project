@@ -55,7 +55,7 @@ export const ScreeningListingFormComponent = ({ formObj, changeFormStep }) => {
                 <div className="form-group">
                   <div class="form-check mb-1">
                     <Field
-                      name="backgroud_check"
+                      name="background_check"
                       type="checkbox"
                       className="form-check-input"
                     />
