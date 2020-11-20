@@ -6,7 +6,7 @@ const END_POINT = "properties";
 const API_URL = BASE_API_URL + END_POINT;
 
 export function getAllPropertiesByUserId(userId) {
-  return axios.get(API_URL + "?user_id=" + userId);
+  return axios.get(API_URL);
 }
 
 export function getPropertyById(propId, userId) {

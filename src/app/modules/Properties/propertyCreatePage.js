@@ -61,7 +61,7 @@ export const PropertyCreatePage = () => {
       requestBody[entry[0]] = entry[1];
     }
     requestBody.unit_type = unitType;
-    requestBody.user_id = user.id;
+
     requestBody.image_url = fileName;
     if (unitType.toLowerCase() === "m") {
       unitList = unitArray;
@@ -161,12 +161,12 @@ export const PropertyCreatePage = () => {
                         </label>
                         <div className="col-md-12 col-sm-12">
                           <select
-                            name="property_type_id"
+                            name="property_type"
                             className="form-control selectpicker"
                             title="Select"
                           >
                             {propertyTypes.map((item, index) => (
-                              <option key={index} value={item.type_id}>
+                              <option key={index} value={item.property_type}>
                                 {item.property_type}
                               </option>
                             ))}
@@ -208,13 +208,13 @@ export const PropertyCreatePage = () => {
                         <div className="col-md-4">
                           <label>State</label>
                           <select
-                            name="state_id"
+                            name="state"
                             className="form-control selectpicker"
                             title="Select"
                             required
                           >
                             {stateList.map((item, i) => (
-                              <option key={i} value={item.state_id}>
+                              <option key={i} value={item.state_name}>
                                 {item.state_name}
                               </option>
                             ))}
@@ -235,7 +235,9 @@ export const PropertyCreatePage = () => {
                         <>
                           <div className="form-group row mb-3">
                             <div className="col-md-12">
-                              <h4>Add units you’ll be managing in Lease Ninja</h4>
+                              <h4>
+                                Add units you’ll be managing in Lease Ninja
+                              </h4>
                               <p className="m-0">
                                 At least one unit is required. You can add more
                                 units later.
@@ -249,7 +251,9 @@ export const PropertyCreatePage = () => {
                                 Unit Name
                               </label>
                               <div
-                                className={`${i > 0 ? "col-sm-11" : "col-sm-12"}`}
+                                className={`${
+                                  i > 0 ? "col-sm-11" : "col-sm-12"
+                                }`}
                               >
                                 <input
                                   type="text"

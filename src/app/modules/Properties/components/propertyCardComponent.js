@@ -33,7 +33,7 @@ export const PropertyCardComponent = (props) => {
               style={{ height: "66px" }}
             >
               <span className="font-weight-bold mb-1 font-size-h6 text-dark-50">
-                {`${item.street_address} ${item.state_name}`}, Unit {item.unit},{" "}
+                {`${item.street_address} ${item.state}`}, Unit {item.unit},{" "}
                 {item.property_type}
               </span>
             </div>
